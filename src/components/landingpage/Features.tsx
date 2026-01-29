@@ -4,17 +4,18 @@ import React from 'react';
 interface FeatureCardProps {
     title: string;
     imageSrc: string;
+    orderClass?: string;
 }
 
-const FeatureCard = ({ title, imageSrc }: FeatureCardProps) => (
-    <div className="flex flex-col items-center justify-center py-10 px-6 border-r border-b border-white/5 hover:bg-white/[0.01] transition-colors text-center group">
+const FeatureCard = ({ title, imageSrc, orderClass }: FeatureCardProps) => (
+    <div className={`flex flex-col items-center justify-center py-10 px-6 border-r border-b border-white/15 hover:bg-white/[0.01] transition-colors text-center group ${orderClass} md:order-0`}>
         {/* Container with Gradient Border Effect */}
         <div className="relative p-[1px] rounded-xl mb-6 group">
             {/* The Gradient Border Overlay */}
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-100" />
+            <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-100" />
             
             {/* Inner Content */}
-            <div className="relative w-12 h-12 bg-[#1A1A1A] rounded-xl flex items-center justify-center overflow-hidden shadow-2xl">
+            <div className="relative w-14 h-14 bg-[#212020] rounded-lg flex items-center justify-center overflow-hidden shadow-2xl">
                 <img
                     src={imageSrc}
                     alt={title}
@@ -44,30 +45,30 @@ export default function Features() {
 
     return (
         /* Added mt-20 to separate from Hero and ensured single bg color */
-        <section className="text-white py-14 px-6 bg-[#0D0D0D]/25 mt-11 w-full">
+        <section className="text-white md:py-10 mb-10 px-6 bg-black/2 mt-11 w-full">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
-                <div className="text-center mb-16">
-                    <span className="text-gray-300 md:text-[15px] text-xs mb-4 bg-[#2A2B2B] inline-block px-4 py-1 rounded-full border border-[#4D4D4D] backdrop-blur-md">
+                <div className="text-center mb-10">
+                    <span className="text-gray-300 md:text-[15px] text-xs bg-[#2A2B2B] inline-block px-4 py-1 rounded-full border border-[#4D4D4D] backdrop-blur-md">
                         Key Features
                     </span>
-                    <h2 className="text-4xl md:text-5xl font-semibold mt-6 mb-4">Why Choose APEXSIM</h2>
+                    <h2 className="text-3xl md:text-4xl font-semibold mt-1 mb-2">Why Choose APEXSIM</h2>
                     <p className="text-[#7F8186] max-w-lg mx-auto text-base md:text-lg">
-                        Keep your digital assets offline, safe, and always under your control.
+                        Keep your digital assets offline, safe, and always under your control—secure storage with the freedom to invest anytime.
                     </p>
                 </div>
 
                 <div className='flex items-center justify-center'>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl w-full border-l border-t border-white/5 overflow-hidden ">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 max-w-5xl w-full border border-white/15 overflow-hidden ">
                         
                         {/* First 4 items */}
                         {features.slice(0, 4).map((f, i) => (
-                            <FeatureCard key={i} title={f.title} imageSrc={f.imageSrc} />
+                            <FeatureCard key={i} title={f.title} imageSrc={f.imageSrc} orderClass = "order-1" />
                         ))}
 
                         {/* CENTER SPECIAL CARD */}
-                        <div className="bg-gradient-to-b from-[#0084FF] to-[#0044FF] flex flex-col items-center justify-center py-10 px-6 text-center relative overflow-hidden group border-r border-b border-white/5">
-                            <h3 className="text-white text-lg font-medium mb-8 relative z-10">And of course more...</h3>
+                        <div className="col-span-2 md:col-span-1 order-2 md:order-0 bg-gradient-to-tr from-blue-600 to-blue-500 flex flex-col rounded-lg items-center justify-center py-10 px-6 text-center relative overflow-hidden group border-r border-b border-white/15">
+                            <h3 className="text-white text-lg mb-8 relative z-10">And of course more...</h3>
                             <button className="bg-white text-[#0055FF] px-10 py-3.5 rounded-full font-bold text-sm shadow-xl hover:scale-105 active:scale-95 transition-all !cursor-pointer relative z-10">
                                 Start trading
                             </button>
@@ -76,7 +77,7 @@ export default function Features() {
 
                         {/* Remaining 4 items */}
                         {features.slice(4).map((f, i) => (
-                            <FeatureCard key={i + 5} title={f.title} imageSrc={f.imageSrc} />
+                            <FeatureCard key={i + 5} title={f.title} imageSrc={f.imageSrc} orderClass='order-3' />
                         ))}
                     </div>
                 </div>

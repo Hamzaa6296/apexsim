@@ -1,9 +1,14 @@
 import Navbar from "@/components/landingpage/Navbar";
 import Hero from "@/components/landingpage/HeroSection";
 import Features from "@/components/landingpage/Features";
+import HowItWorks from "@/components/landingpage/HowItWorks";
+import FAQ from "@/components/landingpage/FAQSection";
+import Testimonials from "@/components/landingpage/Testemonials";
+import Footer from "@/components/landingpage/FooterSection";
 
 export default function LandingPage() {
   return (
+    <>
     <div className="min-h-screen bg-transparent">
       {/* Note: Background grid and V-lines are handled by globals.css 
           on the body tag, so we don't need PerspectiveLines component here. 
@@ -20,5 +25,10 @@ export default function LandingPage() {
       {/* <Features /> */}
       {/* <Footer /> */}
     </div>
+    <HowItWorks/>
+    <FAQ/>
+    <Testimonials/>
+    <Footer/>
+    </>
   );
 }

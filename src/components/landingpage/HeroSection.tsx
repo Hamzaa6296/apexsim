@@ -56,9 +56,9 @@ export default function Hero() {
                     </span>
                 </h1>
                 <p className="text-zinc-400 max-w-2xl mx-auto px-5 md:px-0 text-lg mb-10">
-                    Keep your digital assets offline, safe, and always under your control.
+                    Keep your digital assets offline, safe, and always under your control—secure storage with the freedom to invest anytime.
                 </p>
-                <button className="bg-[#0055FF] hover:bg-blue-500 text-white px-10 py-4 rounded-full font-bold text-lg shadow-[0_0_40px_rgba(37,99,235,0.4)] transition-all !cursor-pointer active:scale-95">
+                <button className="bg-[#0055FF] hover:bg-blue-500 text-white px-10 py-3 rounded-full font-semibold text-md shadow-[0_0_40px_rgba(37,99,235,0.4)] transition-all !cursor-pointer active:scale-95">
                     Start trading
                 </button>
             </div>
@@ -66,7 +66,7 @@ export default function Hero() {
             {/* FULL WIDTH WRAPPER */}
             <div className="relative w-full flex justify-center items-start">
                 {/* BACKGROUND DIV: Starts earlier on mobile to catch all rows */}
-                <div className="absolute md:top-[18%] top-[-20px] left-0 w-full md:h-[90%] h-[calc(100%+40px)] bg-[#0D0D0D]/50 border-t border-white/5 md:rounded-t-[40px] pointer-events-none z-0" />
+                <div className="absolute md:top-[18%] top-[-20px] left-0 w-full md:h-[90%] h-[calc(100%+40px)] bg-black/35 border-t border-white/5 md:rounded-t-[40px] pointer-events-none z-0" />
 
                 <div className="max-w-7xl w-full flex flex-col gap-4 relative z-10 px-4 md:px-8">
 
