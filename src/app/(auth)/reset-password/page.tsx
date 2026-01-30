@@ -1,12 +1,10 @@
 import React from 'react'
-import LoginView from '@/components/authentication/LoginScreen'
-
+import ResetPasswordView from '@/components/authentication/ResetPassword'
 
 function page() {
   return (
     <div>
-        <LoginView />
-        
+      <ResetPasswordView/>
     </div>
   )
 }

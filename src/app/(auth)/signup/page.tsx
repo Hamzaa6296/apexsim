@@ -1,12 +1,10 @@
+import SignupView from '@/components/authentication/SignupScreen'
 import React from 'react'
-import LoginView from '@/components/authentication/LoginScreen'
-
 
 function page() {
   return (
     <div>
-        <LoginView />
-        
+      <SignupView/>
     </div>
   )
 }

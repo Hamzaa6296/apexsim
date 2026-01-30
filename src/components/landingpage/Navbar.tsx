@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const NavItem = ({ label, items, isMobile }: { label: string, items?: string[], isMobile?: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,6 +35,7 @@ const NavItem = ({ label, items, isMobile }: { label: string, items?: string[], 
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter()
 
   return (
     <header className="w-full border-b border-[#393747] backdrop-blur-[2px] relative z-[100]">
@@ -56,8 +58,8 @@ export default function Navbar() {
         {/* Desktop Buttons & Mobile Toggle */}
         <div className="flex items-center gap-4">
           <div className="hidden md:flex font-manrope items-center gap-4">
-            <button className="text-[#256DFD] hover:text-white font-semibold px-4 transition-colors cursor-pointer">Login</button>
-            <button className="bg-white text-black px-6 py-2 rounded-full font-bold hover:bg-gray-200 transition-all cursor-pointer">Sign up</button>
+            <button onClick={()=> router.push('/login')} className="text-[#256DFD] hover:text-white font-semibold px-4 transition-colors cursor-pointer">Login</button>
+            <button onClick={()=> router.push('/signup')} className="bg-white text-black px-6 py-2 rounded-full font-bold hover:bg-gray-200 transition-all cursor-pointer">Sign up</button>
           </div>
 
           {/* Mobile Menu Icon (Three Lines) */}
@@ -86,10 +88,10 @@ export default function Navbar() {
           <Link href="#" className="text-gray-400 text-lg py-2 border-b border-white/5 cursor-pointer">Support</Link>
           
           <div className="flex flex-col gap-4 pt-4">
-            <button className="w-full text-[#256DFD] py-3 text-lg font-bold border border-[#256DFD] rounded-full cursor-pointer">
+            <button onClick={()=> router.push('/login')} className="w-full text-[#256DFD] py-3 text-lg font-bold border border-[#256DFD] rounded-full cursor-pointer">
               Login
             </button>
-            <button className="w-full bg-white text-black py-3 text-lg font-bold rounded-full cursor-pointer">
+            <button onClick={()=> router.push('/signup')} className="w-full bg-white text-black py-3 text-lg font-bold rounded-full cursor-pointer">
               Sign up
             </button>
           </div>
