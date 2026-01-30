@@ -53,7 +53,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="relative bg-black/1 text-white py-24 overflow-hidden">
+    <section className="relative bg-black/1 text-white py-20 overflow-hidden">
       {/* Background Grid Pattern - As seen in your screenshot */}
       <div className="absolute inset-0 opacity-[0.15] pointer-events-none" 
            style={{ backgroundImage: `radial-gradient(#ffffff 0.5px, transparent 0.5px)`, backgroundSize: '24px 24px' }} />
@@ -80,7 +80,7 @@ export default function Testimonials() {
 
         {/* ROW 2: LEFT TO RIGHT (Smaller cards) */}
         <div className="flex overflow-hidden">
-          <div className="flex gap-2 animate-scroll-left py-1">
+          <div className="flex gap-2 animate-scroll-left py-1 pb-10">
             {[...row2, ...row2].map((t, i) => (
               <TestimonialCard key={i} {...t} isSmall />
             ))}
