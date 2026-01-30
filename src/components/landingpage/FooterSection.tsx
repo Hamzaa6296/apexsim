@@ -16,7 +16,7 @@ export default function Footer() {
             <div className="max-w-9xl mx-auto">
 
                 {/* 1. CTA SECTION (The Card with Grid Background) */}
-                <div className="relative p-[1px] rounded-[35px] md:mb-15 mb-5 overflow-hidden group ">
+                <div className="relative p-[1px] font-manrope rounded-[35px] md:mb-15 mb-5 overflow-hidden group ">
                     {/* 1. The Shiny Gradient Border Overlay (Top-left highlight) */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/5 to-transparent md:mx-30 mx-4 rounded-[30px] opacity-100" />
 
@@ -47,8 +47,8 @@ export default function Footer() {
 
                     {/* Brand Info */}
                     <div className="md:col-span-4 md:ml-20 ml-5">
-                        <h3 className="md:text-2xl text-xl font-bold mb-3 tracking-wide">APEXSIM</h3>
-                        <p className="text-gray-400 mb-3 leading-6 max-w-xs">
+                        <h3 className="md:text-2xl text-xl font-bricolage font-bold mb-3 tracking-wide">APEXSIM</h3>
+                        <p className="text-gray-400 mb-3 font-manrope leading-6 max-w-xs">
                             Securely Protecting Your Digital Wealth, Today And Tomorrow.
                         </p>
                         <div className="flex gap-2">
@@ -74,7 +74,7 @@ export default function Footer() {
                     </div>
 
                     {/* Links Columns */}
-                    <div className='md:col-span-8 grid grid-cols-2 md:flex md:gap-10 gap-x-34 gap-y-8 md:absolute md:right-25 md:bottom-77 md:mx-4 mx-6'>
+                    <div className='md:col-span-8 grid font-inter grid-cols-2 md:flex md:gap-10 gap-x-34 gap-y-8 md:absolute md:right-25 md:bottom-77 md:mx-4 mx-6'>
                         {Object.entries(footerLinks).map(([title, links]) => (
                             <div key={title} className="flex flex-col">
                                 <h4 className="font-semibold mb-4 md:text-xl text-lg text-white whitespace-nowrap">
@@ -98,7 +98,7 @@ export default function Footer() {
                 </div>
 
                 {/* 3. BOTTOM BAR */}
-                <div className="border-t max-w-7xl mx-auto border-blue-700/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 relative z-10 ">
+                <div className="border-t max-w-7xl font-manrope mx-auto border-blue-700/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 relative z-10 ">
                     <p className="text-gray-500 text-sm tracking-widest uppercase">
                         COPYRIGHT 2025, ALL RIGHT RESERVED
                     </p>
@@ -110,7 +110,7 @@ export default function Footer() {
 
                 {/* 4. LARGE BACKGROUND TEXT */}
                 <div className="md:mt-10 mt-5 pointer-events-none select-none">
-                    <h1 className="md:text-[9vw] text-4xl font-bold leading-none text-center tracking-tighter 
+                    <h1 className="md:text-[9vw] font-manrope text-4xl font-bold leading-none text-center tracking-tighter 
         bg-gradient-to-b from-white/[0.08] via-white/[0.03] to-transparent 
         bg-clip-text text-transparent">
                         APEXSIM EXCHANGE

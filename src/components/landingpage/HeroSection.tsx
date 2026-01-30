@@ -43,13 +43,13 @@ const ALL_CARDS = [
 
 export default function Hero() {
     return (
-        <main className="max-w-full mx-auto md:pt-20 pt-5  relative z-10 flex flex-col items-center">
+        <main className="max-w-full  mx-auto md:pt-20 pt-5  relative z-10 flex flex-col items-center">
             {/* Header Content */}
-            <div className="text-center mb-20">
+            <div className="text-center font-manrope mb-20">
                 <p className="text-gray-300 md:text-[15px] text-xs mb-4 bg-[#2A2B2B] inline-block px-4 py-1 rounded-full border border-[#4D4D4D] backdrop-blur-md">
                     A modern digital fortress protecting crypto assets
                 </p>
-                <h1 className="text-4xl md:text-7xl font-normal tracking-tight md:mb-6 mb-3 text-white leading-tight">
+                <h1 className="text-4xl md:text-6xl  tracking-tight md:mb-6 mb-3 text-white leading-tight">
                     Trade Your Crypto with <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A0C0FF] to-[#1460F8]">
                         Confidence
@@ -66,9 +66,9 @@ export default function Hero() {
             {/* FULL WIDTH WRAPPER */}
             <div className="relative w-full flex justify-center items-start">
                 {/* BACKGROUND DIV: Starts earlier on mobile to catch all rows */}
-                <div className="absolute md:top-[18%] top-[-20px] left-0 w-full md:h-[90%] h-[calc(100%+40px)] bg-black/35 border-t border-white/5 md:rounded-t-[40px] pointer-events-none z-0" />
+                <div className="absolute md:top-[18%] top-[-20px] left-0 w-full md:h-[90%] h-[calc(100%+40px)] bg-black/40 border-t border-white/5 md:rounded-t-[40px] pointer-events-none z-0" />
 
-                <div className="max-w-7xl w-full flex flex-col gap-4 relative z-10 px-4 md:px-8">
+                <div className="max-w-7xl font-inter w-full flex flex-col gap-4 relative z-10 px-4 md:px-8">
 
                     {/* MOBILE VIEW: Single grid for all 8 cards */}
                     <div className="grid grid-cols-2 gap-4 lg:hidden">

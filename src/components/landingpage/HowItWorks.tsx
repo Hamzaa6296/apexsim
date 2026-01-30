@@ -62,11 +62,11 @@ export default function HowItWorks() {
 
     return (
         /* Dark Radial Gradient Background */
-        <section className="relative text-white py-24 px-4 bg-gradient-to-br from-gray-300/10 to-[#000000]/90  overflow-hidden">
+        <section className="relative text-white py-24 px-4 bg-gradient-to-br from-[#242424] to-[#050505]  overflow-hidden">
             {/* The Background Glow Effect */}
 
 
-            <div className="max-w-full mx-auto relative z-10">
+            <div className="max-w-full mx-auto font-manrope relative z-10">
                 {/* Header */}
                 <div className="text-center mb-7">
                     <span className="text-gray-300 md:text-[15px] text-xs bg-[#2A2B2B] inline-block px-4 py-1 rounded-full border border-[#4D4D4D] backdrop-blur-md">

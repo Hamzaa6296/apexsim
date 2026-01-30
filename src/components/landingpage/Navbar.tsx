@@ -39,10 +39,10 @@ export default function Navbar() {
     <header className="w-full border-b border-[#393747] backdrop-blur-[2px] relative z-[100]">
       <nav className="flex items-center justify-between px-6 py-5 max-w-7xl mx-auto w-full">
         {/* Logo */}
-        <div className="md:text-2xl text-xl font-bold text-[#D5D5D5] tracking-wider">APEXSIM</div>
+        <div className="md:text-2xl text-xl font-bricolage font-bold text-[#D5D5D5] tracking-wider">APEXSIM</div>
         
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-9">
+        <div className="hidden md:flex items-center font-manrope gap-9">
           <Link href="#" className="text-gray-400 hover:text-white transition-colors cursor-pointer">Deposit</Link>
           <Link href="#" className="text-gray-400 hover:text-white transition-colors cursor-pointer">Withdraw</Link>
           <Link href="#" className="text-gray-400 hover:text-white transition-colors cursor-pointer">Market</Link>
@@ -55,8 +55,8 @@ export default function Navbar() {
 
         {/* Desktop Buttons & Mobile Toggle */}
         <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center gap-4">
-            <button className="text-[#256DFD] hover:text-white px-4 transition-colors cursor-pointer">Login</button>
+          <div className="hidden md:flex font-manrope items-center gap-4">
+            <button className="text-[#256DFD] hover:text-white font-semibold px-4 transition-colors cursor-pointer">Login</button>
             <button className="bg-white text-black px-6 py-2 rounded-full font-bold hover:bg-gray-200 transition-all cursor-pointer">Sign up</button>
           </div>
 
@@ -74,7 +74,7 @@ export default function Navbar() {
 
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-[#0a0a0a] border-b border-[#393747] px-6 py-8 flex flex-col gap-4 animate-in slide-in-from-top duration-300">
+        <div className="md:hidden absolute top-full font-manrope left-0 w-full bg-[#0a0a0a] border-b border-[#393747] px-6 py-8 flex flex-col gap-4 animate-in slide-in-from-top duration-300">
           <Link href="#" className="text-gray-400 text-lg py-2 border-b border-white/5 cursor-pointer">Deposit</Link>
           <Link href="#" className="text-gray-400 text-lg py-2 border-b border-white/5 cursor-pointer">Withdraw</Link>
           <Link href="#" className="text-gray-400 text-lg py-2 border-b border-white/5 cursor-pointer">Market</Link>

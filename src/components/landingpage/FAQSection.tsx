@@ -77,8 +77,8 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="bg-[#2A2B2B]/10 text-white md:py-24 py-10 px-6 md:min-h-screen">
-      <div className="max-w-3xl mx-auto">
+    <section className="bg-[#161616] text-white md:py-24 py-10 px-6 md:min-h-screen">
+      <div className="max-w-4xl font-manrope mx-auto">
         {/* Header */}
         <div className="text-center">
           <span className="text-gray-300 md:text-[12px] text-xs bg-[#2A2B2B] inline-block px-4 py-1 rounded-full border border-[#4D4D4D] backdrop-blur-md">

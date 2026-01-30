@@ -45,7 +45,7 @@ export default function Features() {
 
     return (
         /* Added mt-20 to separate from Hero and ensured single bg color */
-        <section className="text-white md:py-10 mb-10 px-6 bg-black/2 mt-11 w-full">
+        <section className="text-white font-manrope md:py-10  px-6 bg-[#181818] mt-11 w-full">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-10">
@@ -58,7 +58,7 @@ export default function Features() {
                     </p>
                 </div>
 
-                <div className='flex items-center justify-center'>
+                <div className='flex items-center justify-center md:mb-20'>
                     <div className="grid grid-cols-2 lg:grid-cols-3 max-w-5xl w-full border border-white/15 overflow-hidden ">
                         
                         {/* First 4 items */}

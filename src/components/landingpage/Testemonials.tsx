@@ -14,10 +14,10 @@ const TestimonialCard = ({ name, role, content, imageSrc, isSmall }: Testimonial
     ${isSmall ? 'w-[300px] md:w-[340px]' : 'w-[320px] md:w-[400px]'}`}>
     
     {/* Gradient Border Overlay - Top-left highlight */}
-    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/5 opacity-80" />
+    
     
     {/* Inner Card Content */}
-    <div className="relative bg-[#111111] px-5 md:py-10 py-7 rounded-[15px] h-full flex flex-col justify-between">
+    <div className="relative bg-[#1A1B1B] border border-white/20 px-5 md:py-10 py-7 rounded-[15px] h-full flex flex-col justify-between">
       <div className="flex flex-col gap-1">
         <div className="flex flex-col items-start gap-2">
           <div className="w-12 h-12 rounded-md overflow-hidden bg-blue-900/20 border border-white/10">
@@ -53,7 +53,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="relative bg-black/1 text-white py-20 overflow-hidden">
+    <section className="relative font-manrope bg-black/1 text-white py-20 overflow-hidden">
       {/* Background Grid Pattern - As seen in your screenshot */}
       <div className="absolute inset-0 opacity-[0.15] pointer-events-none" 
            style={{ backgroundImage: `radial-gradient(#ffffff 0.5px, transparent 0.5px)`, backgroundSize: '24px 24px' }} />
