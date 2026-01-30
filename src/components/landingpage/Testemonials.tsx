@@ -17,7 +17,7 @@ const TestimonialCard = ({ name, role, content, imageSrc, isSmall }: Testimonial
     <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/5 opacity-80" />
     
     {/* Inner Card Content */}
-    <div className="relative bg-[#111111] px-5 md:py-10 rounded-[15px] h-full flex flex-col justify-between">
+    <div className="relative bg-[#111111] px-5 md:py-10 py-7 rounded-[15px] h-full flex flex-col justify-between">
       <div className="flex flex-col gap-1">
         <div className="flex flex-col items-start gap-2">
           <div className="w-12 h-12 rounded-md overflow-hidden bg-blue-900/20 border border-white/10">

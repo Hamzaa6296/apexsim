@@ -12,16 +12,16 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-white/1 text-white pt-20 pb-10 px-6 overflow-hidden">
+        <footer className="bg-white/1 text-white md:pt-20 pt-5 pb-10 md:px-6 overflow-hidden">
             <div className="max-w-9xl mx-auto">
 
                 {/* 1. CTA SECTION (The Card with Grid Background) */}
-                <div className="relative p-[1px] rounded-[35px] mb-15 overflow-hidden group ">
+                <div className="relative p-[1px] rounded-[35px] md:mb-15 mb-5 overflow-hidden group ">
                     {/* 1. The Shiny Gradient Border Overlay (Top-left highlight) */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/5 to-transparent mx-30 rounded-[30px] opacity-100" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/5 to-transparent md:mx-30 mx-4 rounded-[30px] opacity-100" />
 
                     {/* 2. Inner Content Container */}
-                    <div className="relative rounded-[31px] bg-[#111111] md:py-20 py-10 px-6 mx-30 text-center overflow-hidden">
+                    <div className="relative rounded-[31px] bg-[#111111] md:py-20 py-10 px-6 md:mx-30 mx-4 text-center overflow-hidden">
 
                         {/* Background Grid Pattern */}
                         <div
@@ -43,11 +43,11 @@ export default function Footer() {
                     </div>
                 </div>
                 {/* 2. MAIN FOOTER CONTENT */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-50">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:mb-50 mb-10">
 
                     {/* Brand Info */}
-                    <div className="md:col-span-4 ml-20">
-                        <h3 className="text-2xl font-bold mb-3 tracking-wide">APEXSIM</h3>
+                    <div className="md:col-span-4 md:ml-20 ml-5">
+                        <h3 className="md:text-2xl text-xl font-bold mb-3 tracking-wide">APEXSIM</h3>
                         <p className="text-gray-400 mb-3 leading-6 max-w-xs">
                             Securely Protecting Your Digital Wealth, Today And Tomorrow.
                         </p>
@@ -74,14 +74,19 @@ export default function Footer() {
                     </div>
 
                     {/* Links Columns */}
-                    <div className='md:col-span-8 flex gap-10 md:absolute md:right-25 md:bottom-77'>
+                    <div className='md:col-span-8 grid grid-cols-2 md:flex md:gap-10 gap-x-34 gap-y-8 md:absolute md:right-25 md:bottom-77 md:mx-4 mx-6'>
                         {Object.entries(footerLinks).map(([title, links]) => (
-                            <div key={title}>
-                                <h4 className="font-semibold mb-2 text-xl text-white">{title}</h4>
-                                <ul className="space-y-4">
+                            <div key={title} className="flex flex-col">
+                                <h4 className="font-semibold mb-4 md:text-xl text-lg text-white whitespace-nowrap">
+                                    {title}
+                                </h4>
+                                <ul className="md:space-y-4 space-y-3">
                                     {links.map((link) => (
                                         <li key={link}>
-                                            <a href="#" className="text-gray-500 hover:text-white transition-colors text-md !cursor-pointer">
+                                            <a
+                                                href="#"
+                                                className="text-gray-500 hover:text-white transition-colors md:text-md text-md !cursor-pointer block"
+                                            >
                                                 {link}
                                             </a>
                                         </li>
@@ -93,19 +98,21 @@ export default function Footer() {
                 </div>
 
                 {/* 3. BOTTOM BAR */}
-                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 relative z-10 bg-black">
-                    <p className="text-gray-500 text-xs tracking-widest uppercase">
+                <div className="border-t max-w-7xl mx-auto border-blue-700/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 relative z-10 ">
+                    <p className="text-gray-500 text-sm tracking-widest uppercase">
                         COPYRIGHT 2025, ALL RIGHT RESERVED
                     </p>
                     <div className="flex gap-8">
-                        <a href="#" className="text-gray-500 hover:text-white text-xs tracking-widest uppercase !cursor-pointer">PRIVACY</a>
-                        <a href="#" className="text-gray-500 hover:text-white text-xs tracking-widest uppercase !cursor-pointer">TERMS</a>
+                        <a href="#" className="text-gray-500 hover:text-white text-sm tracking-widest uppercase !cursor-pointer">PRIVACY</a>
+                        <a href="#" className="text-gray-500 hover:text-white text-sm tracking-widest uppercase !cursor-pointer">TERMS</a>
                     </div>
                 </div>
 
                 {/* 4. LARGE BACKGROUND TEXT */}
-                <div className="mt-10 pointer-events-none select-none">
-                    <h1 className="text-[8vw] font-bold text-white/[0.03] leading-none text-center tracking-tighter">
+                <div className="md:mt-10 mt-5 pointer-events-none select-none">
+                    <h1 className="md:text-[9vw] text-4xl font-bold leading-none text-center tracking-tighter 
+        bg-gradient-to-b from-white/[0.08] via-white/[0.03] to-transparent 
+        bg-clip-text text-transparent">
                         APEXSIM EXCHANGE
                     </h1>
                 </div>
