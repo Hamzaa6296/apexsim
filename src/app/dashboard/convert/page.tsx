@@ -1,10 +1,11 @@
-import DepositPage from '@/components/dashboard/DepositScreen'
+import React from 'react'
+import ConvertScreen from '@/components/dashboard/ConvertScreen'
 import DashboardFooter from '@/components/dashboard/DashboardFooter'
 
 function page() {
   return (
     <div>
-      <DepositPage/>
+      <ConvertScreen/>
       <DashboardFooter/>
     </div>
   )
