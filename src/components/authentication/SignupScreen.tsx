@@ -4,10 +4,12 @@ import Link from 'next/link';
 import { EyeOff, Eye, ChevronDown } from 'lucide-react';
 import { IoLogoApple } from "react-icons/io5";
 import { FaCaretDown } from "react-icons/fa";
+import { useRouter } from 'next/navigation';
 
 export default function SignupView() {
     const [showPassword, setShowPassword] = useState(false);
     const [countryCode, setCountryCode] = useState('+1');
+    const router = useRouter()
 
     return (
         <section className="md:min-h-screen bg-[#181818] px-4 md:px-8 py-6 md:py-12 flex items-center justify-center font-inter">
@@ -110,7 +112,7 @@ export default function SignupView() {
                         </div>
 
                         <p className="text-center text-gray-500 text-md pt-4 font-inter">
-                            Already have an account? <Link href="#" className="text-white font-semibold hover:underline">Login</Link>
+                            Already have an account? <button type='button' onClick={()=> router.push('/login')} className="text-white font-semibold hover:underline">Login</button>
                         </p>
                     </form>
                 </div>

@@ -52,6 +52,29 @@ body::before {
   filter: blur(12px);
 }
 
+.vshape-lines {
+  position: absolute;
+  top: 0;
+  left: 0; /* Changed from 90 to 0 to align correctly */
+  width: 100%; /* Spans full width without pushing the screen */
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  
+  /* Your specific line widths and angles kept identical */
+  background: 
+    conic-gradient(from 155deg at 0% 0%, transparent 0deg, rgba(255,255,255,0.08) -50deg, transparent 30deg),
+    conic-gradient(from 165deg at 16.6% 0%, transparent 0deg, rgba(255,255,255,0.06) -20deg, transparent 30deg),
+    conic-gradient(from 172deg at 33.3% 0%, transparent 0deg, rgba(255,255,255,0.06) -5deg, transparent 30deg),
+    conic-gradient(from 179deg at 50% 0%, transparent 0deg, rgba(255,255,255,0.1) 0deg, transparent 30deg),
+    conic-gradient(from 188deg at 66.6% 0%, transparent 0deg, rgba(255,255,255,0.06) 5deg, transparent 30deg),
+    conic-gradient(from 195deg at 83.3% 0%, transparent 0deg, rgba(255,255,255,0.06) 5deg, transparent 30deg),
+    conic-gradient(from 195deg at 100% 0%, transparent 0deg, rgba(255,255,255,0.08) 5deg, transparent 30deg),
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+    
+  filter: blur(20px);
+}
+
 /* 3. VIGNETTE */
 body::after {
   content: "";

@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { FaCaretDown } from "react-icons/fa";
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation'; // Added usePathname
 
 
 const languages = [
@@ -43,7 +43,11 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState(languages[0]);
   const langRef = useRef<HTMLDivElement>(null);
-  const router = useRouter()
+  const router = useRouter();
+  const pathname = usePathname(); // Get current route
+
+  // Check if we are on the reset password page
+  const isResetPage = pathname === '/reset-password';
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -57,7 +61,15 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <div className="min-h-screen bg-[#181818]">
-      <header className="fixed top-0 left-0 w-full border-b border-[#393747]  z-[100] bg-[#181818]">
+      {/* DYNAMIC HEADER: 
+          If isResetPage: bg-transparent, no border-bottom
+          Otherwise: bg-[#181818], border-b border-[#393747]
+      */}
+      <header className={`fixed top-0 left-0 w-full border-b border-[#393747] z-[100] transition-all duration-300 ${
+        isResetPage 
+          ? "bg-transparent " 
+          : "bg-[#181818] "
+      }`}>
         <nav className="flex items-center justify-between px-6 py-5 max-w-7xl mx-auto w-full">
           <div className="md:text-2xl text-xl font-bricolage font-bold text-[#D5D5D5] tracking-wider">APEXSIM</div>
 
@@ -72,8 +84,6 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           </div>
 
           <div className="flex items-center gap-4">
-
-            {/* 1. LANGUAGE BUTTON (Now positioned to the left of Login) */}
             <div className="relative hidden md:block" ref={langRef}>
               <div
                 onClick={() => setIsLangOpen(!isLangOpen)}
@@ -88,7 +98,6 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
               {isLangOpen && (
                 <div className="absolute top-full right-0 mt-2 w-36 bg-[#111111] border border-white/10 rounded-xl shadow-2xl z-[110] p-1">
-                  {/* Shiny Top-Left Highlight */}
                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
                   {languages.map((lang) => (
                     <button
@@ -104,15 +113,11 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
               )}
             </div>
 
-            {/* 2. LOGIN & SIGN UP BUTTONS */}
             <div className="hidden md:flex items-center gap-4">
-              <div className="hidden md:flex font-manrope items-center gap-4">
-                <button onClick={()=> router.push('/login')} className="text-[#256DFD] hover:text-white font-semibold px-4 transition-colors cursor-pointer">Login</button>
-                <button onClick={()=> router.push('/signup')} className="bg-white text-black px-6 py-2 rounded-full font-bold hover:bg-gray-200 transition-all cursor-pointer">Sign up</button>
-              </div>
+              <button onClick={() => router.push('/login')} className="text-[#256DFD] hover:text-white font-semibold px-4 transition-colors cursor-pointer">Login</button>
+              <button onClick={() => router.push('/signup')} className="bg-white text-black px-6 py-2 rounded-full font-bold hover:bg-gray-200 transition-all cursor-pointer">Sign up</button>
             </div>
 
-            {/* Mobile Toggle */}
             <button className="lg:hidden p-2 !cursor-pointer" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <div className={`w-6 h-0.5 bg-gray-400 mb-1.5 transition-all ${isMenuOpen ? "rotate-45 translate-y-2" : ""}`} />
               <div className={`w-6 h-0.5 bg-gray-400 mb-1.5 ${isMenuOpen ? "opacity-0" : ""}`} />
@@ -136,7 +141,14 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           </div>
         )}
       </header>
-      <main className="pt-20">{children}</main>
+
+      {/* MAIN CONTENT ADJUSTMENT:
+          On Reset page, we remove the padding-top so the V-lines start at the literal top of the screen.
+          On other pages, we keep pt-20 so content doesn't get hidden behind the solid navbar.
+      */}
+      <main className={isResetPage ? "" : "pt-20"}>
+        {children}
+      </main>
     </div>
   );
 }

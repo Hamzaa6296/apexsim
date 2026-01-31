@@ -94,11 +94,11 @@ export default function LoginView() {
               </div>
             </div>
 
-            <button type="button" className="text-sm font-medium text-white !cursor-pointer hover:underline block w-fit">
+            <button onClick={()=> router.push('/reset-password')} type="button" className="text-sm font-medium text-white !cursor-pointer hover:underline block w-fit">
               Forgot password?
             </button>
 
-            <button className="w-full bg-[#0055FF] text-white py-4 rounded-full font-semibold text-md shadow-[0_8px_30px_rgb(0,85,255,0.3)] !cursor-pointer">
+            <button onClick={()=> router.push('/dashboard/deposit')} className="w-full bg-[#0055FF] text-white py-4 rounded-full font-semibold text-md shadow-[0_8px_30px_rgb(0,85,255,0.3)] !cursor-pointer">
               Login
             </button>
 
@@ -124,7 +124,7 @@ export default function LoginView() {
             </div>
 
             <p className="text-center text-gray-500 text-md pt-4 font-inter">
-              Don't have an account? <button onClick={()=> router.push('/signup')} className="text-white font-semibold hover:underline">Sign up</button>
+              Don't have an account? <button type='button' onClick={()=> router.push('/signup')} className="text-white font-semibold hover:underline">Sign up</button>
             </p>
           </form>
         </div>
