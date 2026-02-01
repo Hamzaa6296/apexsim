@@ -98,7 +98,7 @@ export default function LoginView() {
               Forgot password?
             </button>
 
-            <button onClick={()=> router.push('/dashboard/deposit')} className="w-full bg-[#0055FF] text-white py-4 rounded-full font-semibold text-md shadow-[0_8px_30px_rgb(0,85,255,0.3)] !cursor-pointer">
+            <button onClick={()=> router.push('/dashboard/deposit')} type="button" className="w-full bg-[#0055FF] text-white py-4 rounded-full font-semibold text-md shadow-[0_8px_30px_rgb(0,85,255,0.3)] !cursor-pointer">
               Login
             </button>
 

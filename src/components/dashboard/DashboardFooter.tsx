@@ -12,7 +12,7 @@ export default function DashboardFooter() {
     };
 
     return (
-        <footer className=" text-white pt-5 pb-10 md:px-6 overflow-hidden">
+        <footer className="text-white pt-5 pb-10 md:px-6 overflow-hidden">
             <div className="max-w-9xl mx-auto">
 
                 {/* 1. CTA SECTION (The Card with Grid Background) */}
