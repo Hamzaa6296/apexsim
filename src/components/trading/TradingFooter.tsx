@@ -5,7 +5,7 @@ export default function OrderTabs() {
   const [activeTab, setActiveTab] = useState("Open orders (0)");
 
   return (
-    <div className="border-t border-white/5 min-h-[300px] flex flex-col">
+    <div className="border-t border-white/5 min-h-[300px] overflow-x-auto flex flex-col">
       <div className="flex gap-6 px-4 border-b border-white/5">
         {['Open orders (0)', 'Orders history', 'Trade history', 'Iceberg', 'Funds'].map(tab => (
           <button
