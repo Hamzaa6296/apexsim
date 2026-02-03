@@ -28,7 +28,7 @@ const NavItem = ({ label, items, isMobile }: { label: string, items?: string[], 
           : "absolute top-full left-0 w-48 bg-[#1a1a1a] border border-white/10 rounded-xl shadow-2xl p-2 z-50"
         }>
           {items.map((item) => (
-            <Link key={item} href="#" className="block px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors !cursor-pointer font-inter">
+            <Link key={item} href="#" className="block px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors cursor-pointer font-inter">
               {item}
             </Link>
           ))}
@@ -70,7 +70,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           ? "bg-transparent " 
           : "bg-[#181818] "
       }`}>
-        <nav className="flex items-center justify-between px-6 py-5 max-w-7xl mx-auto w-full">
+        <nav className="flex items-center justify-between px-6 md:py-5 py-4 max-w-7xl mx-auto w-full">
           <div className="md:text-2xl text-xl font-bricolage font-bold text-[#D5D5D5] tracking-wider">APEXSIM</div>
 
           {/* Desktop Navigation */}
@@ -118,7 +118,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
               <button onClick={() => router.push('/signup')} className="bg-white text-black px-6 py-2 rounded-full font-bold hover:bg-gray-200 transition-all cursor-pointer">Sign up</button>
             </div>
 
-            <button className="lg:hidden p-2 !cursor-pointer" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button className="md:hidden px-2 !cursor-pointer" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <div className={`w-6 h-0.5 bg-gray-400 mb-1.5 transition-all ${isMenuOpen ? "rotate-45 translate-y-2" : ""}`} />
               <div className={`w-6 h-0.5 bg-gray-400 mb-1.5 ${isMenuOpen ? "opacity-0" : ""}`} />
               <div className={`w-6 h-0.5 bg-gray-400 transition-all ${isMenuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
@@ -128,7 +128,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
         {/* MOBILE MENU */}
         {isMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-black border-b border-[#393747] px-6 py-6 flex flex-col gap-2 h-[calc(100vh-70px)] overflow-y-auto z-[200]">
+          <div className="md:hidden absolute top-full left-0 w-full bg-black border-b border-[#393747] px-6 py-6 flex flex-col gap-2 h-[calc(100vh-70px)] overflow-y-auto z-[200]">
             {["Deposit", "Withdraw", "Market", "Futures", "Support"].map((l) => (
               <Link key={l} href="#" className="text-gray-400 text-lg py-3 border-b border-white/5 !cursor-pointer font-manrope">{l}</Link>
             ))}

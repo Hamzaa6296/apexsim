@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { FaCaretDown } from "react-icons/fa";
 
-
 export default function OrderTabs() {
   const [activeTab, setActiveTab] = useState("Open orders (0)");
 
@@ -10,7 +9,7 @@ export default function OrderTabs() {
   const columns = ['Date', 'Pair', 'Type', 'Side', 'Price', 'Amount', 'Filled', 'Total', 'Trigger condition'];
 
   return (
-    <div className="bg-[#181818] border-t border-white/5 min-h-[400px] flex flex-col font-sans w-full">
+    <div className="bg-[#181818] border-t border-white/5 min-h-[400px] flex flex-col font-sans w-full relative">
 
       {/* Tab Navigation & Right-aligned Action */}
       <div className="flex items-center justify-between border-b border-white/5 px-4 overflow-x-auto no-scrollbar">
@@ -32,14 +31,12 @@ export default function OrderTabs() {
         </div>
       </div>
 
-      {/* Responsive Table Wrapper */}
-      <div className="flex-grow overflow-x-auto">
-        <div className="min-w-[1000px]  w-full">
-          
-          {/* Table Headers */}
-          <div className="grid grid-cols-10 px-4 cursor-pointer py-2 items-center">
+      {/* 1. SCROLLABLE HEADER SECTION */}
+      <div className="overflow-x-auto no-scrollbar border-b border-white/5">
+        <div className="min-w-[1000px] w-full">
+          <div className="grid grid-cols-10 px-4 py-2 items-center">
             {columns.map((col) => (
-              <div key={col} className="text-gray-500 text-[15px] font-semibold flex items-center py-3 font-semibold ">
+              <div key={col} className="text-gray-500 text-[15px] font-semibold flex items-center py-3">
                 {col}
                 {col === 'Type' && (
                   <FaCaretDown size={12} className='pl-1.5' />
@@ -47,27 +44,27 @@ export default function OrderTabs() {
               </div>
             ))}
             
-            {/* Cancel all Button - Positioned at the end of the grid row */}
-            <div className="flex md:ml-1">
-              <button className="bg-[#2B2E33] hover:bg-[#363A40] text-white text-[12px] px-8 py-1.5 rounded-[3px]  transition-colors !cursor-pointer whitespace-nowrap border border-white/5">
+            <div className="flex md:ml-1 justify-end">
+              <button className="bg-[#2B2E33] hover:bg-[#363A40] text-white text-[12px] px-8 py-1.5 rounded-[3px] transition-colors !cursor-pointer whitespace-nowrap border border-white/5">
                 Cancel all
               </button>
             </div>
           </div>
-
-          {/* Empty State Content */}
-          <div className="flex flex-col items-center justify-center ">
-            <div className="relative w-25 h-25 flex items-center justify-center">
-                <img
-                  src="/images/paper.png"
-                  className="w-full h-full"
-                  alt="No data"
-                />              
-            </div>
-          </div>
-
         </div>
       </div>
+
+      {/* 2. CENTERED EMPTY STATE SECTION (Non-scrollable) */}
+      <div className="flex-grow flex flex-col items-center justify-center p-10">
+        <div className="relative w-25 h-25">
+          <img
+            src="/images/paper.png"
+            className="w-full h-full object-contain"
+            alt="No data"
+          />              
+        </div>
+        <p className="text-gray-600 text-sm mt-2">No active orders found</p>
+      </div>
+
     </div>
   );
 }
