@@ -12,7 +12,7 @@ export default function TradeForm() {
     const [orderType, setOrderType] = useState<OrderType>("Limit");
 
     return (
-        <div className="w-full md:w-[320px] bg-[#181818] p-3 flex flex-col gap-4 h-full select-none font-sans">
+        <div className="w-full md:w-[320px] bg-[#181818] p-3 flex flex-col gap-4 h-auto select-none font-sans">
             {/* 1. Top Tabs (Spot/Futures) */}
             <div className="flex gap-4 text-[13px] font-semibold border-b border-white/5">
                 <div className="relative pb-2 !cursor-pointer">

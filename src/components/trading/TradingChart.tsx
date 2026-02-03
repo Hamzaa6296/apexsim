@@ -118,30 +118,30 @@ export default function TradingChart() {
   };
 
   return (
-    <div className="bg-[#181818] w-full h-full font-manrope flex flex-col border border-white/5 overflow-hidden">
+    <div className="bg-[#181818] w-full h-full font-manrope flex flex-col overflow-hidden">
       {/* Toolbar */}
-      <div className="flex items-center justify-between px-3 py-3 font-semibold bg-[#181818] border-b border-white/5">
+      <div className="flex items-center justify-between overflow-x-auto px-3 md:py-3 py-1.5 gap-3 font-semibold bg-[#181818] border-b border-white/5">
         <div className="flex items-center gap-3">
           {['Time', '1s', '15m', '1H', '4H', '1D', '1W'].map((t) => (
-            <button key={t} className={`text-[12px] !cursor-pointer ${t === '1D' ? 'text-[#f0b90b]' : 'text-gray-500 hover:text-white'}`}>
+            <button key={t} className={`md:text-[12px] text-[10px] cursor-pointer ${t === '1D' ? 'text-[#f0b90b]' : 'text-gray-500 hover:text-white'}`}>
               {t}
             </button>
           ))}
-          <button className="text-gray-500 !cursor-pointer"><FaCaretDown size={10} /></button>
-          <button className="text-gray-500 !cursor-pointer"><FaChartLine size={15} /></button>
-          <button className="text-gray-500 !cursor-pointer"><FaChartIcon size={13} /></button>
+          <button className="text-gray-500 cursor-pointer"><FaCaretDown size={10} /></button>
+          <button className="text-gray-500 cursor-pointer"><FaChartLine size={15} /></button>
+          <button className="text-gray-500 cursor-pointer"><FaChartIcon size={13} /></button>
         </div>
-        <div className="flex items-center gap-4 text-[11px]">
-          <span className="text-[#f0b90b] !cursor-pointer">Original</span>
-          <span className="text-gray-500 hover:text-white !cursor-pointer">Trading View</span>
-          <span className="text-gray-500 hover:text-white !cursor-pointer">Depth</span>
-          <button className="text-gray-500 !cursor-pointer"><MdOutlineOpenInFull size={15} /></button>
-          <button className="text-gray-500 !cursor-pointer"><MdOutlineGridView size={13} /></button>
+        <div className="flex items-center gap-3 md:text-[12px] text-[10px]">
+          <span className="text-[#f0b90b] cursor-pointer">Original</span>
+          <span className="text-gray-500 hover:text-white cursor-pointer">TradingView</span>
+          <span className="text-gray-500 hover:text-white cursor-pointer">Depth</span>
+          <button className="text-gray-500 cursor-pointer"><MdOutlineOpenInFull size={15} /></button>
+          <button className="text-gray-500 cursor-pointer"><MdOutlineGridView size={13} /></button>
         </div>
       </div>
-      <div className="flex flex-col flex-wrap items-start gap-1 px-4 py-2 text-[11px] border-b border-white/5 bg-[#181818]">
+      <div className="flex flex-col flex-wrap items-start md:gap-1 md:px-4 px-2 md:py-2 py-1 text-[5px] border-b border-white/5 bg-[#181818]">
         <div className="flex items-center gap-1">
-          <button className="text-gray-500 !cursor-pointer"><FaCaretDown size={10} /></button>
+          <button className="text-gray-500 cursor-pointer"><FaCaretDown size={10} /></button>
           <span className="text-gray-500">2023/03/10</span>
           <span className="text-gray-500">Open:</span>
           <span className="text-[#ef5350]">{hoverData.open.toFixed(2)}</span>
@@ -162,15 +162,13 @@ export default function TradingChart() {
           <span className="text-[#9c27b0]">MA(25): 23133.19</span>
           <span className="text-[#00bcd4]">MA(99): 20290.29</span>
           <div className='flex items-center gap-2'>
-            <button className="text-gray-500 bg-[#3A3F46]/50 p-0.5 opacity-50 !cursor-pointer"><IoEyeOutline size={12} /></button>
-            <button className="text-gray-500 bg-[#3A3F46]/50 p-0.5 opacity-50 !cursor-pointer"><IoSettingsOutline size={12} /></button>
-            <button className="text-gray-500 bg-[#3A3F46]/50 p-0.5 opacity-50 !cursor-pointer"><RxCross2 size={12} /></button>
+            <button className="text-gray-500 bg-[#3A3F46]/50 md:p-0.5 opacity-50 !cursor-pointer"><IoEyeOutline size={12} /></button>
+            <button className="text-gray-500 bg-[#3A3F46]/50 md:p-0.5 opacity-50 !cursor-pointer"><IoSettingsOutline size={12} /></button>
+            <button className="text-gray-500 bg-[#3A3F46]/50 md:p-0.5 opacity-50 !cursor-pointer"><RxCross2 size={12} /></button>
           </div>
         </div>
 
       </div>
-
-
       {/* Main Chart Section */}
       <div className="flex-grow flex flex-col relative">
         <div className="flex-grow">
@@ -178,9 +176,9 @@ export default function TradingChart() {
           <div className="absolute flex gap-2 bottom-28 left-4 text-[10px] text-gray-500 z-10">
           Vol(BTC): <span className="text-[#ef5350]">503.753K</span> Vol(USDT) <span className="text-[#ef5350]">10.05B</span>
           <div className='flex items-center gap-2'>
-            <button className="text-gray-500 bg-[#3A3F46]/50 p-0.5 opacity-50 !cursor-pointer"><IoEyeOutline size={12} /></button>
-            <button className="text-gray-500 bg-[#3A3F46]/50 p-0.5 opacity-50 !cursor-pointer"><IoSettingsOutline size={12} /></button>
-            <button className="text-gray-500 bg-[#3A3F46]/50 p-0.5 opacity-50 !cursor-pointer"><RxCross2 size={12} /></button>
+            <button className="text-gray-500 bg-[#3A3F46]/50 p-0.5 opacity-50 cursor-pointer"><IoEyeOutline size={12} /></button>
+            <button className="text-gray-500 bg-[#3A3F46]/50 p-0.5 opacity-50 cursor-pointer"><IoSettingsOutline size={12} /></button>
+            <button className="text-gray-500 bg-[#3A3F46]/50 p-0.5 opacity-50 cursor-pointer"><RxCross2 size={12} /></button>
           </div>
         </div>
         </div>

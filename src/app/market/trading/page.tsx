@@ -7,7 +7,7 @@ import TradingChart from '@/components/trading/TradingChart';
 
 export default function TradingPage() {
   return (
-    <div className="bg-[#181818] h-full text-gray-300 font-manrope">
+    <div className="bg-[#181818] h-full text-gray-300  font-manrope">
       {/* 1. TOP TICKER BAR */}
       <div className="flex items-center gap-6 px-4 py-4 border-b border-white/5 overflow-x-auto no-scrollbar">
         <div className="flex items-center gap-2 min-w-fit">
@@ -26,19 +26,19 @@ export default function TradingPage() {
             <p className="text-gray-500 text-[12px]">24h Change</p>
             <p className="text-white text-sm">88,200.84</p>
           </div>
-          <div className="hidden sm:block">
+          <div className="">
             <p className="text-gray-500 text-[12px]">24h High</p>
             <p className="text-white text-sm font-medium">89,120.00</p>
           </div>
-          <div className="hidden sm:block">
+          <div className="">
             <p className="text-gray-500 text-[12px]">24h Low</p>
             <p className="text-white text-sm font-medium">87,400.00</p>
           </div>
-          <div className="hidden sm:block">
+          <div className="">
             <p className="text-gray-500 text-[12px]">24h vol(BTC)</p>
             <p className="text-white text-sm font-medium">100.78K</p>
           </div>
-          <div className="hidden sm:block">
+          <div className="">
             <p className="text-gray-500 text-[12px]">24h vol(USDT)</p>
             <p className="text-white text-sm font-medium">100B</p>
           </div>
