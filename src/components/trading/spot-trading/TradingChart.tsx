@@ -139,7 +139,7 @@ export default function TradingChart() {
           <button className="text-gray-500 cursor-pointer"><MdOutlineGridView size={13} /></button>
         </div>
       </div>
-      <div className="flex flex-col flex-wrap items-start md:gap-1 md:px-4 px-2 md:py-2 py-1 text-[5px] border-b border-white/5 bg-[#181818]">
+      <div className="flex flex-col flex-wrap items-start md:gap-1 md:px-4 px-2 md:py-2 py-1 md:text-[12px] text-[5px] border-b border-white/5 bg-[#181818]">
         <div className="flex items-center gap-1">
           <button className="text-gray-500 cursor-pointer"><FaCaretDown size={10} /></button>
           <span className="text-gray-500">2023/03/10</span>

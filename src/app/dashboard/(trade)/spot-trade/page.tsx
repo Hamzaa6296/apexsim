@@ -1,8 +1,8 @@
 import React from 'react';
-import OrderBook from '@/components/trading/OrderBook';
-import TradeForm from '@/components/trading/TradeForm';
-import OrderTabs from '@/components/trading/TradingFooter';
-import TradingChart from '@/components/trading/TradingChart';
+import OrderBook from '@/components/trading/spot-trading/OrderBook';
+import TradeForm from '@/components/trading/spot-trading/TradeForm';
+import OrderTabs from '@/components/trading/spot-trading/TradingFooter';
+import TradingChart from '@/components/trading/spot-trading/TradingChart';
 
 
 export default function TradingPage() {

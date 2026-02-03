@@ -32,7 +32,7 @@ export default function OrderTabs() {
       </div>
 
       {/* 1. SCROLLABLE HEADER SECTION */}
-      <div className="overflow-x-auto no-scrollbar border-b border-white/5">
+      <div className="overflow-x-auto no-scrollbar cursor-pointer">
         <div className="min-w-[1000px] w-full">
           <div className="grid grid-cols-10 px-4 py-2 items-center">
             {columns.map((col) => (

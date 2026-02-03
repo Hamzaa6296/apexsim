@@ -3,169 +3,194 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { FaCaretDown, FaRegBell } from "react-icons/fa";
 
-// Internal Data
+// Data (Keep your paths and icons exactly as they are)
 const tradeCategories = [
-  { title: "Spot trade", desc: "Trade the spot market", icon: "https://cryptologos.cc/logos/bitcoin-btc-logo.png" },
-  { title: "Futures trade", desc: "Trade the futures market", icon: "📈" },
-  { title: "Trading bot", desc: "Use an AI Bot", icon: "🤖" },
-  { title: "Copy trade", desc: "Trade with expert and earn", icon: "👥" },
+    { title: "Spot trade", desc: "Trade the spot market", icon: "/images/upanddown.png", path: "/dashboard/spot-trade" },
+    { title: "Futures trade", desc: "Trade the futures market", icon: "/images/upanddown.png", path: "/dashboard/futures-trade" },
+    { title: "Trading bot", desc: "Use an AI Bot", icon: "/images/upanddown.png", path: "/dashboard/trading-bot" },
+    { title: "Copy trade", desc: "Trade with expert and earn", icon: "/images/upanddown.png", path: "/dashboard/copy-trade" },
 ];
 
 const quoteCurrencies = ["USDT", "USDC", "USDQ", "EUR"];
 
 const tradeAssets = [
-  { name: "BTC/USDT", icon: "https://cryptologos.cc/logos/bitcoin-btc-logo.png" },
-  { name: "ETH/USDT", icon: "https://cryptologos.cc/logos/ethereum-eth-logo.png" },
-  { name: "AVAX/USDT", icon: "https://cryptologos.cc/logos/avalanche-avax-logo.png" },
-  { name: "SOL/USDT", icon: "https://cryptologos.cc/logos/solana-sol-logo.png" },
-  { name: "XRP/USDT", icon: "https://cryptologos.cc/logos/xrp-xrp-logo.png" },
-  { name: "USDC/USDT", icon: "https://cryptologos.cc/logos/usd-coin-usdc-logo.png" },
-  { name: "ADA/USDT", icon: "https://cryptologos.cc/logos/cardano-ada-logo.png" },
-  { name: "BCH/USDT", icon: "https://cryptologos.cc/logos/bitcoin-cash-bch-logo.png" },
-  { name: "XLM/USDT", icon: "https://cryptologos.cc/logos/stellar-xlm-logo.png" },
+    { name: "BTC/USDT", icon: "https://cryptologos.cc/logos/bitcoin-btc-logo.png" },
+    { name: "ETH/USDT", icon: "https://cryptologos.cc/logos/ethereum-eth-logo.png" },
+    { name: "AVAX/USDT", icon: "https://cryptologos.cc/logos/avalanche-avax-logo.png" },
+    { name: "SOL/USDT", icon: "https://cryptologos.cc/logos/solana-sol-logo.png" },
+    { name: "XRP/USDT", icon: "https://cryptologos.cc/logos/xrp-xrp-logo.png" },
+    { name: "USDC/USDT", icon: "https://cryptologos.cc/logos/usd-coin-usdc-logo.png" },
+    { name: "ADA/USDT", icon: "https://cryptologos.cc/logos/cardano-ada-logo.png" },
+    { name: "BCH/USDT", icon: "https://cryptologos.cc/logos/bitcoin-cash-bch-logo.png" },
+    { name: "XLM/USDT", icon: "https://cryptologos.cc/logos/stellar-xlm-logo.png" },
 ];
 
 const moreItems = [
-  { title: "Learn", desc: "Master the markets", icon: <FaRegBell size={14} /> },
-  { title: "Referral", desc: "Invite friends, earn together", icon: <FaRegBell size={14} /> },
-  { title: "Announcements", desc: "Latest updates", icon: <FaRegBell size={14} /> },
+    { title: "Learn", desc: "Master the markets", icon: <FaRegBell size={14} />, path: "/learn" },
+    { title: "Referral", desc: "Invite friends, earn together", icon: <FaRegBell size={14} />, path: "/referral" },
+    { title: "Announcements", desc: "Latest updates", icon: <FaRegBell size={14} />, path: "/announcements" },
 ];
 
 interface NavItemProps {
-  label: string;
-  type: 'trade' | 'more';
-  isMobile?: boolean;
+    label: string;
+    type: 'trade' | 'more';
+    isMobile?: boolean;
 }
 
 export default function NavItem({ label, type, isMobile }: NavItemProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeQuote, setActiveQuote] = useState("USDT");
-  const containerRef = useRef<HTMLDivElement>(null);
+    const [isOpen, setIsOpen] = useState(false);
+    const [activeQuote, setActiveQuote] = useState("USDT");
+    const containerRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside the component
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
+    // Set to null so by default no option is selected
+    const [isSelected, setIsSelected] = useState<string | null>(null);
 
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isOpen]);
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        };
+        if (isOpen) document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, [isOpen]);
 
-  // Strictly click handler
-  const handleToggle = () => setIsOpen(!isOpen);
+    const closeDropdown = () => setIsOpen(false);
 
-  return (
-    <div className={isMobile ? "w-full" : "relative"} ref={containerRef}>
-      <button 
-        onClick={handleToggle}
-        className={`flex items-center gap-1 text-gray-400 hover:text-white transition-all py-2 !cursor-pointer w-full font-manrope ${
-          isMobile ? "justify-between text-lg border-b border-white/5" : "text-sm font-medium"
-        }`}
-      >
-        {label} 
-        <FaCaretDown size={14} className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
-      </button>
+    return (
+        <div className={isMobile ? "w-full" : "relative"} ref={containerRef}>
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={`flex items-center gap-1 text-gray-400 hover:text-white transition-all py-2 !cursor-pointer w-full font-manrope ${isMobile ? "justify-between text-lg border-b border-white/5" : "text-sm font-medium"
+                    }`}
+            >
+                {label}
+                <FaCaretDown size={14} className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
+            </button>
 
-      {isOpen && (
-        <div className={isMobile
-          ? "pl-4 flex flex-col gap-2 my-2"
-          : `absolute top-[110%] left-[-20px] bg-[#1c1c1c] border border-white/10 rounded-sm shadow-2xl z-[150] overflow-hidden ${type === 'trade' ? 'w-[520px] flex' : 'w-[300px]'}`
-        }>
-          
-          {/* DESKTOP TRADE DROPDOWN */}
-          {type === 'trade' && !isMobile && (
-            <>
-              {/* Left Side: Categories */}
-              <div className="w-[45%] bg-[#121212] p-2 border-r border-white/5">
-                <p className="text-[10px] text-gray-600 font-bold uppercase px-3 py-3">Trading</p>
-                {tradeCategories.map((cat, index) => (
-                  <div key={cat.title} 
-                    className={`p-3 rounded-md !cursor-pointer group transition-colors mb-1 ${index === 0 ? "bg-[#1c1c1c]" : "hover:bg-white/5"}`}>
-                    <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 flex items-center justify-center opacity-80 group-hover:opacity-100">
-                        {index === 0 ? <img src={cat.icon} className="w-4 h-4" alt="" /> : <span className="text-gray-400">{cat.icon}</span>}
-                      </div>
-                      <div>
-                        <p className={`text-[13px] font-semibold ${index === 0 ? "text-white" : "text-gray-300 group-hover:text-white"}`}>{cat.title}</p>
-                        <p className="text-gray-500 text-[10px]">{cat.desc}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            {isOpen && (
+                <div className={isMobile
+                    ? "pl-4 flex flex-col gap-2 my-2"
+                    : `absolute top-[110%] left-[-20px] bg-[#1c1c1c] border border-white/10 rounded-sm shadow-2xl z-[150] overflow-hidden ${type === 'trade' ? 'w-[520px] flex' : 'w-[300px]'}`
+                }>
 
-              {/* Right Side: Assets & Quote Selectors */}
-              <div className="w-[55%] p-4 flex flex-col gap-3 max-h-[420px] overflow-y-auto no-scrollbar bg-[#1c1c1c]">
-                <div className="flex gap-5 text-[11px] font-bold text-gray-500 border-b border-white/5 pb-0 mb-1">
-                  {quoteCurrencies.map((quote) => (
-                    <button
-                      key={quote}
-                      onClick={(e) => {
-                        e.stopPropagation(); // Prevents menu from closing when switching tabs
-                        setActiveQuote(quote);
-                      }}
-                      className={`pb-2 transition-all !cursor-pointer border-b-2 ${
-                        activeQuote === quote 
-                        ? "text-blue-500 border-blue-500" 
-                        : "text-gray-500 border-transparent hover:text-gray-300"
-                      }`}
-                    >
-                      {quote}
-                    </button>
-                  ))}
+                    {/* DESKTOP TRADE DROPDOWN */}
+                    {type === 'trade' && !isMobile && (
+                        <>
+                            <div className="w-[45%] bg-[#181818] p-2 border-r border-white/5">
+                                <p className="text-[10px] text-gray-600 font-bold uppercase px-3 py-3">Trading</p>
+                                {tradeCategories.map((cat) => (
+                                    <Link
+                                        key={cat.title}
+                                        href={cat.path}
+                                        onClick={() => {
+                                            setIsSelected(cat.title); // Update selection state
+                                            // Optional: closeDropdown(); if you want it to close after selection
+                                        }}
+                                        className={`block p-3 rounded-md !cursor-pointer group transition-colors mb-1 ${isSelected === cat.title ? "bg-[#232526]" : "hover:bg-white/5"
+                                            }`}
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-6 h-6 flex items-center justify-center opacity-80 group-hover:opacity-100">
+                                                <img src={cat.icon} className="w-4 h-4" alt="" />
+                                            </div>
+                                            <div>
+                                                <p className={`text-[13px] font-semibold ${isSelected === cat.title ? "text-white" : "text-gray-300 group-hover:text-white"
+                                                    }`}>
+                                                    {cat.title}
+                                                </p>
+                                                <p className="text-gray-500 text-[10px]">{cat.desc}</p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+
+                            <div className="w-[55%] p-4 flex flex-col gap-3 max-h-[420px] no-scrollbar bg-[#232526]">
+                                <div className="flex gap-5 text-[11px] font-bold text-gray-500 border-b border-white/5 pb-0 mb-1">
+                                    {quoteCurrencies.map((quote) => (
+                                        <button
+                                            key={quote}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setActiveQuote(quote);
+                                            }}
+                                            className={`pb-2 transition-all !cursor-pointer border-b-2 ${activeQuote === quote ? "text-white border-blue-500" : "text-gray-500 border-transparent hover:text-gray-300"
+                                                }`}
+                                        >
+                                            {quote}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    {tradeAssets.map(asset => (
+                                        <Link
+                                            key={asset.name}
+                                            href="#"
+                                            onClick={closeDropdown}
+                                            className="flex items-center justify-between py-2 px-1 hover:bg-white/5 rounded-md !cursor-pointer group transition-colors"
+                                        >
+                                            <div className="flex items-center gap-3">
+                                                <img src={asset.icon} alt={asset.name} className="w-5 h-5 rounded-full object-contain" />
+                                                <span className="text-[13px] text-gray-300 group-hover:text-white font-medium">{asset.name}</span>
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        </>
+                    )}
+
+                    {/* DESKTOP MORE DROPDOWN */}
+                    {type === 'more' && !isMobile && (
+                        <div className="p-2 flex flex-col gap-1 bg-[#1c1c1c]">
+                            <p className="px-3 py-3 text-gray-500 text-[10px] uppercase font-bold">More</p>
+                            {moreItems.map((item, index) => (
+                                <Link
+                                    key={item.title}
+                                    href={item.path}
+                                    onClick={() => {
+                                        setIsSelected(item.title);
+                                        closeDropdown();
+                                    }}
+                                    className={`block p-4 rounded-md !cursor-pointer group transition-colors ${isSelected === item.title ? "bg-[#232526]" : "hover:bg-white/5"
+                                        }`}
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-gray-400 group-hover:text-white transition-all">
+                                            {item.icon}
+                                        </div>
+                                        <div>
+                                            <p className={`text-[14px] font-semibold ${isSelected === item.title ? "text-white" : "text-white group-hover:text-white"
+                                                }`}>
+                                                {item.title}
+                                            </p>
+                                            <p className="text-gray-500 text-[11px] mt-1">{item.desc}</p>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* MOBILE VERSION */}
+                    {isMobile && (
+                        <div className="flex flex-col gap-1 py-2 bg-[#111111]">
+                            {(type === 'trade' ? tradeCategories : moreItems).map((item) => (
+                                <Link
+                                    key={item.title}
+                                    href={item.path}
+                                    onClick={closeDropdown}
+                                    className="text-gray-400 text-sm hover:text-white py-3 px-4 border-l-2 border-transparent hover:border-blue-500 hover:bg-white/5 transition-all"
+                                >
+                                    {item.title}
+                                </Link>
+                            ))}
+                        </div>
+                    )}
                 </div>
-
-                <div className="flex flex-col gap-1">
-                  {tradeAssets.map(asset => (
-                    <div key={asset.name} className="flex items-center justify-between py-2 px-1 hover:bg-white/5 rounded-md !cursor-pointer group transition-colors">
-                      <div className="flex items-center gap-3">
-                        <img src={asset.icon} alt={asset.name} className="w-5 h-5 rounded-full object-contain" />
-                        <span className="text-[13px] text-gray-300 group-hover:text-white font-medium">{asset.name}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </>
-          )}
-
-          {/* DESKTOP MORE DROPDOWN */}
-          {type === 'more' && !isMobile && (
-            <div className="p-2 flex flex-col gap-1 bg-[#1c1c1c]">
-              <p className="px-3 py-3 text-gray-500 text-[10px] uppercase font-bold">More</p>
-              {moreItems.map((item, index) => (
-                <div key={item.title} className={`p-4 rounded-md !cursor-pointer group transition-colors ${index === 0 ? "bg-[#121212]/50" : "hover:bg-white/5"}`}>
-                   <div className="flex items-center gap-4">
-                      <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-gray-400 group-hover:text-white transition-all">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <p className="text-white text-[14px] font-semibold">{item.title}</p>
-                        <p className="text-gray-500 text-[11px] mt-1">{item.desc}</p>
-                      </div>
-                   </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* MOBILE VERSION */}
-          {isMobile && (
-            <div className="flex flex-col gap-1 py-2 bg-[#111111]">
-              {(type === 'trade' ? tradeCategories : moreItems).map((item) => (
-                <Link key={item.title} href="#" className="text-gray-400 text-sm hover:text-white py-3 px-4 border-l-2 border-transparent hover:border-blue-500 hover:bg-white/5 transition-all">
-                  {item.title}
-                </Link>
-              ))}
-            </div>
-          )}
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 }

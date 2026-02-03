@@ -2,24 +2,25 @@
 import React, { useState } from 'react';
 import { FileText } from 'lucide-react';
 import { FaPlayCircle } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 
 // --- HELPER COMPONENT FOR OVERLAPPING ICONS ---
 const PairIcon = ({ icons }: { icons: string[] }) => {
     if (icons.length === 1) return <img src={icons[0]} className="w-7 h-7 rounded-full object-cover" alt="" />;
-    
+
     return (
         <div className="relative flex items-center w-10 h-7">
             {/* Left Image */}
-            <img 
-                src={icons[0]} 
-                className="w-7 h-7 rounded-full border-2 border-[#181818] z-0 object-cover" 
-                alt="base" 
+            <img
+                src={icons[0]}
+                className="w-7 h-7 rounded-full border-2 border-[#181818] z-0 object-cover"
+                alt="base"
             />
             {/* Right Image (Overlapped) */}
-            <img 
-                src={icons[1]} 
-                className="w-7 h-7 rounded-full border-2 border-[#181818] -ml-3 z-10 object-cover" 
-                alt="quote" 
+            <img
+                src={icons[1]}
+                className="w-7 h-7 rounded-full border-2 border-[#181818] -ml-3 z-10 object-cover"
+                alt="quote"
             />
         </div>
     );
@@ -140,7 +141,18 @@ export default function MarketComponent() {
     return (
         <div className="bg-[#181818] min-h-screen text-white p-4 md:p-10 font-manrope">
             <div className="max-w-[1300px] mx-auto">
-                <h1 className="text-3xl font-bold mb-6">Market</h1>
+                <div className='flex items-center justify-between'>
+                    <h1 className="text-3xl font-bold mb-6">Market</h1>
+
+                    <div className="relative w-full md:w-60">
+                        <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-50" size={14} />
+                        <input
+                            type="text"
+                            placeholder="Search for currency pairs"
+                            className="w-full bg-[#222222] py-5 pl-11 pr-4 text-xs focus:outline-none focus:border-blue-500 transition-all"
+                        />
+                    </div>
+                </div>
 
                 {/* Categories */}
                 <div className="flex mb-10 w-fit overflow-hidden rounded-lg">
