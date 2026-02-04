@@ -69,11 +69,13 @@ export default function Navbar() {
                 <div className="flex items-center gap-3">
 
                     {/* Wallet */}
-                    <div className="hidden sm:flex items-center gap-2 bg-[#222222] border border-white/10 p-2.5 rounded-sm !cursor-pointer hover:bg-white/5 transition-colors group">
-                        <FaWallet className="text-blue-500 group-hover:scale-110 transition-transform" size={14} />
-                        <span className="text-xs text-white font-medium">$40,000</span>
-                        <FaCaretDown size={12} className="text-gray-500" />
-                    </div>
+                    <Link href='/dashboard/wallet'>
+                        <div className="hidden sm:flex items-center gap-2 bg-[#222222] border border-white/10 p-2.5 rounded-sm !cursor-pointer hover:bg-white/5 transition-colors group">
+                            <FaWallet className="text-blue-500 group-hover:scale-110 transition-transform" size={14} />
+                            <span className="text-xs text-white font-medium">$40,000</span>
+                            <FaCaretDown size={12} className="text-gray-500" />
+                        </div>
+                    </Link>
 
                     {/* Desktop Controls Group */}
                     <div className="hidden md:flex items-center gap-3">
@@ -117,20 +119,14 @@ export default function Navbar() {
                     </div>
 
                     {/* Profile Dropdown (Click-based) */}
-                    <div className="relative" ref={profileRef}>
-                        <button onClick={() => setIsProfileOpen(!isProfileOpen)} className="flex items-center gap-2 !cursor-pointer ml-1">
-                            <div className="md:block hidden w-9 h-9 bg-cyan-400 rounded-full border-2 border-white/10" />
-                            <FaCaretDown size={12} className={`text-gray-50 transition-transform hidden sm:block ${isProfileOpen ? 'rotate-180' : ''}`} />
-                        </button>
-                        {isProfileOpen && (
-                            <div className="absolute top-[120%] right-0 w-48 bg-[#141414] border border-white/10 rounded-xl shadow-2xl p-2 z-[200]">
-                                <button className="w-full text-left px-4 py-2.5 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg !cursor-pointer">Profile</button>
-                                <button className="w-full text-left px-4 py-2.5 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg !cursor-pointer">Settings</button>
-                                <div className="h-[1px] bg-white/5 my-1" />
-                                <button className="w-full text-left px-4 py-2.5 text-sm text-red-500 hover:bg-red-500/10 rounded-lg !cursor-pointer">Logout</button>
-                            </div>
-                        )}
-                    </div>
+                    <Link href='/dashboard/profile'>
+                        <div className="relative" ref={profileRef}>
+                            <button onClick={() => setIsProfileOpen(!isProfileOpen)} className="flex items-center gap-2 !cursor-pointer ml-1">
+                                <div className="md:block hidden w-9 h-9 bg-cyan-400 rounded-full border-2 border-white/10" />
+                                <FaCaretDown size={12} className={`text-gray-50 transition-transform hidden sm:block `} />
+                            </button>
+                        </div>
+                    </Link>
 
                     {/* Mobile Menu Toggle */}
                     <button className="md:hidden p-2 !cursor-pointer flex flex-col gap-1.5 ml-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
