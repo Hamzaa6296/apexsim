@@ -26,9 +26,9 @@ const tradeAssets = [
 ];
 
 const moreItems = [
-    { title: "Learn", desc: "Master the markets", icon: <FaRegBell size={14} />, path: "/learn" },
-    { title: "Referral", desc: "Invite friends, earn together", icon: <FaRegBell size={14} />, path: "/referral" },
-    { title: "Announcements", desc: "Latest updates", icon: <FaRegBell size={14} />, path: "/announcements" },
+    { title: "Learn", desc: "Master the markets", icon: <FaRegBell size={14} />, path: "/dashboard/learn" },
+    { title: "Referral", desc: "Invite friends, earn together", icon: <FaRegBell size={14} />, path: "/dashboard/referral" },
+    { title: "Announcements", desc: "Latest updates", icon: <FaRegBell size={14} />, path: "/dashboard/announcements" },
 ];
 
 interface NavItemProps {
