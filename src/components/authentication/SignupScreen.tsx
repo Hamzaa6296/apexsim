@@ -85,11 +85,11 @@ export default function SignupView() {
                             </div>
                         </div>
 
-
-
-                        <button className="w-full bg-[#0055FF] text-white py-4 rounded-full font-semibold text-md shadow-[0_8px_30px_rgb(0,85,255,0.3)] !cursor-pointer">
-                            Sign up
-                        </button>
+                        <Link href='/login'>
+                            <button className="w-full bg-[#0055FF] text-white py-4 rounded-full font-semibold text-md shadow-[0_8px_30px_rgb(0,85,255,0.3)] !cursor-pointer">
+                                Sign up
+                            </button>
+                        </Link>
 
                         <div className="pt-3">
                             <div className="flex items-center justify-center mb-4 gap-4">
@@ -112,7 +112,7 @@ export default function SignupView() {
                         </div>
 
                         <p className="text-center text-gray-500 text-md pt-4 font-inter">
-                            Already have an account? <button type='button' onClick={()=> router.push('/login')} className="text-white font-semibold hover:underline">Login</button>
+                            Already have an account? <button type='button' onClick={() => router.push('/login')} className="text-white font-semibold hover:underline">Login</button>
                         </p>
                     </form>
                 </div>
