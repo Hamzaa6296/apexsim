@@ -1,8 +1,8 @@
 import React from 'react';
-import OrderBook from '@/components/trading/spot-trading/OrderBook';
-import TradeForm from '@/components/trading/spot-trading/TradeForm';
-import OrderTabs from '@/components/trading/spot-trading/TradingFooter';
-import TradingChart from '@/components/trading/spot-trading/TradingChart';
+
+import TradeForm from '@/components/trading/bot-trading/market/BotMarketForm';
+import OrderTabs from '@/components/trading/bot-trading/market/BotMarketFooter';
+import TradingChart from '@/components/trading/bot-trading/market/BotMarketChart';
 
 
 export default function TradingPage() {
@@ -59,9 +59,6 @@ export default function TradingPage() {
             <TradingChart />
           </div>
         </div>
-
-        {/* Middle Section: Order Book Component */}
-        <OrderBook />
 
         {/* Right Section: Trade Form Component */}
         <TradeForm />

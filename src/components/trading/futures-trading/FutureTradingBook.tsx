@@ -31,8 +31,8 @@ const ORDER_DATA = [
     { price: 19966.52, amount: "0.00250", total: "49.91630", depth: 4, type: 'buy' },
 ];
 
-export default function OrderBook() {
-    const [activeTab, setActiveTab] = useState<'liquidity' | 'trades'>('liquidity');
+export default function FutureTradingBook() {
+    const [activeTab, setActiveTab] = useState<'Order books' | 'Last trades'>('Order books');
     return (
         <div className="w-full md:w-[320px] flex flex-col bg-[#181818] border-x border-white/5 h-full select-none">
             {/* 1. Header Tabs */}
@@ -41,26 +41,26 @@ export default function OrderBook() {
                 <div className="flex gap-4 h-full items-center">
                     {/* Liquidity Tab */}
                     <div
-                        onClick={() => setActiveTab('liquidity')}
+                        onClick={() => setActiveTab('Order books')}
                         className="relative h-full flex items-center cursor-pointer group"
                     >
-                        <span className={`text-[13px] font-medium transition-colors ${activeTab === 'liquidity' ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
-                            Liquidity
+                        <span className={`text-[13px] font-medium transition-colors ${activeTab === 'Order books' ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
+                            Order books
                         </span>
-                        {activeTab === 'liquidity' && (
+                        {activeTab === 'Order books' && (
                             <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#00B595]" />
                         )}
                     </div>
 
                     {/* Recent Trades Tab */}
                     <div
-                        onClick={() => setActiveTab('trades')}
+                        onClick={() => setActiveTab('Last trades')}
                         className="relative h-full flex items-center !cursor-pointer group"
                     >
-                        <span className={`text-[13px] font-medium transition-colors ${activeTab === 'trades' ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
-                            Recent trades
+                        <span className={`text-[13px] font-medium transition-colors ${activeTab === 'Last trades' ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
+                            Last trades
                         </span>
-                        {activeTab === 'trades' && (
+                        {activeTab === 'Last trades' && (
                             <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#00B595]" />
                         )}
                     </div>
@@ -103,7 +103,7 @@ export default function OrderBook() {
             </div>
 
             {/* 3. Table Column Headers */}
-            <div className="grid grid-cols-3 text-[10px] text-gray-500 px-3 pb-1 uppercase font-medium">
+            <div className="grid grid-cols-3 text-[10px] text-gray-500 px-3 pb-1 font-medium">
                 <span>Price(USDT)</span>
                 <span className="text-right">Amount(BTC)</span>
                 <span className="text-right">Total</span>

@@ -9,7 +9,7 @@ import { RxCross2 } from "react-icons/rx";
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-export default function TradingChart() {
+export default function BotMarketChart() {
   const [hoverData, setHoverData] = useState({
     open: 20362.21,
     high: 20367.78,
