@@ -22,7 +22,7 @@ export default function TradingCalculator({ isOpen, onClose }: Props) {
       onClick={onClose}
     >
       <div 
-        className="bg-[#09090D] md:top-0 md:absolute w-full max-w-[400px] overflow-hidden shadow-2xl rounded-lg border border-white/5"
+        className="bg-[#09090D] md:top-3 md:absolute w-full max-w-[400px] overflow-hidden shadow-2xl rounded-lg border border-white/5"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -50,17 +50,17 @@ export default function TradingCalculator({ isOpen, onClose }: Props) {
 
         <div className="p-4 space-y-5">
           {/* Side Toggle */}
-          <div className="flex bg-[#1e2023] rounded-md overflow-hidden p-1">
+          <div className="flex bg-[#1e2023] rounded-md overflow-hidden ">
             <button
               onClick={() => setSide('long')}
-              className={`flex-1 py-2 text-sm font-bold rounded !cursor-pointer transition-all ${
-                side === 'long' ? 'bg-[#0ECB81] text-white' : 'text-gray-400 hover:text-white'
+              className={`flex-1 py-2 text-sm rounded !cursor-pointer transition-all ${
+                side === 'long' ? 'bg-[#0ECB81] text-white' : 'text-gray-400 '
               }`}
             >Open Long</button>
             <button
               onClick={() => setSide('short')}
-              className={`flex-1 py-2 text-sm font-bold rounded !cursor-pointer transition-all ${
-                side === 'short' ? 'bg-[#1e2023] text-gray-400 border border-white/5' : 'text-gray-400'
+              className={`flex-1 py-2 text-sm  rounded !cursor-pointer transition-all ${
+                side === 'short' ? 'bg-[#0ECB81] text-white' : 'text-gray-400'
               }`}
             >Open Short</button>
           </div>
@@ -93,7 +93,7 @@ export default function TradingCalculator({ isOpen, onClose }: Props) {
             <div className="space-y-1.5">
               <label className="text-[12px] text-gray-400">Entry price</label>
               <div className="relative">
-                <input placeholder="Please enter" className="w-full bg-[#181B1F] border border-transparent rounded p-3 text-sm outline-none focus:border-[#00B595]/30 text-white placeholder:text-gray-600" />
+                <input placeholder="Please enter" className="w-full bg-[#181B1F] border border-transparent rounded p-3 text-sm outline-none  text-white placeholder:text-gray-600" />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[12px] font-bold text-gray-400">USDT</span>
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function TradingCalculator({ isOpen, onClose }: Props) {
             <div className="space-y-1.5">
               <label className="text-[12px] text-gray-400">Target price</label>
               <div className="relative">
-                <input placeholder="Please enter" className="w-full bg-[#181B1F] border border-transparent rounded p-3 text-sm outline-none focus:border-[#00B595]/30 text-white placeholder:text-gray-600" />
+                <input placeholder="Please enter" className="w-full bg-[#181B1F] border border-transparent rounded p-3 text-sm outline-none  text-white placeholder:text-gray-600" />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[12px] font-bold text-gray-400">USDT</span>
               </div>
             </div>
@@ -109,7 +109,7 @@ export default function TradingCalculator({ isOpen, onClose }: Props) {
             <div className="space-y-1.5">
               <label className="text-[12px] text-gray-400">Size</label>
               <div className="relative">
-                <input placeholder="Please enter" className="w-full bg-[#181B1F] border border-transparent rounded p-3 text-sm outline-none focus:border-[#00B595]/30 text-white placeholder:text-gray-600" />
+                <input placeholder="Please enter" className="w-full bg-[#181B1F] border border-transparent rounded p-3 text-sm outline-none  text-white placeholder:text-gray-600" />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[12px] font-bold text-gray-400">BNB</span>
               </div>
             </div>

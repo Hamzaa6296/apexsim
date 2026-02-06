@@ -1,7 +1,10 @@
 "use client";
+import { Router } from 'lucide-react';
 import { useState } from 'react';
 import { FaChevronDown, FaQuestionCircle, FaWallet, FaRegBell, FaSun, FaCreditCard } from "react-icons/fa";
+
 import { FaCaretDown } from "react-icons/fa";
+import { useRouter } from 'next/navigation';
 
 const coins = [
     { id: 'btc', name: 'BTC', icon: 'https://cryptologos.cc/logos/bitcoin-btc-logo.png' },
@@ -13,6 +16,7 @@ const coins = [
 export default function DepositPage() {
     const [depositType, setDepositType] = useState<'crypto' | 'fiat'>('crypto');
     const [fiatAmount, setFiatAmount] = useState('0');
+    const router = useRouter()
 
     return (
         <div className="max-w-full mx-auto px-4 md:px-30 md:py-10 py-5 font-manrope min-h-screen text-white">
@@ -134,7 +138,7 @@ export default function DepositPage() {
                                 </div>
                             </div>
 
-                            <button className="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-blue-500/20 hover:from-blue-500 hover:to-blue-400 transition-all !cursor-pointer mt-8">
+                            <button onClick={()=> router.push('/dashboard/convert')} className="w-full bg-[#0055FF] text-white py-3 rounded-xl text-md shadow-lg shadow-blue-500/20 hover:from-blue-500 hover:to-blue-400 transition-all !cursor-pointer mt-8">
                                 Proceed
                             </button>
                         </div>

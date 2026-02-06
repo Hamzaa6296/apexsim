@@ -5,12 +5,13 @@ import { FaCaretDown, FaWallet, FaBell } from "react-icons/fa";
 import { MdLightMode } from "react-icons/md";
 import NavItem from './NavDropDownItems';
 
-
 const languages = [
     { code: 'Eng', name: 'English', flag: 'https://flagcdn.com/us.svg' },
     { code: 'Ger', name: 'German', flag: 'https://flagcdn.com/de.svg' },
     { code: 'Fra', name: 'French', flag: 'https://flagcdn.com/fr.svg' },
 ];
+
+// Example profile image URL
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,8 +38,6 @@ export default function Navbar() {
         return () => { document.body.style.overflow = 'unset'; };
     }, [isMenuOpen]);
 
-
-
     return (
         <header className="fixed top-0 left-0 w-full z-[100] bg-[#181818] border-b border-white/5">
             <nav className="flex items-center justify-between md:px-12 px-6 md:py-5 py-4 max-w-[1600px] mx-auto w-full">
@@ -51,15 +50,25 @@ export default function Navbar() {
 
                     {/* Desktop Links */}
                     <div className="hidden md:flex items-center gap-8 ml-40">
-                        {["Buy crypto", "Withdraw", "Market"].map((link) => (
-                            <Link key={link} href="#" className="text-gray-400 hover:text-white transition-colors text-sm font-medium font-manrope">
-                                {link}
-                            </Link>
+                        {[{ label: "Buy crypto", href: "#" }, { label: "Withdraw", href: "#" }, { label: "Market", href: "/dashboard/market" }]
+                            .map((item) => (
+                                <Link
+                                    key={item.label}
+                                    href={item.href}
+                                    className="text-gray-400 hover:text-white transition-colors text-sm font-medium font-manrope"
+                                >
+                                    {item.label}
+                                </Link>
                         ))}
-                        {/* NavItem now handles its own Click state internally */}
+
+                        {/* NavItems */}
                         <NavItem label="Trade" type="trade" />
                         <NavItem label="More" type="more" />
-                        <Link href="#" className="text-gray-400 hover:text-white transition-colors text-sm font-medium font-manrope">
+
+                        <Link
+                            href="#"
+                            className="text-gray-400 hover:text-white transition-colors text-sm font-medium font-manrope"
+                        >
                             Support
                         </Link>
                     </div>
@@ -79,7 +88,7 @@ export default function Navbar() {
 
                     {/* Desktop Controls Group */}
                     <div className="hidden md:flex items-center gap-3">
-                        {/* Language Selector (Click-based) */}
+                        {/* Language Selector */}
                         <div className="relative" ref={langRef}>
                             <button
                                 onClick={() => setIsLangOpen(!isLangOpen)}
@@ -118,11 +127,16 @@ export default function Navbar() {
                         </Link>
                     </div>
 
-                    {/* Profile Dropdown (Click-based) */}
+                    {/* Profile Dropdown */}
                     <Link href='/dashboard/profile'>
                         <div className="relative" ref={profileRef}>
                             <button onClick={() => setIsProfileOpen(!isProfileOpen)} className="flex items-center gap-2 !cursor-pointer ml-1">
-                                <div className="md:block hidden w-9 h-9 bg-cyan-400 rounded-full border-2 border-white/10" />
+                                {/* Profile Image instead of cyan circle */}
+                                <img 
+                                    src= '/images/manimage.png' 
+                                    alt="Profile" 
+                                    className="w-9 h-9 rounded-full border-2 border-white/10 object-cover" 
+                                />
                                 <FaCaretDown size={12} className={`text-gray-50 transition-transform hidden sm:block `} />
                             </button>
                         </div>
@@ -141,7 +155,7 @@ export default function Navbar() {
             {isMenuOpen && (
                 <div className="md:hidden absolute top-full left-0 w-full bg-[#111111] px-6 py-8 flex flex-col h-[calc(100vh-70px)] overflow-y-auto z-[100] animate-in fade-in slide-in-from-top-4 duration-300">
                     <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10 mb-6">
-                        <div className="w-12 h-12 bg-cyan-400 rounded-full border-2 border-white/20" />
+                        <img src='/images/manimage.png' alt="Profile" className="w-12 h-12 rounded-full border-2 border-white/20 object-cover" />
                         <div>
                             <p className="text-white font-bold text-lg">User Account</p>
                             <p className="text-blue-400 text-xs font-medium">Verified Simulation</p>

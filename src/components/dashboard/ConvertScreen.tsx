@@ -96,7 +96,7 @@ export default function DepositPage() {
                     </div>
 
                     {/* PROCEED BUTTON */}
-                    <button className="w-full bg-gradient-to-r from-[#256DFD] to-[#124ec4] text-white py-4.5 rounded-2xl font-bold text-lg shadow-[0_10px_20px_rgba(37,109,253,0.2)] hover:opacity-90 transition-all !cursor-pointer mt-8">
+                    <button className="w-full bg-[#0055FF] text-white py-4 rounded-xl  text-md shadow-[0_10px_20px_rgba(37,109,253,0.2)] hover:opacity-90 transition-all !cursor-pointer mt-8">
                         Proceed
                     </button>
                 </div>

@@ -32,7 +32,7 @@ const MarketContent = ({ cardData, tableData }: { cardData: any[], tableData: an
         <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
                 {cardData.map((item, i) => (
-                    <div key={i} className="bg-[#222222] rounded-xl p-5 hover:border-white/10 transition-all !cursor-pointer group">
+                    <div key={i} className="bg-[#222222] rounded-xl p-5 cursor-pointer group">
                         <div className="flex justify-between items-start mb-4">
                             <div className="flex items-center gap-2">
                                 <PairIcon icons={item.icons} />
@@ -41,7 +41,7 @@ const MarketContent = ({ cardData, tableData }: { cardData: any[], tableData: an
                             <span className="text-sm text-green-500">{item.change || "+0.46%"}</span>
                         </div>
                         <div className="text-2xl mb-1">{item.price}</div>
-                        <div className="flex justify-between items-center text-gray-500 group-hover:text-blue-500 transition-colors">
+                        <div className="flex justify-between items-center text-gray-500 ">
                             <span className="text-sm font-semibold">{item.vol}</span>
                             <FaPlayCircle size={18} fill="currentColor" />
                         </div>

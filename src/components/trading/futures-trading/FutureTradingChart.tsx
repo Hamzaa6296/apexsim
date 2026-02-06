@@ -202,7 +202,7 @@ export default function FutureTradingChart() {
                 </div>
             </div>
 
-            <div className="absolute md:left-0 md:top-[260px] w-8 bg-[#0c0e0f] flex flex-col h-[465px] items-center py-4 gap-5 z-50 border-r border-white/5">
+            <div className="absolute md:left-0 top-[260px] md:w-8 w-5 bg-[#0c0e0f] flex flex-col md:h-[465px] h-[330px] items-center py-4 md:gap-5 gap-3 z-50 border-r border-white/5">
                 {/* Cursor/Crosshair */}
                 <LuMousePointer2 size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
 
@@ -245,20 +245,20 @@ export default function FutureTradingChart() {
 
 
                 {/* ✅ CENTER BUY / SELL PANEL (ADDED) */}
-                <div className="absolute top-30 left-20  z-30">
-                    <div className="flex items-center bg-[#242424] rounded-lg overflow-hidden text-[11px]">
+                <div className="absolute md:top-30 top-20 md:left-20 left-15  z-30">
+                    <div className="flex items-center bg-[#242424] rounded-lg overflow-hidden">
                         <div className="px-3 text-gray-50"><GiHamburgerMenu size={14} /></div>
                         <div className="bg-[#34C759] px-4 py-4 text-white text-center">
-                            <div className="text-[12px]">Buy / Long</div>
-                            <div className="text-lg">89,057</div>
+                            <div className="md:text-[12px] text-[6px]">Buy / Long</div>
+                            <div className="md:text-lg text-xs">89,057</div>
                         </div>
                         <div className="px-4 py-2 text-gray-400 border-x border-white/10 text-center">
-                            <div className="text-[15px] text-white">Size (USDT)</div>
-                            <div className="text-gray-500">Enter Size</div>
+                            <div className="md:text-[15px] text-xs text-white">Size (USDT)</div>
+                            <div className="text-gray-500 text-xs">Enter Size</div>
                         </div>
                         <div className="bg-[#FF383C] px-4 py-4 text-white text-center">
-                            <div className="text-[12px]">Sell / Short</div>
-                            <div className=" text-lg">89,057</div>
+                            <div className="md:text-[12px] text-[6px]">Sell / Short</div>
+                            <div className="md:text-lg text-xs">89,057</div>
                         </div>
                         <div className="px-3 text-gray-50"><MdClose size={14} /></div>
                     </div>

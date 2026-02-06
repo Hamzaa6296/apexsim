@@ -33,18 +33,17 @@ const ORDER_DATA = [
 
 export default function FutureTradingBook() {
     const [activeTab, setActiveTab] = useState<'Order books' | 'Last trades'>('Order books');
+    
     return (
-        <div className="w-full md:w-[320px] flex flex-col bg-[#181818] border-x border-white/5 h-full select-none">
+        <div className="w-full md:w-[320px] flex flex-col bg-[#181818] border-x border-white/5 h-full md:h-[550px] select-none">
             {/* 1. Header Tabs */}
-            {/* 1. Header Tabs with Dynamic Underline */}
-            <div className="flex items-center justify-between px-3 h-12 border-b border-white/5">
+            <div className="flex items-center justify-between px-3 h-10 shrink-0 border-b border-white/5">
                 <div className="flex gap-4 h-full items-center">
-                    {/* Liquidity Tab */}
                     <div
                         onClick={() => setActiveTab('Order books')}
-                        className="relative h-full flex items-center cursor-pointer group"
+                        className="relative h-full flex items-center !cursor-pointer group"
                     >
-                        <span className={`text-[13px] font-medium transition-colors ${activeTab === 'Order books' ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
+                        <span className={`text-[12px] md:text-[13px] font-medium transition-colors ${activeTab === 'Order books' ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
                             Order books
                         </span>
                         {activeTab === 'Order books' && (
@@ -52,12 +51,11 @@ export default function FutureTradingBook() {
                         )}
                     </div>
 
-                    {/* Recent Trades Tab */}
                     <div
                         onClick={() => setActiveTab('Last trades')}
                         className="relative h-full flex items-center !cursor-pointer group"
                     >
-                        <span className={`text-[13px] font-medium transition-colors ${activeTab === 'Last trades' ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
+                        <span className={`text-[12px] md:text-[13px] font-medium transition-colors ${activeTab === 'Last trades' ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
                             Last trades
                         </span>
                         {activeTab === 'Last trades' && (
@@ -65,70 +63,63 @@ export default function FutureTradingBook() {
                         )}
                     </div>
                 </div>
-                <LuSettings2 size={18} className="text-gray-400 !cursor-pointer hover:text-white" />
+                <LuSettings2 size={16} className="text-gray-400 !cursor-pointer hover:text-white" />
             </div>
 
             {/* 2. Grid Icons & Depth Selector */}
-            <div className="flex items-center justify-between px-3 py-2.5">
-                <div className="flex items-center gap-4">
-                    {/* Custom SVG Grid Icons from Image */}
-                    <div className="flex items-center gap-3.5">
-                        {/* Both Sides Icon */}
-                        <svg width="15" height="15" viewBox="0 0 16 16" className="text-[#00B595] !cursor-pointer">
-                            <rect x="2" y="2" width="5" height="5" fill="currentColor" rx="0.5" />
-                            <rect x="9" y="2" width="5" height="5" fill="currentColor" rx="0.5" />
-                            <rect x="2" y="9" width="5" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
-                            <rect x="9" y="9" width="5" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
-                        </svg>
-                        {/* Buy Side Icon */}
-                        <svg width="15" height="15" viewBox="0 0 16 16" className="text-gray-600 !cursor-pointer hover:text-gray-400">
-                            <rect x="2" y="2" width="12" height="5" fill="currentColor" rx="0.5" />
-                            <rect x="2" y="9" width="12" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
-                        </svg>
-                        {/* Sell Side Icon */}
-                        <svg width="15" height="15" viewBox="0 0 16 16" className="text-gray-600 !cursor-pointer hover:text-gray-400">
-                            <rect x="2" y="2" width="12" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
-                            <rect x="2" y="9" width="12" height="5" fill="currentColor" rx="0.5" />
-                        </svg>
-                    </div>
+            <div className="flex items-center justify-between px-3 py-2">
+                <div className="flex items-center gap-3.5">
+                    <svg width="14" height="14" viewBox="0 0 16 16" className="text-[#00B595] !cursor-pointer">
+                        <rect x="2" y="2" width="5" height="5" fill="currentColor" rx="0.5" />
+                        <rect x="9" y="2" width="5" height="5" fill="currentColor" rx="0.5" />
+                        <rect x="2" y="9" width="5" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
+                        <rect x="9" y="9" width="5" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
+                    </svg>
+                    <svg width="14" height="14" viewBox="0 0 16 16" className="text-gray-600 !cursor-pointer hover:text-gray-400">
+                        <rect x="2" y="2" width="12" height="5" fill="currentColor" rx="0.5" />
+                        <rect x="2" y="9" width="12" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
+                    </svg>
+                    <svg width="14" height="14" viewBox="0 0 16 16" className="text-gray-600 !cursor-pointer hover:text-gray-400">
+                        <rect x="2" y="2" width="12" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
+                        <rect x="2" y="9" width="12" height="5" fill="currentColor" rx="0.5" />
+                    </svg>
                 </div>
 
                 <div className="flex items-center gap-1.5">
                     <div className="bg-[#24262b] pl-2 pr-1.5 py-0.5 rounded flex items-center gap-3 !cursor-pointer hover:bg-[#2d3036] border border-white/5">
-                        <span className="text-[11px] text-gray-300">0.01</span>
+                        <span className="text-[10px] text-gray-300">0.01</span>
                         <FaCaretDown size={10} className="text-gray-500" />
                     </div>
-                    <BsThreeDotsVertical className="text-gray-500 !cursor-pointer hover:text-white" size={16} />
+                    <BsThreeDotsVertical className="text-gray-500 !cursor-pointer hover:text-white" size={14} />
                 </div>
             </div>
 
             {/* 3. Table Column Headers */}
-            <div className="grid grid-cols-3 text-[10px] text-gray-500 px-3 pb-1 font-medium">
+            <div className="grid grid-cols-3 text-[10px] text-gray-500 px-3 pb-1 font-medium border-b border-white/5 lg:border-none">
                 <span>Price(USDT)</span>
                 <span className="text-right">Amount(BTC)</span>
                 <span className="text-right">Total</span>
             </div>
 
             {/* 4. Orders List */}
-            <div className="flex-grow overflow-y-auto no-scrollbar pb-2">
+            <div className="flex-grow no-scrollbar pb-2 max-h-[400px] md:max-h-none">
                 {ORDER_DATA.map((item, i) => (
                     <div
                         key={i}
-                        className={`relative grid grid-cols-3 text-[11px] py-[2.5px] px-3 hover:bg-white/5 !cursor-pointer group ${item.type === 'buy' && i === 14 ? 'mt-1' : ''
-                            }`}
+                        className={`relative grid grid-cols-3 text-[11px] py-[3px] px-3 hover:bg-white/5 !cursor-pointer group ${
+                            item.type === 'buy' && ORDER_DATA[i-1]?.type === 'sell' ? 'mt-2 border-t border-white/5 pt-2' : ''
+                        }`}
                     >
                         {/* Depth Bar (Right Aligned) */}
                         <div
-                            className={`absolute right-0 top-0 h-full transition-all duration-300 ${item.type === 'sell' ? 'bg-[#ef5350]/10' : 'bg-[#00B595]/10'
-                                }`}
+                            className={`absolute right-0 top-0 h-full transition-all duration-300 ${
+                                item.type === 'sell' ? 'bg-[#ef5350]/10' : 'bg-[#26a69a]/10'
+                            }`}
                             style={{ width: `${item.depth}%` }}
                         />
 
-                        {/* Price Column */}
-                        <span className={`font-medium z-10 ${item.type === 'sell' ? 'text-[#F6465D]' : 'text-[#F6465D]'
-                            }`}>
-                            {/* Note: In image_2abb86.png, almost all prices are red even in the lower section, 
-                  matching that specific market state. */}
+                        {/* Price Column - Fixed coloring logic */}
+                        <span className={`font-medium z-10 ${item.type === 'sell' ? 'text-[#ef5350]' : 'text-[#26a69a]'}`}>
                             {item.price.toFixed(2)}
                         </span>
 

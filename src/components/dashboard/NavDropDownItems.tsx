@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { FaCaretDown, FaRegBell } from "react-icons/fa";
 
-// Data (Keep your paths and icons exactly as they are)
+// Data
 const tradeCategories = [
     { title: "Spot trade", desc: "Trade the spot market", icon: "/images/upanddown.png", path: "/dashboard/spot-trade" },
     { title: "Futures trade", desc: "Trade the futures market", icon: "/images/upanddown.png", path: "/dashboard/futures-trade" },
@@ -28,7 +28,7 @@ const tradeAssets = [
 const moreItems = [
     { title: "Learn", desc: "Master the markets", icon: <FaRegBell size={14} />, path: "/dashboard/learn" },
     { title: "Referral", desc: "Invite friends, earn together", icon: <FaRegBell size={14} />, path: "/dashboard/referral" },
-    { title: "Announcements", desc: "Latest updates", icon: <FaRegBell size={14} />, path: "/dashboard/announcements" },
+    { title: "Announcements", desc: "Latest updates", icon: <FaRegBell size={14} />, path: "#" },
 ];
 
 interface NavItemProps {
@@ -40,11 +40,10 @@ interface NavItemProps {
 export default function NavItem({ label, type, isMobile }: NavItemProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [activeQuote, setActiveQuote] = useState("USDT");
+    const [isSelected, setIsSelected] = useState<string | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
-    // Set to null so by default no option is selected
-    const [isSelected, setIsSelected] = useState<string | null>(null);
-
+    // Close dropdown on outside click
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
@@ -57,12 +56,16 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
 
     const closeDropdown = () => setIsOpen(false);
 
+    // Determine the items to render
+    const items = type === 'trade' ? tradeCategories : moreItems;
+
     return (
         <div className={isMobile ? "w-full" : "relative"} ref={containerRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`flex items-center gap-1 text-gray-400 hover:text-white transition-all py-2 !cursor-pointer w-full font-manrope ${isMobile ? "justify-between text-lg border-b border-white/5" : "text-sm font-medium"
-                    }`}
+                className={`flex items-center gap-1 text-gray-400 hover:text-white transition-all py-2 !cursor-pointer w-full font-manrope ${
+                    isMobile ? "justify-between text-lg border-b border-white/5" : "text-sm font-medium"
+                }`}
             >
                 {label}
                 <FaCaretDown size={14} className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
@@ -73,8 +76,7 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                     ? "pl-4 flex flex-col gap-2 my-2"
                     : `absolute top-[110%] left-[-20px] bg-[#1c1c1c] border border-white/10 rounded-sm shadow-2xl z-[150] overflow-hidden ${type === 'trade' ? 'w-[520px] flex' : 'w-[300px]'}`
                 }>
-
-                    {/* DESKTOP TRADE DROPDOWN */}
+                    {/* TRADE DESKTOP */}
                     {type === 'trade' && !isMobile && (
                         <>
                             <div className="w-[45%] bg-[#181818] p-2 border-r border-white/5">
@@ -84,21 +86,21 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                                         key={cat.title}
                                         href={cat.path}
                                         onClick={() => {
-                                            setIsSelected(cat.title); // Update selection state
-                                            // Optional: closeDropdown(); if you want it to close after selection
+                                            setIsSelected(cat.title);
+                                            closeDropdown(); // closes after selection
                                         }}
-                                        className={`block p-3 rounded-md !cursor-pointer group transition-colors mb-1 ${isSelected === cat.title ? "bg-[#232526]" : "hover:bg-white/5"
-                                            }`}
+                                        className={`block p-3 rounded-md !cursor-pointer group transition-colors mb-1 ${
+                                            isSelected === cat.title ? "bg-[#232526]" : "hover:bg-white/5"
+                                        }`}
                                     >
                                         <div className="flex items-center gap-3">
                                             <div className="w-6 h-6 flex items-center justify-center opacity-80 group-hover:opacity-100">
                                                 <img src={cat.icon} className="w-4 h-4" alt="" />
                                             </div>
                                             <div>
-                                                <p className={`text-[13px] font-semibold ${isSelected === cat.title ? "text-white" : "text-gray-300 group-hover:text-white"
-                                                    }`}>
-                                                    {cat.title}
-                                                </p>
+                                                <p className={`text-[13px] font-semibold ${
+                                                    isSelected === cat.title ? "text-white" : "text-gray-300 group-hover:text-white"
+                                                }`}>{cat.title}</p>
                                                 <p className="text-gray-500 text-[10px]">{cat.desc}</p>
                                             </div>
                                         </div>
@@ -115,8 +117,9 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                                                 e.stopPropagation();
                                                 setActiveQuote(quote);
                                             }}
-                                            className={`pb-2 transition-all !cursor-pointer border-b-2 ${activeQuote === quote ? "text-white border-blue-500" : "text-gray-500 border-transparent hover:text-gray-300"
-                                                }`}
+                                            className={`pb-2 transition-all !cursor-pointer border-b-2 ${
+                                                activeQuote === quote ? "text-white border-blue-500" : "text-gray-500 border-transparent hover:text-gray-300"
+                                            }`}
                                         >
                                             {quote}
                                         </button>
@@ -142,11 +145,11 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                         </>
                     )}
 
-                    {/* DESKTOP MORE DROPDOWN */}
+                    {/* MORE DESKTOP */}
                     {type === 'more' && !isMobile && (
                         <div className="p-2 flex flex-col gap-1 bg-[#1c1c1c]">
                             <p className="px-3 py-3 text-gray-500 text-[10px] uppercase font-bold">More</p>
-                            {moreItems.map((item, index) => (
+                            {moreItems.map(item => (
                                 <Link
                                     key={item.title}
                                     href={item.path}
@@ -154,18 +157,18 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                                         setIsSelected(item.title);
                                         closeDropdown();
                                     }}
-                                    className={`block p-4 rounded-md !cursor-pointer group transition-colors ${isSelected === item.title ? "bg-[#232526]" : "hover:bg-white/5"
-                                        }`}
+                                    className={`block p-4 rounded-md !cursor-pointer group transition-colors ${
+                                        isSelected === item.title ? "bg-[#232526]" : "hover:bg-white/5"
+                                    }`}
                                 >
                                     <div className="flex items-center gap-4">
                                         <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-gray-400 group-hover:text-white transition-all">
                                             {item.icon}
                                         </div>
                                         <div>
-                                            <p className={`text-[14px] font-semibold ${isSelected === item.title ? "text-white" : "text-white group-hover:text-white"
-                                                }`}>
-                                                {item.title}
-                                            </p>
+                                            <p className={`text-[14px] font-semibold ${
+                                                isSelected === item.title ? "text-white" : "text-white group-hover:text-white"
+                                            }`}>{item.title}</p>
                                             <p className="text-gray-500 text-[11px] mt-1">{item.desc}</p>
                                         </div>
                                     </div>
@@ -174,10 +177,10 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                         </div>
                     )}
 
-                    {/* MOBILE VERSION */}
+                    {/* MOBILE DROPDOWN */}
                     {isMobile && (
                         <div className="flex flex-col gap-1 py-2 bg-[#111111]">
-                            {(type === 'trade' ? tradeCategories : moreItems).map((item) => (
+                            {items.map(item => (
                                 <Link
                                     key={item.title}
                                     href={item.path}
