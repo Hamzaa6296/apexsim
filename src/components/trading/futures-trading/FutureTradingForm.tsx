@@ -38,7 +38,7 @@ export default function TradeForm() {
             </div>
 
             {/* 2. Open/Close Tabs */}
-            <div className="flex bg-[#24262b] rounded-md p-1">
+            <div className="flex bg-[#24262b] rounded-md ">
                 <button
                     onClick={() => setTab('Open')}
                     className={`flex-1 py-1.5 text-sm font-semibold rounded cursor-pointer transition-all ${tab === 'Open' ? 'bg-[#00B595] text-white' : 'text-gray-400'

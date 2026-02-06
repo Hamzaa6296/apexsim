@@ -9,6 +9,20 @@ import { RxCross2 } from "react-icons/rx";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { GiHamburgerMenu } from "react-icons/gi";
 
+import {
+    LuMousePointer2,
+
+    LuType,
+    LuSmile,
+    LuRuler,
+
+    LuMagnet,
+    LuEraser
+} from "react-icons/lu";
+import { FiMove, FiLayers } from "react-icons/fi";
+import { MdOutlineArchitecture, MdOutlineBrush } from "react-icons/md";
+import { BiShapeTriangle } from "react-icons/bi";
+
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
@@ -163,7 +177,7 @@ export default function FutureTradingChart() {
             </div>
 
             {/* INFO BAR — UNCHANGED */}
-            <div className="flex flex-col flex-wrap items-start md:gap-1 md:px-4 px-2 md:py-2 py-1 md:text-[12px] text-[9px] border-b border-white/5 bg-[#181818]">
+            <div className="flex md:ml-10 flex-col flex-wrap items-start md:gap-1 md:px-4 px-2 md:py-2 py-1 md:text-[12px] text-[9px] border-b border-white/5 bg-[#181818]">
                 <div className="flex items-center gap-1">
                     <button className="text-gray-500 cursor-pointer"><FaCaretDown size={10} /></button>
                     <span className="text-gray-500">2023/03/10</span>
@@ -188,18 +202,47 @@ export default function FutureTradingChart() {
                 </div>
             </div>
 
+            <div className="absolute md:left-0 md:top-[260px] w-8 bg-[#0c0e0f] flex flex-col h-[465px] items-center py-4 gap-5 z-50 border-r border-white/5">
+                {/* Cursor/Crosshair */}
+                <LuMousePointer2 size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+
+                {/* Trend Line Tools */}
+                <LuType size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+
+                {/* Gann & Fibonacci Tools */}
+                <MdOutlineArchitecture size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+
+                {/* Geometric Shapes */}
+                <BiShapeTriangle size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+
+                {/* Annotation Tools */}
+                <LuType size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+
+                {/* Patterns */}
+                <LuSmile size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+
+                {/* Prediction & Measurement */}
+                <div className="w-6 h-[1px] bg-white/10 my-1" /> {/* Divider like in image */}
+
+                <LuRuler size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+
+                <LuRuler size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+
+                <div className="w-6 h-[1px] bg-white/10 my-1" />
+
+                {/* Magnet & Visibility */}
+                <LuMagnet size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+
+                <FiLayers size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+
+                <LuEraser size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+            </div>
+
             {/* CHART AREA */}
             <div className="flex-grow flex flex-col relative overflow-hidden">
 
                 {/* ✅ LEFT SIDEBAR (ADDED) */}
-                <div className="absolute left-2 top-3 bottom-36 w-9 bg-[#0b0b0b] rounded-md flex flex-col items-center py-3 gap-4 z-30">
-                    <FaPlus size={12} className="text-gray-500 hover:text-white" />
-                    <FaPen size={12} className="text-gray-500 hover:text-white" />
-                    <FaRulerCombined size={12} className="text-gray-500 hover:text-white" />
-                    <FaDrawPolygon size={12} className="text-gray-500 hover:text-white" />
-                    <FaChartLine size={12} className="text-gray-500 hover:text-white" />
-                    <FaMagnet size={12} className="text-gray-500 hover:text-white" />
-                </div>
+
 
                 {/* ✅ CENTER BUY / SELL PANEL (ADDED) */}
                 <div className="absolute top-30 left-20  z-30">
