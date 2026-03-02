@@ -1,5 +1,3 @@
-import React from 'react';
-
 import TradeForm from '@/components/trading/bot-trading/market/BotMarketForm';
 import OrderTabs from '@/components/trading/bot-trading/market/BotMarketFooter';
 import TradingChart from '@/components/trading/bot-trading/market/BotMarketChart';
@@ -8,7 +6,6 @@ import TradingChart from '@/components/trading/bot-trading/market/BotMarketChart
 export default function TradingPage() {
   return (
     <div className="bg-[#181818] px-2 h-full text-gray-300  font-manrope">
-      {/* 1. TOP TICKER BAR */}
       <div className="flex items-center gap-4 md:px-4 px-6 md:py-4 py-2 border-b border-white/5 overflow-x-auto no-scrollbar">
         <div className="flex items-center justify-center gap-2 min-w-fit">
           <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" className="md:w-8 md:h-8 w-6 h-6" alt="btc" />
@@ -45,26 +42,20 @@ export default function TradingPage() {
         </div>
 
       </div>
-
-      {/* 2. MAIN CONTENT GRID */}
-      <div className="flex flex-col md:flex-row h-full gap-[1px] bg-white/5">
+      <div className="flex flex-col md:flex-row h-full gap-px bg-white/5">
 
         {/* Left Section: Chart */}
-        <div className="flex-grow flex flex-col min-w-0 bg-[#181818]">
+        <div className="grow flex flex-col min-w-0 bg-[#181818]">
           <div className="flex items-center gap-4 px-4 md:py-3 py-2 border-b border-white/5 text-[12px] font-semibold">
-            <span className="text-[#00B595] border-b-2 border-[#00B595] pb-1 !cursor-pointer">Chart</span>
-            <span className="text-gray-500 hover:text-white !cursor-pointer">Info</span>
+            <span className="text-[#00B595] border-b-2 border-[#00B595] pb-1 cursor-pointer">Chart</span>
+            <span className="text-gray-500 hover:text-white cursor-pointer">Info</span>
           </div>
-          <div className="h-[550px]">
+          <div className="h-137.5">
             <TradingChart />
           </div>
         </div>
-
-        {/* Right Section: Trade Form Component */}
         <TradeForm />
       </div>
-
-      {/* 3. Footer Section: Order Tabs Component */}
       <OrderTabs />
     </div>
   );

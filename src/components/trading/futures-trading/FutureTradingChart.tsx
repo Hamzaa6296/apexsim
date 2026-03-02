@@ -2,11 +2,11 @@
 import React, { useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { ApexOptions } from 'apexcharts';
-import { FaChartLine, FaPlus, FaCaretDown, FaPen, FaRulerCombined, FaDrawPolygon, FaMagnet } from "react-icons/fa";
+import { FaCaretDown } from "react-icons/fa";
 import { MdOutlineOpenInFull, MdOutlineGridView, MdClose } from "react-icons/md";
 import { IoEyeOutline, IoSettingsOutline } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
-import { HiMenuAlt2 } from "react-icons/hi";
+
 import { GiHamburgerMenu } from "react-icons/gi";
 
 import {
@@ -19,8 +19,8 @@ import {
     LuMagnet,
     LuEraser
 } from "react-icons/lu";
-import { FiMove, FiLayers } from "react-icons/fi";
-import { MdOutlineArchitecture, MdOutlineBrush } from "react-icons/md";
+import { FiLayers } from "react-icons/fi";
+import { MdOutlineArchitecture } from "react-icons/md";
 import { BiShapeTriangle } from "react-icons/bi";
 
 
@@ -36,7 +36,6 @@ export default function FutureTradingChart() {
         amplitude: 4.02
     });
 
-    // ✅ Keep data stable
     const { candles, volume, lastPrice } = useMemo(() => {
         let currentPrice = 22000;
         let currentTime = new Date('2022-11-01').getTime();
@@ -158,7 +157,7 @@ export default function FutureTradingChart() {
     return (
         <div className="bg-[#181818] w-full h-full font-manrope flex flex-col overflow-hidden">
 
-            {/* HEADER TOOLBAR — UNCHANGED */}
+
             <div className="flex items-center justify-between overflow-x-auto px-3 md:py-3 py-1.5 gap-3 font-semibold bg-[#181818] border-b border-white/5">
                 <div className="flex items-center gap-3">
                     {['Time', '1s', '15m', '1H', '4H', '1D', '1W'].map((t) => (
@@ -176,7 +175,7 @@ export default function FutureTradingChart() {
                 </div>
             </div>
 
-            {/* INFO BAR — UNCHANGED */}
+
             <div className="flex md:ml-10 flex-col flex-wrap items-start md:gap-1 md:px-4 px-2 md:py-2 py-1 md:text-[12px] text-[9px] border-b border-white/5 bg-[#181818]">
                 <div className="flex items-center gap-1">
                     <button className="text-gray-500 cursor-pointer"><FaCaretDown size={10} /></button>
@@ -202,49 +201,33 @@ export default function FutureTradingChart() {
                 </div>
             </div>
 
-            <div className="absolute md:left-0 top-[260px] md:w-8 w-5 bg-[#0c0e0f] flex flex-col md:h-[465px] h-[330px] items-center py-4 md:gap-5 gap-3 z-50 border-r border-white/5">
-                {/* Cursor/Crosshair */}
-                <LuMousePointer2 size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+            <div className="absolute md:left-0 top-65-8 w-5 bg-[#0c0e0f] flex flex-col md:h-116.25 h-82.5 items-center py-4 md:gap-5 gap-3 z-50 border-r border-white/5">
+                <LuMousePointer2 size={16} className="text-gray-500 hover:text-white cursor-pointer transition-colors" />
+                <LuType size={16} className="text-gray-500 hover:text-white cursor-pointer transition-colors" />
+                <MdOutlineArchitecture size={16} className="text-gray-500 hover:text-white cursor-pointer transition-colors" />
+                <BiShapeTriangle size={16} className="text-gray-500 hover:text-white cursor-pointer transition-colors" />
+                <LuType size={16} className="text-gray-500 hover:text-white cursor-pointer transition-colors" />
+                <LuSmile size={16} className="text-gray-500 hover:text-white cursor-pointer transition-colors" />
 
-                {/* Trend Line Tools */}
-                <LuType size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
 
-                {/* Gann & Fibonacci Tools */}
-                <MdOutlineArchitecture size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+                <div className="w-6 h-px bg-white/10 my-1" /> { }
 
-                {/* Geometric Shapes */}
-                <BiShapeTriangle size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+                <LuRuler size={16} className="text-gray-500 hover:text-white cursor-pointer transition-colors" />
 
-                {/* Annotation Tools */}
-                <LuType size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+                <LuRuler size={16} className="text-gray-500 hover:text-white cursor-pointer transition-colors" />
 
-                {/* Patterns */}
-                <LuSmile size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+                <div className="w-6 h-px bg-white/10 my-1" />
 
-                {/* Prediction & Measurement */}
-                <div className="w-6 h-[1px] bg-white/10 my-1" /> {/* Divider like in image */}
 
-                <LuRuler size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+                <LuMagnet size={16} className="text-gray-500 hover:text-white cursor-pointer transition-colors" />
 
-                <LuRuler size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+                <FiLayers size={16} className="text-gray-500 hover:text-white cursor-pointer transition-colors" />
 
-                <div className="w-6 h-[1px] bg-white/10 my-1" />
-
-                {/* Magnet & Visibility */}
-                <LuMagnet size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
-
-                <FiLayers size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
-
-                <LuEraser size={16} className="text-gray-500 hover:text-white !cursor-pointer transition-colors" />
+                <LuEraser size={16} className="text-gray-500 hover:text-white cursor-pointer transition-colors" />
             </div>
 
-            {/* CHART AREA */}
-            <div className="flex-grow flex flex-col relative overflow-hidden">
 
-                {/* ✅ LEFT SIDEBAR (ADDED) */}
-
-
-                {/* ✅ CENTER BUY / SELL PANEL (ADDED) */}
+            <div className="grow flex flex-col relative overflow-hidden">
                 <div className="absolute md:top-30 top-20 md:left-20 left-15  z-30">
                     <div className="flex items-center bg-[#242424] rounded-lg overflow-hidden">
                         <div className="px-3 text-gray-50"><GiHamburgerMenu size={14} /></div>
@@ -264,12 +247,12 @@ export default function FutureTradingChart() {
                     </div>
                 </div>
 
-                {/* MAIN CHART — UNCHANGED */}
-                <div className="flex-grow relative">
+
+                <div className="grow relative">
                     <Chart options={mainOptions} series={[{ data: candles }]} type="candlestick" height="100%" />
                 </div>
 
-                {/* VOLUME — UNCHANGED */}
+
                 <div className="h-32 border-t border-white/5">
                     <Chart options={volumeOptions} series={[{ name: 'Volume', data: volume }]} type="bar" height="100%" />
                 </div>

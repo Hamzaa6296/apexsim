@@ -1,6 +1,5 @@
-"use client";
+
 import React from 'react';
-import { LuEye, LuSearch, LuCopy } from "react-icons/lu";
 import { FaAddressCard } from "react-icons/fa";
 import { IoPersonSharp } from "react-icons/io5";
 import { AiFillProfile } from "react-icons/ai";
@@ -21,7 +20,7 @@ const PreferenceRow = ({ icon, title, description, value, actionText }: Preferen
       </div>
       <div className="flex flex-col">
         <h4 className="font-semibold text-white text-[15px]">{title}</h4>
-        <p className="text-gray-500 text-xs leading-relaxed max-w-[200px]">
+        <p className="text-gray-500 text-xs leading-relaxed max-w-50">
           {description}
         </p>
         {value && <span className="text-white text-sm mt-1 font-medium">{value}</span>}
@@ -40,7 +39,7 @@ export default function ProfileSettings() {
     <div className=" text-white py-5 md:py-0 font-manrope">
       <div className="max-w-6xl mx-auto">
 
-        {/* Profile Section */}
+
         <section>
           <h2 className="text-2xl font-semibold px-4">Profile</h2>
           <div className=" px-6">
@@ -61,7 +60,7 @@ export default function ProfileSettings() {
           </div>
         </section>
 
-        {/* Preference Section */}
+
         <section>
           <h2 className="text-2xl font-semibold px-4">Preference</h2>
           <div className="px-6">

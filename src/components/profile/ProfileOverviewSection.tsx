@@ -1,5 +1,3 @@
-"use client";
-import React from 'react';
 import { LuEye, LuSearch } from "react-icons/lu";
 import { BiSolidCopy } from "react-icons/bi";
 import { FaCaretRight, FaCaretDown } from "react-icons/fa";
@@ -15,7 +13,7 @@ export default function ProfileOverview() {
     <div className="min-h-screen md:py-0 py-5 bg-[#1D1D1D] text-white px-3 sm:px-4 font-manrope">
       <div className="max-w-7xl mx-auto">
 
-        {/* User Profile Header */}
+
         <div className="flex flex-col md:flex-row border-b pb-4 md:pb-5 border-[#181818] md:items-center justify-between gap-4 md:gap-6 mb-4">
           <div className="flex items-center gap-2">
             <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-700">
@@ -46,7 +44,7 @@ export default function ProfileOverview() {
           </div>
         </div>
 
-        {/* Estimated Value & Actions */}
+
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8 md:mb-12">
           <div>
             <div className="flex items-center gap-2 text-gray-500 text-xs mb-1">
@@ -76,7 +74,7 @@ export default function ProfileOverview() {
           </div>
         </div>
 
-        {/* Market Filter Bar */}
+
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 md:mb-6">
           <div className="flex items-center gap-4 md:gap-6">
             <h3 className="text-lg font-semibold">Market</h3>
@@ -96,7 +94,7 @@ export default function ProfileOverview() {
           </div>
         </div>
 
-        {/* Tabs */}
+
         <div className="mb-5 overflow-x-auto">
           <div className="flex min-w-max border-b border-b-gray-700">
             <button className="px-4 pb-1 border-b-4 border-b-[#00B595] whitespace-nowrap">
@@ -109,9 +107,9 @@ export default function ProfileOverview() {
           </div>
         </div>
 
-        {/* Assets Table */}
+
         <div className="overflow-x-auto -mx-3 sm:mx-0 px-3 sm:px-4">
-          <table className="w-full min-w-[900px] text-left">
+          <table className="w-full min-w-225 text-left">
             <thead>
               <tr className="text-gray-400 text-sm">
                 <th className="py-3 font-medium">Coin</th>
@@ -133,9 +131,9 @@ export default function ProfileOverview() {
               </tr>
             </thead>
 
-            <tbody className="divide-y divide-white/[0.03]">
+            <tbody className="divide-y divide-white/3">
               {coins.map((coin, idx) => (
-                <tr key={idx} className="hover:bg-white/[0.01] transition-colors">
+                <tr key={idx} className="hover:bg-white/1 transition-colors">
                   <td className="py-5">
                     <div className="flex items-center gap-3">
                       <img src={coin.icon} alt={coin.name} className="w-8 h-8 rounded-full" />

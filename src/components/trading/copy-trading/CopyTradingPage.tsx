@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import { FaInfoCircle, FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import TraderCard from './CopyTradingCards';
 import { IoEyeSharp } from "react-icons/io5";
 import { FaCaretDown } from "react-icons/fa";
@@ -10,9 +10,9 @@ export default function CopyTradingPage() {
 
     return (
         <div className="min-h-screen bg-[#181818] text-white md:p-6 p-4 md:px-12 mt-5 font-manrope">
-            <div className="max-w-[1400px] mx-auto">
+            <div className="max-w-350 mx-auto">
 
-                {/* TOP SECTION */}
+
                 <div className="flex flex-col md:flex-row justify-between items-start gap-6 mb-10">
                     <div className="space-y-4">
                         <h1 className="md:text-3xl text-xl tracking-tight md:mb-8">Copy Trading</h1>
@@ -33,7 +33,7 @@ export default function CopyTradingPage() {
                         </button>
                     </div>
 
-                    {/* Search Bar */}
+
                     <div className="relative w-full md:w-60">
                         <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-50" size={14} />
                         <input
@@ -44,7 +44,7 @@ export default function CopyTradingPage() {
                     </div>
                 </div>
 
-                {/* TABS SECTION */}
+
                 <div className="flex items-center overflow-x-auto gap-4 flex-nowrap whitespace-nowrap justify-between mb-8">
                     <div className='flex items-center'>
                         {["ROI", "PnL", "Win rate", "Number for copy traders", "Current holding position size"].map((tab) => (
@@ -73,12 +73,12 @@ export default function CopyTradingPage() {
                                 placeholder="7 days"
                                 className="w-full bg-[#222222] py-3 pl-4 pr-4 text-xs focus:outline-none "
                             />
-                            <FaCaretDown size={12} className='absolute top-3.5 right-3 '/>
+                            <FaCaretDown size={12} className='absolute top-3.5 right-3 ' />
                         </div>
                     </div>
                 </div>
 
-                {/* GRID SECTION: 3 Columns Desktop, 1 Column Mobile */}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[1, 2, 3, 4, 5, 6].map((i) => (
                         <TraderCard key={i} />

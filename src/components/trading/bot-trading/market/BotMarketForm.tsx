@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { FaPlusCircle, FaCaretDown } from "react-icons/fa";
 import { TbArrowBackUp } from "react-icons/tb";
 
@@ -7,7 +7,7 @@ type TabType = "AI" | "Popular" | "Manual";
 
 export default function BotMarketForm() {
     const [activeTab, setActiveTab] = useState<TabType>("AI");
-    // State for the radio buttons
+ 
     const [selectedOption, setSelectedOption] = useState<string>("Sell all base coins on stops");
 
     const aiStrategies = [
@@ -19,13 +19,12 @@ export default function BotMarketForm() {
 
     return (
         <div className="w-full md:w-[350px] bg-[#181818] flex flex-col h-full select-none font-sans text-[#EAECEF]">
-            {/* 1. Header */}
+            
             <div className="flex items-center gap-3 p-4 border-b border-white/5">
                 <TbArrowBackUp size={22} className="cursor-pointer text-white" />
                 <h2 className="text-xl">Spot</h2>
             </div>
 
-            {/* 2. Tabs */}
             <div className="flex px-4 pt-2 gap-6 border-b border-white/5 relative">
                 {(["AI", "Popular", "Manual"] as TabType[]).map((tab) => (
                     <div 
@@ -43,7 +42,7 @@ export default function BotMarketForm() {
                 ))}
             </div>
 
-            {/* 3. Currency Selector */}
+            
             <div className="p-4 flex items-center justify-between">
                 <div className="flex items-center gap-2 bg-[#1E2023] px-3 py-1.5 rounded cursor-pointer">
                     <span className="text-[10px]">BTC /USDT</span>
@@ -51,10 +50,10 @@ export default function BotMarketForm() {
                 </div>
             </div>
 
-            {/* 4. Content */}
+            
             <div className="flex-1 overflow-y-auto px-4 pb-6">
                 
-                {/* --- AI SECTION --- */}
+                
                 {activeTab === "AI" && (
                     <div className="space-y-4">
                         {aiStrategies.map((strat, idx) => (
@@ -86,7 +85,7 @@ export default function BotMarketForm() {
                     </div>
                 )}
 
-                {/* --- MANUAL SECTION --- */}
+                
                 {(activeTab === "Manual" || activeTab === "Popular") &&  (
                     <div className="space-y-4">
                         <div className="grid grid-cols-2 gap-3">
@@ -121,7 +120,7 @@ export default function BotMarketForm() {
                             </div>
                         </div>
 
-                        {/* Slider */}
+                        
                         <div className="relative h-6 flex items-center px-1 cursor-pointer">
                             <div className="absolute w-full h-[2px] bg-[#2d3036] rounded" />
                             <div className="absolute w-full flex justify-between z-10">
@@ -132,7 +131,7 @@ export default function BotMarketForm() {
                         </div>
                         <p className="text-[11px] flex items-center text-gray-500">9,500.0564107 USDT <span className="cursor-pointer ml-1 text-[#3b82f6]"><FaPlusCircle size={9}/></span></p>
 
-                        {/* Functional Radio Options */}
+            
                         <div className="pt-2 border-t border-white/5 space-y-4">
                             <div className="flex items-center justify-between cursor-pointer">
                                 <span className="text-[14px] font-medium">Advanced options</span>

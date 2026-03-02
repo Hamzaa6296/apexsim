@@ -6,7 +6,7 @@ export default function ActivityDetail({ onBack }: ActivityDetailProps) {
   return (
     <div className="flex-1 animate-in fade-in duration-500 px-4 md:pr-8 md:pl-0">
 
-      {/* Breadcrumb Navigation */}
+
       <nav className="
         flex flex-wrap items-center gap-1
         text-xs sm:text-[15px]
@@ -29,7 +29,7 @@ export default function ActivityDetail({ onBack }: ActivityDetailProps) {
         <span className="text-white font-medium">Current page</span>
       </nav>
 
-      {/* Hero Title & Date */}
+
       <div className="space-y-3 mb-6 text-center md:text-left">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white tracking-tight leading-snug">
           Top-up with $100 and get $30 in BTC
@@ -40,7 +40,7 @@ export default function ActivityDetail({ onBack }: ActivityDetailProps) {
         </span>
       </div>
 
-      {/* Hero Image */}
+
       <div className="
         w-full
         bg-[#232323]
@@ -54,15 +54,15 @@ export default function ActivityDetail({ onBack }: ActivityDetailProps) {
           src="/images/learnsection.png"
           alt="BTC Reward"
           className="
-            w-full max-w-[220px]
-            sm:max-w-[280px]
+            w-full max-w-55
+            sm:max-w-70
             md:w-64 md:h-64
             object-contain
           "
         />
       </div>
 
-      {/* Content Body */}
+
       <div className="
         text-gray-50
         text-base sm:text-lg
@@ -93,7 +93,7 @@ export default function ActivityDetail({ onBack }: ActivityDetailProps) {
         </div>
       </div>
 
-      {/* Action Button */}
+
       <button
         className="
           mt-10

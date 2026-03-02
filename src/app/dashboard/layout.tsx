@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased">
         <div className="min-h-screen bg-[#181818]">
           <Navbar />
-          <main className="pt-[70px]">
+          <main className="pt-17.5">
             {children}
           </main>
         </div>

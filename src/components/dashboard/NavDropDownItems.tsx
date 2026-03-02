@@ -3,7 +3,6 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { FaCaretDown, FaRegBell } from "react-icons/fa";
 
-// Data
 const tradeCategories = [
     { title: "Spot trade", desc: "Trade the spot market", icon: "/images/upanddown.png", path: "/dashboard/spot-trade" },
     { title: "Futures trade", desc: "Trade the futures market", icon: "/images/upanddown.png", path: "/dashboard/futures-trade" },
@@ -14,15 +13,15 @@ const tradeCategories = [
 const quoteCurrencies = ["USDT", "USDC", "USDQ", "EUR"];
 
 const tradeAssets = [
-    { name: "BTC/USDT", icon: "https://cryptologos.cc/logos/bitcoin-btc-logo.png" },
-    { name: "ETH/USDT", icon: "https://cryptologos.cc/logos/ethereum-eth-logo.png" },
-    { name: "AVAX/USDT", icon: "https://cryptologos.cc/logos/avalanche-avax-logo.png" },
-    { name: "SOL/USDT", icon: "https://cryptologos.cc/logos/solana-sol-logo.png" },
-    { name: "XRP/USDT", icon: "https://cryptologos.cc/logos/xrp-xrp-logo.png" },
-    { name: "USDC/USDT", icon: "https://cryptologos.cc/logos/usd-coin-usdc-logo.png" },
-    { name: "ADA/USDT", icon: "https://cryptologos.cc/logos/cardano-ada-logo.png" },
-    { name: "BCH/USDT", icon: "https://cryptologos.cc/logos/bitcoin-cash-bch-logo.png" },
-    { name: "XLM/USDT", icon: "https://cryptologos.cc/logos/stellar-xlm-logo.png" },
+    { name: "BTC/USDT", icon: "/images/bitcoin.png" },
+    { name: "ETH/USDT", icon: "/images/etherium.png" },
+    { name: "AVAX/USDT", icon: "/images/dog.png" },
+    { name: "SOL/USDT", icon: "/images/doge.png" },
+    { name: "XRP/USDT", icon: "/images/red.png" },
+    { name: "USDC/USDT", icon: "/images/tcoin.png" },
+    { name: "ADA/USDT", icon: "/images/stype.png" },
+    { name: "BCH/USDT", icon: "/images/animatethree.png" },
+    { name: "XLM/USDT", icon: "/images/animatetwo.png" },
 ];
 
 const moreItems = [
@@ -43,7 +42,6 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
     const [isSelected, setIsSelected] = useState<string | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
-    // Close dropdown on outside click
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
@@ -56,14 +54,14 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
 
     const closeDropdown = () => setIsOpen(false);
 
-    // Determine the items to render
+ 
     const items = type === 'trade' ? tradeCategories : moreItems;
 
     return (
         <div className={isMobile ? "w-full" : "relative"} ref={containerRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`flex items-center gap-1 text-gray-400 hover:text-white transition-all py-2 !cursor-pointer w-full font-manrope ${
+                className={`flex items-center gap-1 text-gray-400 hover:text-white transition-all py-2 cursor-pointer w-full font-manrope ${
                     isMobile ? "justify-between text-lg border-b border-white/5" : "text-sm font-medium"
                 }`}
             >
@@ -74,9 +72,9 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
             {isOpen && (
                 <div className={isMobile
                     ? "pl-4 flex flex-col gap-2 my-2"
-                    : `absolute top-[110%] left-[-20px] bg-[#1c1c1c] border border-white/10 rounded-sm shadow-2xl z-[150] overflow-hidden ${type === 'trade' ? 'w-[520px] flex' : 'w-[300px]'}`
+                    : `absolute top-[110%] -left-5 bg-[#1c1c1c] border border-white/10 rounded-sm shadow-2xl z-150 overflow-hidden ${type === 'trade' ? 'w-130 flex' : 'w-75'}`
                 }>
-                    {/* TRADE DESKTOP */}
+                    
                     {type === 'trade' && !isMobile && (
                         <>
                             <div className="w-[45%] bg-[#181818] p-2 border-r border-white/5">
@@ -89,7 +87,7 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                                             setIsSelected(cat.title);
                                             closeDropdown(); // closes after selection
                                         }}
-                                        className={`block p-3 rounded-md !cursor-pointer group transition-colors mb-1 ${
+                                        className={`block p-3 rounded-md cursor-pointer group transition-colors mb-1 ${
                                             isSelected === cat.title ? "bg-[#232526]" : "hover:bg-white/5"
                                         }`}
                                     >
@@ -108,7 +106,7 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                                 ))}
                             </div>
 
-                            <div className="w-[55%] p-4 flex flex-col gap-3 max-h-[420px] no-scrollbar bg-[#232526]">
+                            <div className="w-[55%] p-4 flex flex-col gap-3 max-h-105 no-scrollbar bg-[#232526]">
                                 <div className="flex gap-5 text-[11px] font-bold text-gray-500 border-b border-white/5 pb-0 mb-1">
                                     {quoteCurrencies.map((quote) => (
                                         <button
@@ -117,7 +115,7 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                                                 e.stopPropagation();
                                                 setActiveQuote(quote);
                                             }}
-                                            className={`pb-2 transition-all !cursor-pointer border-b-2 ${
+                                            className={`pb-2 transition-all cursor-pointer border-b-2 ${
                                                 activeQuote === quote ? "text-white border-blue-500" : "text-gray-500 border-transparent hover:text-gray-300"
                                             }`}
                                         >
@@ -132,7 +130,7 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                                             key={asset.name}
                                             href="#"
                                             onClick={closeDropdown}
-                                            className="flex items-center justify-between py-2 px-1 hover:bg-white/5 rounded-md !cursor-pointer group transition-colors"
+                                            className="flex items-center justify-between py-2 px-1 hover:bg-white/5 rounded-md cursor-pointer group transition-colors"
                                         >
                                             <div className="flex items-center gap-3">
                                                 <img src={asset.icon} alt={asset.name} className="w-5 h-5 rounded-full object-contain" />
@@ -145,7 +143,7 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                         </>
                     )}
 
-                    {/* MORE DESKTOP */}
+                    
                     {type === 'more' && !isMobile && (
                         <div className="p-2 flex flex-col gap-1 bg-[#1c1c1c]">
                             <p className="px-3 py-3 text-gray-500 text-[10px] uppercase font-bold">More</p>
@@ -157,7 +155,7 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                                         setIsSelected(item.title);
                                         closeDropdown();
                                     }}
-                                    className={`block p-4 rounded-md !cursor-pointer group transition-colors ${
+                                    className={`block p-4 rounded-md cursor-pointer group transition-colors ${
                                         isSelected === item.title ? "bg-[#232526]" : "hover:bg-white/5"
                                     }`}
                                 >
@@ -177,7 +175,7 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                         </div>
                     )}
 
-                    {/* MOBILE DROPDOWN */}
+                
                     {isMobile && (
                         <div className="flex flex-col gap-1 py-2 bg-[#111111]">
                             {items.map(item => (

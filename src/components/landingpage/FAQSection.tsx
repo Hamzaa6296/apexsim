@@ -11,22 +11,22 @@ interface FAQItemProps {
 
 const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) => {
   return (
-    /* GRADIENT BORDER WRAPPER: Top-left white fading to transparent/dark */
-    <div className="relative p-[1px] rounded-2xl mb-2 overflow-hidden">
-      {/* The Gradient "Border" layer */}
-      <div className={`absolute inset-0 bg-gradient-to-br from-white/40 via-white/5 to-white/5 ${isOpen ? 'opacity-100' : 'opacity-70'}`} />
-      
-      {/* INNER CONTENT: Dark background to show the border highlight */}
+
+    <div className="relative p-px rounded-2xl mb-2 overflow-hidden">
+
+      <div className={`absolute inset-0 bg-linear-to-br from-white/40 via-white/5 to-white/5 ${isOpen ? 'opacity-100' : 'opacity-70'}`} />
+
+
       <div className="relative rounded-[15px] bg-[#1A1B1B] overflow-hidden">
         <button
           onClick={onClick}
-          /* Added !cursor-pointer as per your instructions */
+
           className={`w-full flex items-center justify-between px-6 ${isOpen ? 'py-2 mt-4' : 'py-4'} text-left cursor-pointer group`}
         >
           <span className={`font-medium md:text-lg pr-4 transition-colors ${isOpen ? 'text-white' : 'text-white'}`}>
             {question}
           </span>
-          <div className="flex-shrink-0 text-white">
+          <div className="shrink-0 text-white">
             {isOpen ? (
               <Minus className="w-7 h-7" />
             ) : (
@@ -34,12 +34,11 @@ const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) => {
             )}
           </div>
         </button>
-        
-        {/* Animated Answer Container */}
-        <div 
-          className={` ${
-            isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-          } `}
+
+
+        <div
+          className={` ${isOpen ? 'max-h-125 opacity-100' : 'max-h-0 opacity-0'
+            } `}
         >
           <div className="px-6 pb-6 text-gray-400 leading-relaxed text-sm md:text-base border-t border-white/5">
             {answer}
@@ -79,7 +78,7 @@ export default function FAQ() {
   return (
     <section className="bg-[#161616] text-white md:py-24 py-10 px-6 md:min-h-screen">
       <div className="max-w-4xl font-manrope mx-auto">
-        {/* Header */}
+
         <div className="text-center">
           <span className="text-gray-300 md:text-[12px] text-xs bg-[#2A2B2B] inline-block px-4 py-1 rounded-full border border-[#4D4D4D] backdrop-blur-md">
             FAQ
@@ -92,7 +91,7 @@ export default function FAQ() {
           </p>
         </div>
 
-        {/* Accordion List */}
+
         <div className="mt-8">
           {faqData.map((faq, index) => (
             <FAQItem

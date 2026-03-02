@@ -40,14 +40,8 @@ const coins = [
 export default function FundsOverview() {
     return (
         <div className="min-h-screen bg-[#1D1D1D] text-white font-manrope px-4 sm:px-6 md:px-8">
-
-            {/* ================= HEADER ================= */}
             <div className="flex-1 w-full">
-
-                {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-6 mb-10 pt-6">
-
-                    {/* Valuation */}
                     <div>
                         <div className="flex items-center font-semibold gap-2 text-gray-500 text-sm mb-1">
                             <span>Valuation</span>
@@ -66,7 +60,7 @@ export default function FundsOverview() {
                         <p className="text-gray-500 font-semibold text-sm mt-1">≈$0.00</p>
                     </div>
 
-                    {/* P&L */}
+            
                     <div className="sm:text-right">
                         <div className="flex items-center sm:justify-end gap-2 mb-1">
                             <span className="text-gray-400 font-semibold text-xs border-b border-gray-600 border-dotted cursor-pointer hover:text-blue-500 transition-colors">
@@ -83,7 +77,7 @@ export default function FundsOverview() {
                     </div>
                 </div>
 
-                {/* Assets */}
+            
                 <div className="mt-8">
                     <div className="flex md:flex-row flex-col sm:items-center justify-between gap-4 mb-4 py-3 border-y border-white/5">
                         <div className="flex items-center justify-center gap-5">
@@ -121,9 +115,9 @@ export default function FundsOverview() {
 
                 </div>
             </div>
-            {/* ================= TABLE ================= */}
+            
             <div className="overflow-x-auto max-w-6xl">
-                <table className="w-full min-w-[900px] text-sm">
+                <table className="w-full min-w-225 text-sm">
                     <thead>
                         <tr className="text-gray-400 text-sm">
                             <th className="py-3 text-left font-medium">
@@ -159,9 +153,9 @@ export default function FundsOverview() {
                         {coins.map((coin, idx) => (
                             <tr
                                 key={idx}
-                                className="border-b border-white/5 hover:bg-white/[0.02] transition"
+                                className="border-b border-white/5 hover:bg-white/2 transition"
                             >
-                                {/* Coin */}
+                                
                                 <td className="py-4">
                                     <div className="flex items-center gap-3">
                                         <img
@@ -176,19 +170,13 @@ export default function FundsOverview() {
                                     </div>
                                 </td>
 
-                                {/* Total */}
+                            
                                 <td className="py-4">
                                     <div>{coin.total}</div>
                                     <div className="text-gray-500 text-xs">≈$0.00</div>
                                 </td>
-
-                                {/* Available */}
                                 <td className="py-4">0.000000</td>
-
-                                {/* In Order */}
                                 <td className="py-4">0.000000</td>
-
-                                {/* Actions */}
                                 <td className="py-4 text-right whitespace-nowrap">
                                     <button className="text-[#00B595] hover:underline mr-4">
                                         Deposit

@@ -1,6 +1,4 @@
-"use client";
 
-import React from "react";
 import { LuEye } from "react-icons/lu";
 import { FaCaretDown } from "react-icons/fa";
 
@@ -14,13 +12,13 @@ export default function Overview() {
   return (
     <div className="flex flex-col lg:flex-row min-h-screen bg-[#1D1D1D] text-white font-manrope">
 
-      {/* LEFT SECTION */}
+
       <div className="flex-1 px-4 sm:px-6 md:px-8 md:border-r-4 md:border-[#181818] max-w-full md:max-w-4xl">
 
-        {/* Header */}
+
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-6 mb-10 pt-6">
 
-          {/* Valuation */}
+
           <div>
             <div className="flex items-center font-semibold gap-2 text-gray-500 text-sm mb-1">
               <span>Valuation</span>
@@ -39,7 +37,7 @@ export default function Overview() {
             <p className="text-gray-500 font-semibold text-sm mt-1">≈$0.00</p>
           </div>
 
-          {/* P&L */}
+
           <div className="sm:text-right">
             <div className="flex items-center sm:justify-end gap-2 mb-1">
               <span className="text-gray-400 font-semibold text-xs border-b border-gray-600 border-dotted cursor-pointer hover:text-blue-500 transition-colors">
@@ -56,7 +54,7 @@ export default function Overview() {
           </div>
         </div>
 
-        {/* Assets */}
+
         <div className="mt-8">
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4 py-3 border-y border-white/5">
             <h3 className="text-lg font-semibold">My Assets</h3>
@@ -72,9 +70,9 @@ export default function Overview() {
             </label>
           </div>
 
-          {/* Table wrapper for mobile scroll */}
+
           <div className="overflow-x-auto">
-            <table className="min-w-[500px] w-full text-left">
+            <table className="min-w-125 w-full text-left">
               <thead>
                 <tr className="text-gray-500 text-sm">
                   <th className="pb-4 font-semibold">Symbol</th>
@@ -111,7 +109,7 @@ export default function Overview() {
         </div>
       </div>
 
-      {/* RIGHT SECTION */}
+
       <div className="w-full lg:w-[350px] px-4 sm:px-6 py-8 border-t lg:border-t-0 border-white/5">
         <h3 className="text-lg md:text-xl font-semibold mb-6">
           Recent Deposits and Trades

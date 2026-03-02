@@ -1,4 +1,3 @@
-"use client";
 import React from 'react';
 import { BsGoogle, BsFillPhoneFill } from "react-icons/bs";
 import { IoMdMail } from "react-icons/io";
@@ -29,7 +28,7 @@ const SecurityRow = ({
       </div>
 
       <div className="flex-1">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-3 sm:w-[830px]">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-3 sm:w-207.5">
           <h4 className="font-semibold text-[15px] text-white">
             {title}
           </h4>
@@ -41,14 +40,14 @@ const SecurityRow = ({
           )}
         </div>
 
-        <p className="text-gray-500 text-xs mt-1 leading-relaxed max-w-full sm:max-w-[750px]">
+        <p className="text-gray-500 text-xs mt-1 leading-relaxed max-w-full sm:max-w-187.5">
           {subtitle}
         </p>
       </div>
     </div>
 
     <button
-      className="self-start sm:self-center py-2 px-4 rounded text-sm font-semibold transition-all cursor-pointer min-w-[90px] bg-[#222222] text-white"
+      className="self-start sm:self-center py-2 px-4 rounded text-sm font-semibold transition-all cursor-pointer min-w-22.5 bg-[#222222] text-white"
     >
       {actionText}
     </button>
@@ -60,7 +59,7 @@ export default function SecuritySettings() {
     <div className="min-h-screen  text-white font-manrope px-3 sm:px-4">
       <div className="max-w-5xl md:py-0 py-5 mx-auto space-y-10 sm:space-y-12">
 
-        {/* Authentication Method */}
+        
         <section className="border-b-4 border-b-[#181818] pb-2">
           <h3 className="text-gray-50 text-lg font-medium mb-2">
             Authentication method
@@ -92,7 +91,7 @@ export default function SecuritySettings() {
           </div>
         </section>
 
-        {/* Advanced Security */}
+        
         <section className="border-b-4 border-b-[#181818] pb-2">
           <h3 className="text-gray-50 text-lg font-medium mb-2">
             Advanced Security
@@ -115,7 +114,7 @@ export default function SecuritySettings() {
           </div>
         </section>
 
-        {/* Account Management */}
+        
         <section>
           <h3 className="text-gray-50 text-lg font-medium mb-2">
             Account Management

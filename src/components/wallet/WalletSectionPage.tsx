@@ -11,29 +11,14 @@ export default function WalletSectionPage() {
 
     const tabs = ["Overview", "Spot Account", "Futures", "Bot"];
 
-    const handleOpenDetail = () => {
-        setSelectedActivity(true);
-    };
-
-    const handleBackToList = () => {
-        setSelectedActivity(false);
-    };
 
     return (
         <div className="min-h-screen bg-[#181818] text-white md:py-8 py-4 font-manrope">
-            <div className="max-w-[1400px] mx-auto px-4 md:px-0">
-
-                {/* ================= HEADER ================= */}
+            <div className="max-w-350 mx-auto px-4 md:px-0">
                 <div className="flex md:flex-row flex-col items-start md:items-center mb-8 justify-between gap-6">
                     <h1 className="text-3xl font-bold tracking-tight">Assets</h1>
-
-                    {/* ACTION BUTTONS (FIXED FOR MOBILE) */}
-                    <div className="md:w-[600px] w-full md:flex md:flex-row gap-4">
-
-                        {/* Mobile layout: 2 buttons per row */}
+                    <div className="md:w-150 w-full md:flex md:flex-row gap-4">
                         <div className="grid grid-cols-2 gap-3 w-full md:flex  md:gap-3">
-
-                            {/* Primary actions */}
                             <button className="w-full rounded-sm bg-[#0055FF] px-3 py-2 text-sm">
                                 Deposit
                             </button>
@@ -43,7 +28,7 @@ export default function WalletSectionPage() {
                             <button className="w-full rounded-sm bg-[#1D1D1D] px-3 py-2 text-sm">
                                 Withdraw
                             </button>
-                            {/* Secondary actions */}
+                        
                             <button className="w-full rounded-sm bg-[#1D1D1D] px-3 py-2 text-sm">
                                 Trade History
                             </button>
@@ -55,12 +40,9 @@ export default function WalletSectionPage() {
                     </div>
 
                 </div>
-
-                {/* ================= MAIN CONTENT ================= */}
                 <div className="flex bg-[#1D1D1D] py-6 md:py-12 flex-col md:flex-row">
 
-                    {/* SIDEBAR */}
-                    <aside className="w-full md:w-100 space-y-1 border-r border-r-4 border-[#181818] shrink-0">
+                    <aside className="w-full md:w-100 space-y-1 border-r-4 border-[#181818] shrink-0">
                         {tabs.map((tab) => (
                             <button
                                 key={tab}
@@ -70,18 +52,18 @@ export default function WalletSectionPage() {
                                 }}
                                 className={`w-full text-left px-4 py-3 text-lg transition-all cursor-pointer relative group ${activeTab === tab
                                         ? "text-white font-semibold bg-white/5"
-                                        : "text-gray-500 hover:text-gray-300 hover:bg-white/[0.02]"
+                                        : "text-gray-500 hover:text-gray-300 hover:bg-white/2"
                                     }`}
                             >
                                 {activeTab === tab && (
-                                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[4px] h-10 bg-white" />
+                                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-10 bg-white" />
                                 )}
                                 {tab}
                             </button>
                         ))}
                     </aside>
 
-                    {/* DYNAMIC CONTENT */}
+                    
                     <main className="flex-1">
                         {activeTab === "Overview" && <Overview />}
                         {activeTab === "Spot Account" && <SpotAccountSection />}

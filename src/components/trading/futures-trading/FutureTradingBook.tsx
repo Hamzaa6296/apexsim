@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+
 import { FaCaretDown } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { LuSettings2 } from "react-icons/lu";
@@ -33,102 +33,100 @@ const ORDER_DATA = [
 
 export default function FutureTradingBook() {
     const [activeTab, setActiveTab] = useState<'Order books' | 'Last trades'>('Order books');
-    
+
     return (
-        <div className="w-full md:w-[320px] flex flex-col bg-[#181818] border-x border-white/5 h-full md:h-[550px] select-none">
-            {/* 1. Header Tabs */}
+        <div className="w-full md:w-[320px] flex flex-col bg-[#181818] border-x border-white/5 h-full md:h-137.5elect-none">
+
             <div className="flex items-center justify-between px-3 h-10 shrink-0 border-b border-white/5">
                 <div className="flex gap-4 h-full items-center">
                     <div
                         onClick={() => setActiveTab('Order books')}
-                        className="relative h-full flex items-center !cursor-pointer group"
+                        className="relative h-full flex items-center cursor-pointer group"
                     >
                         <span className={`text-[12px] md:text-[13px] font-medium transition-colors ${activeTab === 'Order books' ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
                             Order books
                         </span>
                         {activeTab === 'Order books' && (
-                            <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#00B595]" />
+                            <div className="absolute bottom-0 left-0 w-full h-0.5g-[#00B595]" />
                         )}
                     </div>
 
                     <div
                         onClick={() => setActiveTab('Last trades')}
-                        className="relative h-full flex items-center !cursor-pointer group"
+                        className="relative h-full flex items-center cursor-pointer group"
                     >
                         <span className={`text-[12px] md:text-[13px] font-medium transition-colors ${activeTab === 'Last trades' ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
                             Last trades
                         </span>
                         {activeTab === 'Last trades' && (
-                            <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#00B595]" />
+                            <div className="absolute bottom-0 left-0 w-full h-0.5g-[#00B595]" />
                         )}
                     </div>
                 </div>
-                <LuSettings2 size={16} className="text-gray-400 !cursor-pointer hover:text-white" />
+                <LuSettings2 size={16} className="text-gray-400 cursor-pointer hover:text-white" />
             </div>
 
-            {/* 2. Grid Icons & Depth Selector */}
+
             <div className="flex items-center justify-between px-3 py-2">
                 <div className="flex items-center gap-3.5">
-                    <svg width="14" height="14" viewBox="0 0 16 16" className="text-[#00B595] !cursor-pointer">
+                    <svg width="14" height="14" viewBox="0 0 16 16" className="text-[#00B595] cursor-pointer">
                         <rect x="2" y="2" width="5" height="5" fill="currentColor" rx="0.5" />
                         <rect x="9" y="2" width="5" height="5" fill="currentColor" rx="0.5" />
                         <rect x="2" y="9" width="5" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
                         <rect x="9" y="9" width="5" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
                     </svg>
-                    <svg width="14" height="14" viewBox="0 0 16 16" className="text-gray-600 !cursor-pointer hover:text-gray-400">
+                    <svg width="14" height="14" viewBox="0 0 16 16" className="text-gray-600 cursor-pointer hover:text-gray-400">
                         <rect x="2" y="2" width="12" height="5" fill="currentColor" rx="0.5" />
                         <rect x="2" y="9" width="12" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
                     </svg>
-                    <svg width="14" height="14" viewBox="0 0 16 16" className="text-gray-600 !cursor-pointer hover:text-gray-400">
+                    <svg width="14" height="14" viewBox="0 0 16 16" className="text-gray-600 cursor-pointer hover:text-gray-400">
                         <rect x="2" y="2" width="12" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
                         <rect x="2" y="9" width="12" height="5" fill="currentColor" rx="0.5" />
                     </svg>
                 </div>
 
                 <div className="flex items-center gap-1.5">
-                    <div className="bg-[#24262b] pl-2 pr-1.5 py-0.5 rounded flex items-center gap-3 !cursor-pointer hover:bg-[#2d3036] border border-white/5">
+                    <div className="bg-[#24262b] pl-2 pr-1.5 py-0.5 rounded flex items-center gap-3 cursor-pointer hover:bg-[#2d3036] border border-white/5">
                         <span className="text-[10px] text-gray-300">0.01</span>
                         <FaCaretDown size={10} className="text-gray-500" />
                     </div>
-                    <BsThreeDotsVertical className="text-gray-500 !cursor-pointer hover:text-white" size={14} />
+                    <BsThreeDotsVertical className="text-gray-500 cursor-pointer hover:text-white" size={14} />
                 </div>
             </div>
 
-            {/* 3. Table Column Headers */}
+
             <div className="grid grid-cols-3 text-[10px] text-gray-500 px-3 pb-1 font-medium border-b border-white/5 lg:border-none">
                 <span>Price(USDT)</span>
                 <span className="text-right">Amount(BTC)</span>
                 <span className="text-right">Total</span>
             </div>
 
-            {/* 4. Orders List */}
-            <div className="flex-grow no-scrollbar pb-2 max-h-[400px] md:max-h-none">
+
+            <div className="grow no-scrollbar pb-2 max-h-100 md:max-h-none">
                 {ORDER_DATA.map((item, i) => (
                     <div
                         key={i}
-                        className={`relative grid grid-cols-3 text-[11px] py-[3px] px-3 hover:bg-white/5 !cursor-pointer group ${
-                            item.type === 'buy' && ORDER_DATA[i-1]?.type === 'sell' ? 'mt-2 border-t border-white/5 pt-2' : ''
-                        }`}
-                    >
-                        {/* Depth Bar (Right Aligned) */}
-                        <div
-                            className={`absolute right-0 top-0 h-full transition-all duration-300 ${
-                                item.type === 'sell' ? 'bg-[#ef5350]/10' : 'bg-[#26a69a]/10'
+                        className={`relative grid grid-cols-3 text-[11px] py-0.75px-3 hover:bg-white/5 cursor-pointer group ${item.type === 'buy' && ORDER_DATA[i - 1]?.type === 'sell' ? 'mt-2 border-t border-white/5 pt-2' : ''
                             }`}
+                    >
+
+                        <div
+                            className={`absolute right-0 top-0 h-full transition-all duration-300 ${item.type === 'sell' ? 'bg-[#ef5350]/10' : 'bg-[#26a69a]/10'
+                                }`}
                             style={{ width: `${item.depth}%` }}
                         />
 
-                        {/* Price Column - Fixed coloring logic */}
+
                         <span className={`font-medium z-10 ${item.type === 'sell' ? 'text-[#ef5350]' : 'text-[#26a69a]'}`}>
                             {item.price.toFixed(2)}
                         </span>
 
-                        {/* Amount Column */}
+
                         <span className="text-right text-[#c9ccd0] z-10 font-medium tracking-tight">
                             {item.amount}
                         </span>
 
-                        {/* Total Column */}
+
                         <span className="text-right text-[#848e9c] z-10 font-medium tabular-nums">
                             {item.total}
                         </span>

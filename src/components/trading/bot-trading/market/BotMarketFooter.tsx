@@ -1,22 +1,21 @@
 "use client";
-import React, { useState } from 'react';
-
+import  { useState } from 'react';
 
 export default function BotMarketFooter() {
   const [activeTab, setActiveTab] = useState("Open orders (0)");
 
   const tabs = ['Running', 'History', 'PNL Analysis'];
   return (
-    <div className="bg-[#181818] border-t border-white/5 min-h-[400px] flex flex-col font-sans w-full relative">
+    <div className="bg-[#181818] border-t border-white/5 min-h-100 flex flex-col font-sans w-full relative">
 
-      {/* Tab Navigation & Right-aligned Action */}
+      
       <div className="flex items-center justify-between border-b border-white/5 px-4 overflow-x-auto no-scrollbar">
         <div className="flex gap-6 min-w-max">
           {tabs.map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`py-4 text-[14px] font-medium transition-all relative !cursor-pointer whitespace-nowrap ${
+              className={`py-4 text-[14px] font-medium transition-all relative cursor-pointer whitespace-nowrap ${
                 activeTab === tab ? 'text-white' : 'text-gray-500 hover:text-gray-300'
               }`}
             >
@@ -28,13 +27,6 @@ export default function BotMarketFooter() {
           ))}
         </div>
       </div>
-
-      {/* 1. SCROLLABLE HEADER SECTION */}
-      
-
-      {/* 2. CENTERED EMPTY STATE SECTION (Non-scrollable) */}
-      
-
     </div>
   );
 }

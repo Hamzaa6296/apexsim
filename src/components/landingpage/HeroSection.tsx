@@ -1,6 +1,3 @@
-"use client";
-import React from 'react';
-
 interface MarketCardProps {
     symbol: string;
     price: string;
@@ -12,17 +9,17 @@ const MarketCard = ({ symbol, price, change, imageUrl }: MarketCardProps) => {
     const isFlags = imageUrl.includes("twoflags");
 
     return (
-        <div className="bg-[#545454]/20 backdrop-blur-sm border border-white/5 px-6 py-12 rounded-[24px] hover:border-white/20 cursor-pointer overflow-hidden relative flex flex-col items-start z-10 transition-all group">
-            {/* Image Container */}
+        <div className="bg-[#545454]/20 backdrop-blur-sm border border-white/5 px-6 py-12 rounded-3xlver:border-white/20 cursor-pointer overflow-hidden relative flex flex-col items-start z-10 transition-all group">
+            
             <div className={`mb-4 flex items-center justify-center ${isFlags
-                    ? "w-16 h-13" // Made wider specifically for the flags to match visual weight
+                    ? "w-16 h-13" 
                     : "w-13 h-13 rounded-full overflow-hidden"
                 }`}>
                 <img
                     src={imageUrl}
                     alt={symbol}
                     className={`transition-transform duration-300 group-hover:scale-110 ${isFlags
-                            ? "w-full h-full object-contain scale-125" // Scale-125 boosts the size to match others
+                            ? "w-full h-full object-contain scale-125" 
                             : "w-full h-full object-cover"
                         }`}
                 />
@@ -36,7 +33,7 @@ const MarketCard = ({ symbol, price, change, imageUrl }: MarketCardProps) => {
                 </p>
             </div>
 
-            {/* Subtle glow effect */}
+            
             <div className="absolute -top-4 -left-4 w-20 h-20 bg-blue-500/5 blur-2xl rounded-full" />
         </div>
     );
@@ -64,20 +61,20 @@ export default function Hero() {
                 </p>
                 <h1 className="text-4xl md:text-6xl tracking-tight md:mb-6 mb-3 text-white leading-tight">
                     Trade Your Crypto with <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A0C0FF] to-[#1460F8]">
+                    <span className="text-transparent bg-clip-text bg-linear-to-rrom-[#A0C0FF] to-[#1460F8]">
                         Confidence
                     </span>
                 </h1>
                 <p className="text-zinc-400 max-w-2xl mx-auto px-5 md:px-0 text-lg mb-10">
                     Keep your digital assets offline, safe, and always under your control—secure storage with the freedom to invest anytime.
                 </p>
-                <button className="bg-[#0055FF] hover:bg-blue-500 text-white px-10 py-3 rounded-full font-semibold text-md shadow-[0_0_40px_rgba(37,99,235,0.4)] transition-all !cursor-pointer active:scale-95">
+                <button className="bg-[#0055FF] hover:bg-blue-500 text-white px-10 py-3 rounded-full font-semibold text-md shadow-[0_0_40px_rgba(37,99,235,0.4)] transition-all cursor-pointer active:scale-95">
                     Start trading
                 </button>
             </div>
 
             <div className="relative w-full flex justify-center items-start">
-                <div className="absolute md:top-[18%] top-[-20px] left-0 w-full md:h-[90%] h-[calc(100%+40px)] bg-black/40 border-t border-white/5 md:rounded-t-[40px] pointer-events-none z-0" />
+                <div className="absolute md:top-[18%] -top-5 left-0 w-full md:h-[90%] h-[calc(100%+40px)] bg-black/40 border-t border-white/5 md:rounded-t-[40px] pointer-events-none z-0" />
 
                 <div className="max-w-7xl font-inter w-full flex flex-col gap-4 relative z-10 px-4 md:px-8 pb-20">
                     <div className="grid grid-cols-2 gap-4 lg:hidden">

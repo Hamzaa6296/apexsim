@@ -1,9 +1,8 @@
-"use client";
 
 const BotTradingCard = () => {
   return (
     <div className="bg-[#181818] border border-white/5 rounded-xl p-5 hover:border-white/10 transition-all font-manrope">
-      {/* Top Header: Pair and Copy Button */}
+      
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-white text-lg  tracking-tight">BTCUSDT</h3>
         <button className="bg-[#0055FF] text-white px-8 py-2.5 rounded-md text-sm cursor-pointer hover:opacity-90 transition-opacity shadow-lg shadow-blue-900/20">
@@ -11,7 +10,7 @@ const BotTradingCard = () => {
         </button>
       </div>
 
-      {/* Main Stats: PNL Section */}
+      
       <div className="space-y-1 mb-4">
         <p className="text-[12px] text-gray-500 font-bold underline decoration-gray-700 underline-offset-4 ">
           30 Days PNL (USD)
@@ -21,7 +20,7 @@ const BotTradingCard = () => {
         </p>
       </div>
 
-      {/* Bottom Grid Stats: 3 Columns */}
+      
       <div className="grid grid-cols-3 gap-2 border-t border-white/5 pt-5">
         <div>
           <p className="text-[12px] text-gray-500 underline decoration-gray-700 underline-offset-4 uppercase mb-1">

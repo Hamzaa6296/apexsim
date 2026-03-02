@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+
 import { FaCaretDown } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { LuSettings2 } from "react-icons/lu";
@@ -35,11 +35,10 @@ export default function OrderBook() {
     const [activeTab, setActiveTab] = useState<'liquidity' | 'trades'>('liquidity');
     return (
         <div className="w-full md:w-[320px] flex flex-col bg-[#181818] border-x border-white/5 h-full select-none">
-            {/* 1. Header Tabs */}
-            {/* 1. Header Tabs with Dynamic Underline */}
+
             <div className="flex items-center justify-between px-3 h-12 border-b border-white/5">
                 <div className="flex gap-4 h-full items-center">
-                    {/* Liquidity Tab */}
+
                     <div
                         onClick={() => setActiveTab('liquidity')}
                         className="relative h-full flex items-center cursor-pointer group"
@@ -48,45 +47,44 @@ export default function OrderBook() {
                             Liquidity
                         </span>
                         {activeTab === 'liquidity' && (
-                            <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#00B595]" />
+                            <div className="absolute bottom-0 left-0 w-full h-0.5g-[#00B595]" />
                         )}
                     </div>
 
-                    {/* Recent Trades Tab */}
+
                     <div
                         onClick={() => setActiveTab('trades')}
-                        className="relative h-full flex items-center !cursor-pointer group"
+                        className="relative h-full flex items-center cursor-pointer group"
                     >
                         <span className={`text-[13px] font-medium transition-colors ${activeTab === 'trades' ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
                             Recent trades
                         </span>
                         {activeTab === 'trades' && (
-                            <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#00B595]" />
+                            <div className="absolute bottom-0 left-0 w-full h-0.5g-[#00B595]" />
                         )}
                     </div>
                 </div>
-                <LuSettings2 size={18} className="text-gray-400 !cursor-pointer hover:text-white" />
+                <LuSettings2 size={18} className="text-gray-400 cursor-pointer hover:text-white" />
             </div>
 
-            {/* 2. Grid Icons & Depth Selector */}
             <div className="flex items-center justify-between px-3 py-2.5">
                 <div className="flex items-center gap-4">
-                    {/* Custom SVG Grid Icons from Image */}
+                    { }
                     <div className="flex items-center gap-3.5">
-                        {/* Both Sides Icon */}
-                        <svg width="15" height="15" viewBox="0 0 16 16" className="text-[#00B595] !cursor-pointer">
+                        { }
+                        <svg width="15" height="15" viewBox="0 0 16 16" className="text-[#00B595] cursor-pointer">
                             <rect x="2" y="2" width="5" height="5" fill="currentColor" rx="0.5" />
                             <rect x="9" y="2" width="5" height="5" fill="currentColor" rx="0.5" />
                             <rect x="2" y="9" width="5" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
                             <rect x="9" y="9" width="5" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
                         </svg>
-                        {/* Buy Side Icon */}
-                        <svg width="15" height="15" viewBox="0 0 16 16" className="text-gray-600 !cursor-pointer hover:text-gray-400">
+                        { }
+                        <svg width="15" height="15" viewBox="0 0 16 16" className="text-gray-600 cursor-pointer hover:text-gray-400">
                             <rect x="2" y="2" width="12" height="5" fill="currentColor" rx="0.5" />
                             <rect x="2" y="9" width="12" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
                         </svg>
-                        {/* Sell Side Icon */}
-                        <svg width="15" height="15" viewBox="0 0 16 16" className="text-gray-600 !cursor-pointer hover:text-gray-400">
+                        { }
+                        <svg width="15" height="15" viewBox="0 0 16 16" className="text-gray-600 cursor-pointer hover:text-gray-400">
                             <rect x="2" y="2" width="12" height="5" fill="currentColor" rx="0.5" opacity="0.5" />
                             <rect x="2" y="9" width="12" height="5" fill="currentColor" rx="0.5" />
                         </svg>
@@ -94,50 +92,49 @@ export default function OrderBook() {
                 </div>
 
                 <div className="flex items-center gap-1.5">
-                    <div className="bg-[#24262b] pl-2 pr-1.5 py-0.5 rounded flex items-center gap-3 !cursor-pointer hover:bg-[#2d3036] border border-white/5">
+                    <div className="bg-[#24262b] pl-2 pr-1.5 py-0.5 rounded flex items-center gap-3 cursor-pointer hover:bg-[#2d3036] border border-white/5">
                         <span className="text-[11px] text-gray-300">0.01</span>
                         <FaCaretDown size={10} className="text-gray-500" />
                     </div>
-                    <BsThreeDotsVertical className="text-gray-500 !cursor-pointer hover:text-white" size={16} />
+                    <BsThreeDotsVertical className="text-gray-500 cursor-pointer hover:text-white" size={16} />
                 </div>
             </div>
 
-            {/* 3. Table Column Headers */}
+
             <div className="grid grid-cols-3 text-[10px] text-gray-500 px-3 pb-1 uppercase font-medium">
                 <span>Price(USDT)</span>
                 <span className="text-right">Amount(BTC)</span>
                 <span className="text-right">Total</span>
             </div>
 
-            {/* 4. Orders List */}
-            <div className="flex-grow overflow-y-auto no-scrollbar pb-2">
+
+            <div className="growflow-y-auto no-scrollbar pb-2">
                 {ORDER_DATA.map((item, i) => (
                     <div
                         key={i}
-                        className={`relative grid grid-cols-3 text-[11px] py-[2.5px] px-3 hover:bg-white/5 !cursor-pointer group ${item.type === 'buy' && i === 14 ? 'mt-1' : ''
+                        className={`relative grid grid-cols-3 text-[11px] py-[2.5px] px-3 hover:bg-white/5 cursor-pointer group ${item.type === 'buy' && i === 14 ? 'mt-1' : ''
                             }`}
                     >
-                        {/* Depth Bar (Right Aligned) */}
+
                         <div
                             className={`absolute right-0 top-0 h-full transition-all duration-300 ${item.type === 'sell' ? 'bg-[#ef5350]/10' : 'bg-[#00B595]/10'
                                 }`}
                             style={{ width: `${item.depth}%` }}
                         />
 
-                        {/* Price Column */}
+
                         <span className={`font-medium z-10 ${item.type === 'sell' ? 'text-[#F6465D]' : 'text-[#F6465D]'
                             }`}>
-                            {/* Note: In image_2abb86.png, almost all prices are red even in the lower section, 
-                  matching that specific market state. */}
+
                             {item.price.toFixed(2)}
                         </span>
 
-                        {/* Amount Column */}
+
                         <span className="text-right text-[#c9ccd0] z-10 font-medium tracking-tight">
                             {item.amount}
                         </span>
 
-                        {/* Total Column */}
+
                         <span className="text-right text-[#848e9c] z-10 font-medium tabular-nums">
                             {item.total}
                         </span>

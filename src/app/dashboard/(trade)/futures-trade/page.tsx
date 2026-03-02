@@ -1,6 +1,3 @@
-"use client";
-import React from 'react';
-
 import OrderBook from '@/components/trading/futures-trading/FutureTradingBook';
 import TradeForm from '@/components/trading/futures-trading/FutureTradingForm';
 import OrderTabs from '@/components/trading/futures-trading/FutureTradingFooter';
@@ -9,8 +6,8 @@ import TradingChart from '@/components/trading/futures-trading/FutureTradingChar
 export default function FutureTradingPage() {
   return (
     <div className="bg-[#181818] min-h-screen text-gray-300 font-manrope overflow-x-hidden">
-      
-      {/* 1. TOP TICKER BAR */}
+
+
       <div className="flex items-center justify-between gap-4 md:px-4 px-4 md:py-5 py-3 border-b border-white/5 overflow-x-auto no-scrollbar">
         <div className="flex items-center gap-6 shrink-0">
           <div className="flex items-center gap-2 min-w-fit cursor-pointer">
@@ -58,44 +55,29 @@ export default function FutureTradingPage() {
           </div>
         </div>
       </div>
-
-      {/* 2. MAIN CONTENT LAYOUT */}
       <div className="flex flex-col md:flex-row w-full md:overflow-y-auto lg:overflow-visible">
-        
-        {/* LEFT/CENTER BLOCK */}
         <div className="flex flex-col flex-1 min-w-0">
-          
-          {/* Top Block: Chart + Book */}
           <div className="flex flex-col lg:flex-row border-b border-white/5">
-            {/* Chart Area */}
-            <div className="flex-grow flex flex-col min-w-0 bg-[#181818] lg:border-r border-white/5 order-1">
+            <div className="grow flex flex-col min-w-0 bg-[#181818] lg:border-r border-white/5 order-1">
               <div className="flex items-center gap-4 px-4 md:py-3 py-2 border-b border-white/5 text-[12px] font-semibold">
                 <span className="text-[#00B595] border-b-2 border-[#00B595] pb-1 cursor-pointer">Chart</span>
                 <span className="text-gray-500 cursor-pointer hover:text-white transition-colors">Info</span>
               </div>
-              <div className="h-[400px] md:h-[550px]">
+              <div className="h-100 md:h-137.5">
                 <TradingChart />
               </div>
             </div>
-
-            {/* Order Book */}
-            <div className="w-full md:w-[320px] flex-shrink-0 border-b md:border-b-0 lg:border-r border-white/5 order-2">
+            <div className="w-full md:w-[320px] shrink-0 border-b md:border-b-0 lg:border-r border-white/5 order-2">
               <OrderBook />
             </div>
           </div>
-
-          {/* Trade Form: Appears here on mobile via order-3, but floats right on desktop */}
           <div className="w-full lg:hidden mt-35 order-3 bg-[#181818] border-b border-white/5">
             <TradeForm />
           </div>
-
-          {/* Order Tabs (FOOTER): Forced to bottom on mobile via order-last */}
-          <div className="w-full order-last md:order-none">
+          <div className="w-full order-last md:order-0">
             <OrderTabs />
           </div>
         </div>
-
-        {/* Desktop-Only Trade Form Sidebar */}
         <div className="hidden md:block w-[320px] shrink-0 bg-[#181818] border-l border-white/5">
           <TradeForm />
         </div>

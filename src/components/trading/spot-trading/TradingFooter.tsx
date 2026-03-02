@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaCaretDown } from "react-icons/fa";
 
 export default function OrderTabs() {
@@ -9,18 +9,17 @@ export default function OrderTabs() {
   const columns = ['Date', 'Pair', 'Type', 'Side', 'Price', 'Amount', 'Filled', 'Total', 'Trigger condition'];
 
   return (
-    <div className="bg-[#181818] border-t border-white/5 min-h-[400px] flex flex-col font-sans w-full relative">
+    <div className="bg-[#181818] border-t border-white/5 min-h-100x flex-col font-sans w-full relative">
 
-      {/* Tab Navigation & Right-aligned Action */}
+
       <div className="flex items-center justify-between border-b border-white/5 px-4 overflow-x-auto no-scrollbar">
         <div className="flex gap-6 min-w-max">
           {tabs.map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`py-4 text-[14px] font-medium transition-all relative !cursor-pointer whitespace-nowrap ${
-                activeTab === tab ? 'text-white' : 'text-gray-500 hover:text-gray-300'
-              }`}
+              className={`py-4 text-[14px] font-medium transition-all relative cursor-pointer whitespace-nowrap ${activeTab === tab ? 'text-white' : 'text-gray-500 hover:text-gray-300'
+                }`}
             >
               {tab}
               {activeTab === tab && (
@@ -31,9 +30,9 @@ export default function OrderTabs() {
         </div>
       </div>
 
-      {/* 1. SCROLLABLE HEADER SECTION */}
+
       <div className="overflow-x-auto no-scrollbar cursor-pointer">
-        <div className="min-w-[1000px] w-full">
+        <div className="min-w-250ll">
           <div className="grid grid-cols-10 px-4 py-2 items-center">
             {columns.map((col) => (
               <div key={col} className="text-gray-500 text-[15px] font-semibold flex items-center py-3">
@@ -43,9 +42,9 @@ export default function OrderTabs() {
                 )}
               </div>
             ))}
-            
+
             <div className="flex md:ml-1 justify-end">
-              <button className="bg-[#2B2E33] hover:bg-[#363A40] text-white text-[12px] px-8 py-1.5 rounded-[3px] transition-colors !cursor-pointer whitespace-nowrap border border-white/5">
+              <button className="bg-[#2B2E33] hover:bg-[#363A40] text-white text-[12px] px-8 py-1.5 rounded-[3px] transition-colors cursor-pointer whitespace-nowrap border border-white/5">
                 Cancel all
               </button>
             </div>
@@ -53,14 +52,14 @@ export default function OrderTabs() {
         </div>
       </div>
 
-      {/* 2. CENTERED EMPTY STATE SECTION (Non-scrollable) */}
-      <div className="flex-grow flex flex-col items-center justify-center p-10">
+
+      <div className="grow flex-col items-center justify-center p-10">
         <div className="relative w-25 h-25">
           <img
             src="/images/paper.png"
             className="w-full h-full object-contain"
             alt="No data"
-          />              
+          />
         </div>
         <p className="text-gray-600 text-sm mt-2">No active orders found</p>
       </div>

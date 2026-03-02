@@ -1,5 +1,4 @@
 "use client";
-import React from 'react';
 
 interface TestimonialCardProps {
   name: string;
@@ -10,13 +9,9 @@ interface TestimonialCardProps {
 }
 
 const TestimonialCard = ({ name, role, content, imageSrc, isSmall }: TestimonialCardProps) => (
-  <div className={`relative p-[1px] rounded-2xl overflow-hidden group flex-shrink-0 
-    ${isSmall ? 'w-[300px] md:w-[340px]' : 'w-[320px] md:w-[400px]'}`}>
-    
-    {/* Gradient Border Overlay - Top-left highlight */}
-    
-    
-    {/* Inner Card Content */}
+  <div className={`relative p-pxunded-2xl overflow-hidden group shrink-0
+    ${isSmall ? 'w-75-[340px]' : 'w-[320px] md:w-100'}`}>
+
     <div className="relative bg-[#1A1B1B] border border-white/20 px-5 md:py-10 py-7 rounded-[15px] h-full flex flex-col justify-between">
       <div className="flex flex-col gap-1">
         <div className="flex flex-col items-start gap-2">
@@ -54,7 +49,7 @@ export default function Testimonials() {
 
   return (
     <section className="relative font-manrope bg-black/1 text-white py-20 overflow-hidden">
-      {/* Background Grid Pattern - As seen in your screenshot */}
+      
       <div className="absolute inset-0 opacity-[0.15] pointer-events-none" 
            style={{ backgroundImage: `radial-gradient(#ffffff 0.5px, transparent 0.5px)`, backgroundSize: '24px 24px' }} />
 
@@ -69,7 +64,7 @@ export default function Testimonials() {
       </div>
 
       <div className="flex flex-col relative z-10">
-        {/* ROW 1: RIGHT TO LEFT */}
+
         <div className="flex overflow-hidden">
           <div className="flex gap-2 animate-scroll-left py-1">
             {[...row1, ...row1].map((t, i) => (
@@ -78,7 +73,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* ROW 2: LEFT TO RIGHT (Smaller cards) */}
+        
         <div className="flex overflow-hidden">
           <div className="flex gap-2 animate-scroll-left py-1 pb-10">
             {[...row2, ...row2].map((t, i) => (
@@ -88,7 +83,6 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* Side Fades */}
       
       <style jsx>{`
         @keyframes scroll-left {

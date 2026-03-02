@@ -43,7 +43,7 @@ export default function LatestActivities({ onActivityClick }: LatestActivitiesPr
                         cursor-pointer group
                     "
                 >
-                    {/* IMAGE — full width on mobile */}
+                    
                     <div
                         className="
                             w-full sm:w-40
@@ -69,7 +69,7 @@ export default function LatestActivities({ onActivityClick }: LatestActivitiesPr
                         </div>
                     </div>
 
-                    {/* TEXT — centered on mobile */}
+                    
                     <div
                         className="
                             flex flex-col

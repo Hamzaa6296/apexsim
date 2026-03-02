@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { ApexOptions } from 'apexcharts';
 import { FaChartLine } from "react-icons/fa";
@@ -19,7 +19,6 @@ export default function TradingChart() {
     amplitude: 4.02
   });
 
-  // ✅ Keep data stable
   const { candles, volume, lastPrice } = useMemo(() => {
     let currentPrice = 22000;
     let currentTime = new Date('2022-11-01').getTime();
@@ -50,7 +49,7 @@ export default function TradingChart() {
     };
   }, []);
 
-  // ✅ Memoize Main Options and DISABLE animations to prevent "dropping"
+
   const mainOptions = useMemo<ApexOptions>(() => ({
     chart: {
       id: 'candles',
@@ -58,7 +57,7 @@ export default function TradingChart() {
       type: 'candlestick',
       background: 'transparent',
       toolbar: { show: false },
-      animations: { enabled: false }, // 👈 Crucial: Stops the chart from resetting/dropping on state change
+      animations: { enabled: false },
       events: {
         mouseMove: (event, chartContext, config) => {
           const i = config.dataPointIndex;
@@ -97,43 +96,41 @@ export default function TradingChart() {
     tooltip: { enabled: false }
   }), [candles, lastPrice]);
 
-  // ✅ Memoize Volume Options
-  // 2. Volume Pane Options (Updated to fix jumbled X-axis)
   const volumeOptions = useMemo<ApexOptions>(() => ({
-    chart: { 
-      id: 'volume', 
-      group: 'sync-charts', 
-      type: 'bar', 
-      background: 'transparent', 
+    chart: {
+      id: 'volume',
+      group: 'sync-charts',
+      type: 'bar',
+      background: 'transparent',
       toolbar: { show: false },
       animations: { enabled: false }
     },
     theme: { mode: 'dark' },
-    xaxis: { 
-      type: 'datetime', 
-      labels: { 
+    xaxis: {
+      type: 'datetime',
+      labels: {
         style: { colors: '#52525b', fontSize: '10px' },
-        datetimeUTC: false, // Prevents UTC shift numbers
-        format: 'dd MMM', // Shows "01 Nov" instead of long digit strings
-      }, 
+        datetimeUTC: false,
+        format: 'dd MMM',
+      },
       axisBorder: { show: false },
       tooltip: { enabled: false },
-      tickAmount: 6, // 👈 This limits the number of dates shown to prevent overlapping
+      tickAmount: 6,
     },
     yaxis: {
       opposite: true,
-      labels: { 
-        style: { colors: '#71717a', fontSize: '10px' }, 
-        formatter: (v) => (v / 1000).toFixed(0) + 'K' 
+      labels: {
+        style: { colors: '#71717a', fontSize: '10px' },
+        formatter: (v) => (v / 1000).toFixed(0) + 'K'
       },
       tickAmount: 2
     },
-    grid: { 
-      borderColor: '#1e1e1e', 
-      strokeDashArray: 0, 
+    grid: {
+      borderColor: '#1e1e1e',
+      strokeDashArray: 0,
       xaxis: { lines: { show: true } },
       padding: {
-        bottom: 10 // Gives room for the labels so they aren't cut off
+        bottom: 10
       }
     },
     plotOptions: { bar: { columnWidth: '85%' } },
@@ -143,7 +140,7 @@ export default function TradingChart() {
 
   return (
     <div className="bg-[#181818] w-full h-full font-manrope flex flex-col overflow-hidden">
-      {/* Toolbar */}
+
       <div className="flex items-center justify-between overflow-x-auto px-3 md:py-3 py-1.5 gap-3 font-semibold bg-[#181818] border-b border-white/5">
         <div className="flex items-center gap-3">
           {['Time', '1s', '15m', '1H', '4H', '1D', '1W'].map((t) => (
@@ -164,7 +161,7 @@ export default function TradingChart() {
         </div>
       </div>
 
-      {/* Info Bar */}
+
       <div className="flex flex-col flex-wrap items-start md:gap-1 md:px-4 px-2 md:py-2 py-1 md:text-[12px] text-[9px] border-b border-white/5 bg-[#181818]">
         <div className="flex items-center gap-1">
           <button className="text-gray-500 cursor-pointer"><FaCaretDown size={10} /></button>
@@ -190,9 +187,9 @@ export default function TradingChart() {
         </div>
       </div>
 
-      {/* Charts */}
-      <div className="flex-grow flex flex-col relative overflow-hidden">
-        <div className="flex-grow relative">
+
+      <div className="grow flex-col relative overflow-hidden">
+        <div className="growtive">
           <Chart options={mainOptions} series={[{ data: candles }]} type="candlestick" height="100%" />
           <div className="absolute bottom-4 left-4 flex items-center gap-4 text-[10px] text-gray-500 z-10 bg-[#181818]/80 p-1 rounded">
             <span>Vol(BTC): <span className="text-[#ef5350]">503.753K</span></span>
@@ -212,7 +209,7 @@ export default function TradingChart() {
   );
 }
 
-// Icons
+
 const FaCaretDown = ({ size }: { size: number }) => (
   <svg fill="currentColor" viewBox="0 0 320 512" height={size} width={size}><path d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"></path></svg>
 );
