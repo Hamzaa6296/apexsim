@@ -18,11 +18,11 @@ export default function TradingCalculator({ isOpen, onClose }: Props) {
 
   return (
     <div
-      className="fixed inset-0 z-100lex items-center md:justify-end justify-center bg-black/60 backdrop-blur-sm p-4"
+      className="fixed inset-0 z-100 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
       onClick={onClose}
     >
       <div
-        className="bg-[#09090D] md:top-3 md:absolute w-full max-w-100rflow-hidden shadow-2xl rounded-lg border border-white/5"
+        className="bg-[#09090D] md:top-3 md:absolute w-full max-w-100 flow-hidden shadow-2xl rounded-lg border border-white/5"
         onClick={(e) => e.stopPropagation()}
       >
 
@@ -71,7 +71,7 @@ export default function TradingCalculator({ isOpen, onClose }: Props) {
                 {[1, 15, 30, 45, 60, 75].map((val) => (
                   <div key={val} className="flex flex-col items-center relative">
 
-                    <div className={`w-28px] rotate-45 border-2 transform translate-y-[-0.5px] ${val === 1 ? 'bg-[#09090D] border-[#00B595]' : 'bg-[#09090D] border-[#2d3036]'
+                    <div className={`w-28px rotate-45 border-2 transform translate-y-[-0.5px] ${val === 1 ? 'bg-[#09090D] border-[#00B595]' : 'bg-[#09090D] border-[#2d3036]'
                       }`} />
 
                     <span className="absolute top-4 text-[11px] text-gray-500 whitespace-nowrap">{val}x</span>

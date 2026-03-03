@@ -18,7 +18,7 @@ export default function PreferenceModal({ isOpen, onClose, onLeverageClick }: Pr
   const SettingRow = ({ label, value, onClick, hasChevron = true }: any) => (
     <div
       onClick={onClick}
-      className="flex items-center justify-between py-3.75x-4 hover:bg-white/5 transition-colors cursor-pointer"
+      className="flex items-center justify-between px-3 py-3 hover:bg-white/5 transition-colors cursor-pointer"
     >
       <span className="text-[13px] text-gray-200">{label}</span>
       <div className="flex items-center gap-1">
@@ -29,14 +29,14 @@ export default function PreferenceModal({ isOpen, onClose, onLeverageClick }: Pr
   );
 
   const ToggleRow = ({ label, enabled, setEnabled }: any) => (
-    <div className="flex items-center justify-between py-3.75x-4">
+    <div className="flex items-center justify-between px-3 py-3">
       <span className="text-[13px] text-gray-200">{label}</span>
       <div
         onClick={() => setEnabled(!enabled)}
-        className={`w-90h-5ded-full relative transition-colors cursor-pointer ${enabled ? 'bg-[#00B595]' : 'bg-[#474D57]'
+        className={` h-full relative transition-colors cursor-pointer ${enabled ? 'bg-[#00B595]' : 'bg-[#474D57]'
           }`}
       >
-        <div className={`absolute top-0.5-w-4-[16h-4hite rounded-full transition-all duration-200 ${enabled ? 'left-4.5' : 'left-0.5'
+        <div className={`absolute top-0.5 rounded-full transition-all duration-200 ${enabled ? 'left-4.5' : 'left-0.5'
           }`} />
       </div>
     </div>

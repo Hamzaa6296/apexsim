@@ -14,8 +14,8 @@ export default function LeverageModal({ isOpen, onClose, onConfirm }: Props) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-110lex items-center justify-center bg-black/60 backdrop-blur-[2px] p-4">
-      <div className="bg-[#08070E] w-full max-w-90rflow-hidden">
+    <div className="fixed inset-0 z-110 flex items-center justify-center bg-black/60 backdrop-blur-[2px] p-4">
+      <div className="bg-[#08070E] w-full max-w-90 flow-hidden">
 
         <div className="flex items-center justify-between p-4 pb-2">
           <h2 className="text-white font-semibold text-[15px]">BTCUSDT leverage level</h2>
@@ -54,7 +54,7 @@ export default function LeverageModal({ isOpen, onClose, onConfirm }: Props) {
               max="75"
               value={leverage}
               onChange={(e) => setLeverage(parseInt(e.target.value))}
-              className="w-full h-0.5g-gray-700 appearance-none cursor-pointer accent-[#00B595]"
+              className="w-full h-0.5 bg-gray-700 appearance-none cursor-pointer accent-[#00B595]"
             />
             <div className="flex justify-between mt-3 text-[11px] text-gray-500 font-medium">
               <span>1x</span>
