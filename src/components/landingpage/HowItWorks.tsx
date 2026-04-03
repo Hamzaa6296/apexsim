@@ -8,7 +8,7 @@ interface StepCardProps {
 }
 
 const StepCard = ({ number, title, description, imageSrc, imageAlt }: StepCardProps) => (
-    <div className="relative bg-gradient-to-br from-[#FFFFFF]/9 to-[#000000]/5 border border-white/5 rounded-2xl px-8 py-8 h-[380px] overflow-hidden group">
+    <div className="relative bg-linear-to-br from-[#FFFFFF]/9 to-[#000000]/5 border border-white/5 rounded-2xl px-8 py-8 h-95 overflow-hidden group">
         
         <div className={`w-12 h-12 ${number === "1" ? "left-5 top-28" : number === "2" ? "left-2 top-28" : "left-5 top-28"} rounded-full bg-black border border-white/10 absolute  z-100 text-center justify-center flex items-center`}>
             <span className="text-gray-400 text-sm font-bold">{number}</span>
@@ -23,7 +23,7 @@ const StepCard = ({ number, title, description, imageSrc, imageAlt }: StepCardPr
         </div>
 
         
-        <div className={`absolute  ${number === "1" ? "-bottom-23 right-0 w-[90%] h-[90%]" : number === "2" ? "-bottom-25 right-0 w-[100%] h-full" : "-bottom-33 right-2  w-[100%] h-full"}`}>
+        <div className={`absolute  ${number === "1" ? "-bottom-23 right-0 w-[90%] h-[90%]" : number === "2" ? "-bottom-25 right-0 w-full h-full" : "-bottom-33 right-2  w-full h-full"}`}>
             <img
                 src={imageSrc}
                 alt={imageAlt}
@@ -60,7 +60,7 @@ export default function HowItWorks() {
 
     return (
         
-        <section className="relative text-white py-24 px-4 bg-gradient-to-br from-[#242424] to-[#050505]  overflow-hidden">
+        <section className="relative text-white py-24 px-4 bg-linear-to-br from-[#242424] to-[#050505]  overflow-hidden">
             
 
 

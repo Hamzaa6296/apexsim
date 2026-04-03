@@ -34,9 +34,10 @@ interface NavItemProps {
     label: string;
     type: 'trade' | 'more';
     isMobile?: boolean;
+    closeMenu?: () => void;
 }
 
-export default function NavItem({ label, type, isMobile }: NavItemProps) {
+export default function NavItem({ label, type, isMobile, closeMenu }: NavItemProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [activeQuote, setActiveQuote] = useState("USDT");
     const [isSelected, setIsSelected] = useState<string | null>(null);
@@ -54,16 +55,15 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
 
     const closeDropdown = () => setIsOpen(false);
 
- 
+
     const items = type === 'trade' ? tradeCategories : moreItems;
 
     return (
         <div className={isMobile ? "w-full" : "relative"} ref={containerRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`flex items-center gap-1 text-gray-400 hover:text-white transition-all py-2 cursor-pointer w-full font-manrope ${
-                    isMobile ? "justify-between text-lg border-b border-white/5" : "text-sm font-medium"
-                }`}
+                className={`flex items-center gap-1 text-gray-400 hover:text-white transition-all py-2 cursor-pointer w-full font-manrope ${isMobile ? "justify-between text-lg border-b border-white/5" : "text-sm font-medium"
+                    }`}
             >
                 {label}
                 <FaCaretDown size={14} className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
@@ -74,7 +74,7 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                     ? "pl-4 flex flex-col gap-2 my-2"
                     : `absolute top-[110%] -left-5 bg-[#1c1c1c] border border-white/10 rounded-sm shadow-2xl z-150 overflow-hidden ${type === 'trade' ? 'w-130 flex' : 'w-75'}`
                 }>
-                    
+
                     {type === 'trade' && !isMobile && (
                         <>
                             <div className="w-[45%] bg-[#181818] p-2 border-r border-white/5">
@@ -87,18 +87,16 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                                             setIsSelected(cat.title);
                                             closeDropdown(); // closes after selection
                                         }}
-                                        className={`block p-3 rounded-md cursor-pointer group transition-colors mb-1 ${
-                                            isSelected === cat.title ? "bg-[#232526]" : "hover:bg-white/5"
-                                        }`}
+                                        className={`block p-3 rounded-md cursor-pointer group transition-colors mb-1 ${isSelected === cat.title ? "bg-[#232526]" : "hover:bg-white/5"
+                                            }`}
                                     >
                                         <div className="flex items-center gap-3">
                                             <div className="w-6 h-6 flex items-center justify-center opacity-80 group-hover:opacity-100">
                                                 <img src={cat.icon} className="w-4 h-4" alt="" />
                                             </div>
                                             <div>
-                                                <p className={`text-[13px] font-semibold ${
-                                                    isSelected === cat.title ? "text-white" : "text-gray-300 group-hover:text-white"
-                                                }`}>{cat.title}</p>
+                                                <p className={`text-[13px] font-semibold ${isSelected === cat.title ? "text-white" : "text-gray-300 group-hover:text-white"
+                                                    }`}>{cat.title}</p>
                                                 <p className="text-gray-500 text-[10px]">{cat.desc}</p>
                                             </div>
                                         </div>
@@ -115,9 +113,8 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                                                 e.stopPropagation();
                                                 setActiveQuote(quote);
                                             }}
-                                            className={`pb-2 transition-all cursor-pointer border-b-2 ${
-                                                activeQuote === quote ? "text-white border-blue-500" : "text-gray-500 border-transparent hover:text-gray-300"
-                                            }`}
+                                            className={`pb-2 transition-all cursor-pointer border-b-2 ${activeQuote === quote ? "text-white border-blue-500" : "text-gray-500 border-transparent hover:text-gray-300"
+                                                }`}
                                         >
                                             {quote}
                                         </button>
@@ -128,8 +125,11 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                                     {tradeAssets.map(asset => (
                                         <Link
                                             key={asset.name}
-                                            href="#"
-                                            onClick={closeDropdown}
+                                            href="/dashboard/spot-trade"
+                                            onClick={() => {
+                                                closeDropdown();
+                                                closeMenu?.(); // 👈 closes sidebar too
+                                            }}
                                             className="flex items-center justify-between py-2 px-1 hover:bg-white/5 rounded-md cursor-pointer group transition-colors"
                                         >
                                             <div className="flex items-center gap-3">
@@ -143,7 +143,7 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                         </>
                     )}
 
-                    
+
                     {type === 'more' && !isMobile && (
                         <div className="p-2 flex flex-col gap-1 bg-[#1c1c1c]">
                             <p className="px-3 py-3 text-gray-500 text-[10px] uppercase font-bold">More</p>
@@ -155,18 +155,16 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                                         setIsSelected(item.title);
                                         closeDropdown();
                                     }}
-                                    className={`block p-4 rounded-md cursor-pointer group transition-colors ${
-                                        isSelected === item.title ? "bg-[#232526]" : "hover:bg-white/5"
-                                    }`}
+                                    className={`block p-4 rounded-md cursor-pointer group transition-colors ${isSelected === item.title ? "bg-[#232526]" : "hover:bg-white/5"
+                                        }`}
                                 >
                                     <div className="flex items-center gap-4">
                                         <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-gray-400 group-hover:text-white transition-all">
                                             {item.icon}
                                         </div>
                                         <div>
-                                            <p className={`text-[14px] font-semibold ${
-                                                isSelected === item.title ? "text-white" : "text-white group-hover:text-white"
-                                            }`}>{item.title}</p>
+                                            <p className={`text-[14px] font-semibold ${isSelected === item.title ? "text-white" : "text-white group-hover:text-white"
+                                                }`}>{item.title}</p>
                                             <p className="text-gray-500 text-[11px] mt-1">{item.desc}</p>
                                         </div>
                                     </div>
@@ -174,15 +172,16 @@ export default function NavItem({ label, type, isMobile }: NavItemProps) {
                             ))}
                         </div>
                     )}
-
-                
                     {isMobile && (
                         <div className="flex flex-col gap-1 py-2 bg-[#111111]">
                             {items.map(item => (
                                 <Link
                                     key={item.title}
                                     href={item.path}
-                                    onClick={closeDropdown}
+                                    onClick={() => {
+                                        closeDropdown();
+                                        closeMenu?.();
+                                    }}
                                     className="text-gray-400 text-sm hover:text-white py-3 px-4 border-l-2 border-transparent hover:border-blue-500 hover:bg-white/5 transition-all"
                                 >
                                     {item.title}

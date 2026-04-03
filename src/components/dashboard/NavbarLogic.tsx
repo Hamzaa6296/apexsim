@@ -11,6 +11,12 @@ const languages = [
     { code: 'Fra', name: 'French', flag: 'https://flagcdn.com/fr.svg' },
 ];
 
+const mobileLinks = [
+    { label: "Buy crypto", href: "/dashboard/deposit" },
+    { label: "Withdraw", href: "/dashboard/convert" },
+    { label: "Market", href: "/dashboard/market" },
+    { label: "Support", href: "/support" },
+];
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,8 +65,8 @@ export default function Navbar() {
                             ))}
 
 
-                        <NavItem label="Trade" type="trade" />
-                        <NavItem label="More" type="more" />
+                        <NavItem label="Trade" type="trade" isMobile />
+                        <NavItem label="More" type="more" isMobile />
 
                         <Link
                             href="#"
@@ -151,23 +157,27 @@ export default function Navbar() {
 
             {isMenuOpen && (
                 <div className="md:hidden absolute top-full left-0 w-full bg-[#111111] px-6 py-8 flex flex-col h-[calc(100vh-70px)] overflow-y-auto z-100 animate-in fade-in slide-in-from-top-4 duration-300">
-                    <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10 mb-6">
-                        <img src='/images/manimage.png' alt="Profile" className="w-12 h-12 rounded-full border-2 border-white/20 object-cover" />
-                        <div>
-                            <p className="text-white font-bold text-lg">User Account</p>
-                            <p className="text-blue-400 text-xs font-medium">Verified Simulation</p>
+                    <Link href='/dashboard/profile' onClick={() => setIsMenuOpen(false)}>
+                        <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10 mb-6">
+                            <img src='/images/manimage.png' alt="Profile" className="w-12 h-12 rounded-full border-2 border-white/20 object-cover" />
+                            <div>
+                                <p className="text-white font-bold text-lg">User Account</p>
+                                <p className="text-blue-400 text-xs font-medium">Verified Simulation</p>
+                            </div>
                         </div>
-                    </div>
+                    </Link>
 
                     <div className="grid grid-cols-2 gap-3 mb-8">
-                        <div className="flex items-center justify-center gap-3 bg-[#222222] p-4 rounded-xl border border-white/10">
-                            <FaWallet className="text-blue-500" size={16} />
-                            <span className="text-white font-bold">$40,000</span>
-                        </div>
+                        <Link href='/dashboard/wallet' onClick={() => setIsMenuOpen(false)}>
+                            <div className="flex items-center justify-center gap-3 bg-[#222222] p-4 rounded-xl border border-white/10">
+                                <FaWallet className="text-blue-500" size={16} />
+                                <span className="text-white font-bold">$40,000</span>
+                            </div>
+                        </Link>
                         <div className="flex items-center justify-around bg-[#222222] p-4 rounded-xl border border-white/10">
                             <MdLightMode className="text-gray-400" size={20} />
                             <div className="w-px h-5 bg-white/10" />
-                            <Link href='/dashboard/notifications'>
+                            <Link href='/dashboard/notifications' onClick={() => setIsMenuOpen(false)}>
                                 <FaBell className="text-gray-400" size={18} />
                             </Link>
                         </div>
@@ -175,14 +185,19 @@ export default function Navbar() {
 
                     <div className="flex flex-col space-y-1">
                         <p className="text-[11px] text-gray-500 uppercase font-bold tracking-widest mb-2 px-2">Navigation</p>
-                        {["Buy crypto", "Withdraw", "Market", "Support"].map((l) => (
-                            <Link key={l} href="#" className="text-gray-300 text-lg py-4 px-2 border-b border-white/5 hover:text-white cursor-pointer transition-colors font-manrope">
-                                {l}
+                        {mobileLinks.map((item) => (
+                            <Link
+                                key={item.label}
+                                href={item.href}
+                                onClick={() => setIsMenuOpen(false)}
+                                className="text-gray-300 text-lg py-4 px-2 border-b border-white/5 hover:text-white cursor-pointer transition-colors font-manrope"
+                            >
+                                {item.label}
                             </Link>
                         ))}
                         <div className="py-2">
-                            <NavItem label="Trade" type="trade" isMobile />
-                            <NavItem label="More" type="more" isMobile />
+                            <NavItem label="Trade" type="trade" isMobile closeMenu={() => setIsMenuOpen(false)} />
+                            <NavItem label="More" type="more" isMobile closeMenu={() => setIsMenuOpen(false)} />
                         </div>
                     </div>
 

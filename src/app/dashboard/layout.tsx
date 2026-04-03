@@ -7,7 +7,6 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
       <body className="antialiased">
         <div className="min-h-screen bg-[#181818]">
           <Navbar />
@@ -16,6 +15,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </main>
         </div>
       </body>
-    </html>
   );
 }
